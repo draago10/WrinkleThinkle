@@ -5,18 +5,42 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FirstFragment" android:id="@+id/nestedScrollView">
+        tools:context=".FirstFragment" android:id="@+id/constraintLayout">
+    <ImageView
+            android:src="@drawable/trees_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/treesBackground"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0" android:scaleType="centerCrop"
+            app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:text="Count: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textCount" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"/>
-    <Button
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" android:id="@+id/flowerImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/rainButton"/>
+    <ImageButton
+            android:src="@drawable/test_button"
+            android:layout_width="150dp"
+            android:layout_height="150dp" android:id="@+id/rainButton" android:scaleType="centerCrop"
+            android:backgroundTint="#F8BF71" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="112dp"
+            android:layout_marginStart="16dp" tools:circularflow_radiusInDP="10"
+            tools:circularflow_defaultRadius="50dp"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" android:id="@+id/clickerButton"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
-            app:layout_constraintHorizontal_bias="0.0" android:text="Click me!"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/rainButton" app:layout_constraintTop_toBottomOf="@+id/rainButton"
+            app:layout_constraintStart_toStartOf="@+id/rainButton" android:progressTint="#00FF00"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import com.example.wrinklethinkle.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private var test = 0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,8 +33,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.clickerButton.setOnClickListener {
+            incrementCount()
         }
     }
 
@@ -41,4 +42,10 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun incrementCount() {
+        test += 1
+        binding.textCount.text = "Count: ${test}"
+    }
+
 }

@@ -63,7 +63,7 @@ class FirstFragment : Fragment() {
             // Ensure `currentAlpha` does not exceed `maxAlpha`
             currentAlpha = min(maxAlpha, currentAlpha)
         }
-
+        // TODO: Update this to match the actual count we want.
         if (clickCount == 25) {
             Toast.makeText(context, "Complete!", Toast.LENGTH_SHORT).show()
             binding.rainButton.isEnabled = false

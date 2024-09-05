@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.wrinklethinkle.databinding.FragmentFirstBinding
 import kotlin.math.min
 /**
@@ -32,7 +33,7 @@ class FirstFragment : Fragment() {
         plantTest.imageResource = R.drawable.plant_pot
         binding.flowerImage.setImageResource(plantTest.imageResource)
         binding.flowerImage.imageAlpha = currentAlpha
-        binding.progressBar.max = maxAlpha
+        binding.rainButtonProgressbar.max = maxAlpha
         return binding.root
 
     }
@@ -42,6 +43,9 @@ class FirstFragment : Fragment() {
         //binding.backgroundImage.setImageResource(R.drawable.background)
         binding.rainButton.setOnClickListener {
             incrementCount()
+        }
+        binding.cleanerImgButton.setOnClickListener {
+            Toast.makeText(context, "test", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -60,10 +64,15 @@ class FirstFragment : Fragment() {
             currentAlpha = min(maxAlpha, currentAlpha)
         }
 
+        if (clickCount == 25) {
+            Toast.makeText(context, "Complete!", Toast.LENGTH_SHORT).show()
+            binding.rainButton.isEnabled = false
+            binding.rainButton.isActivated = false
+        }
 
         // Update the ImageView's alpha
         binding.flowerImage.imageAlpha = currentAlpha
-        binding.progressBar.progress = currentAlpha
+        binding.rainButtonProgressbar.progress = currentAlpha
 
     }
 

@@ -7,13 +7,13 @@
         android:layout_height="match_parent"
         tools:context=".FirstFragment" android:id="@+id/constraintLayout">
     <ImageView
-            android:src="@drawable/trees_bg"
+            android:src="@drawable/trees_bg_blur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/treesBackground"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.0" android:scaleType="centerCrop"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:adjustViewBounds="false"/>
     <TextView
             android:text="Count: "
             android:layout_width="wrap_content"
@@ -26,21 +26,96 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/rainButton"/>
+            app:layout_constraintBottom_toTopOf="@+id/rainButton"
+            app:layout_constraintTop_toBottomOf="@+id/buttonHStack"/>
     <ImageButton
             android:src="@drawable/test_button"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="150dp" android:id="@+id/rainButton" android:scaleType="centerCrop"
-            android:backgroundTint="#F8BF71" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="112dp"
+            android:backgroundTint="@color/cardview_shadow_end_color" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" tools:circularflow_radiusInDP="10"
-            tools:circularflow_defaultRadius="50dp"/>
+            tools:circularflow_defaultRadius="50dp" android:adjustViewBounds="true"
+            app:layout_constraintBottom_toTopOf="@+id/cleanerImgButton" android:layout_marginBottom="25dp"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
+            android:id="@+id/rainButtonProgressbar"
             app:layout_constraintEnd_toEndOf="@+id/rainButton" app:layout_constraintTop_toBottomOf="@+id/rainButton"
             app:layout_constraintStart_toStartOf="@+id/rainButton" android:progressTint="#00FF00"/>
+    <ImageButton
+            android:src="@drawable/cleaner_img"
+            android:layout_width="0dp"
+            android:layout_height="150dp" android:id="@+id/cleanerImgButton"
+            android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="44dp" android:adjustViewBounds="true"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="70dp"/>
+    <ImageButton
+            android:src="@drawable/sun_img"
+            android:layout_width="0dp"
+            android:layout_height="150dp" android:id="@+id/sunImgButton"
+            android:scaleType="centerCrop"
+            android:backgroundTint="@color/cardview_shadow_end_color"
+            app:layout_constraintBottom_toBottomOf="@+id/treesBackground" android:layout_marginBottom="44dp"
+            android:adjustViewBounds="true" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="70dp"/>
+    <ImageButton
+            android:src="@drawable/jar_img"
+            android:layout_width="0dp"
+            android:layout_height="150dp" android:id="@+id/jarImgButton" android:scaleType="centerCrop"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/rainButtonProgressbar" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:adjustViewBounds="true"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cleanerProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/cleanerImgButton"
+            app:layout_constraintEnd_toEndOf="@+id/cleanerImgButton" android:progressTint="#00FF00"
+            app:layout_constraintTop_toBottomOf="@+id/cleanerImgButton"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sunProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/sunImgButton"
+            app:layout_constraintEnd_toEndOf="@+id/sunImgButton"
+            app:layout_constraintTop_toBottomOf="@+id/sunImgButton"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/jarProgressBar"
+            app:layout_constraintTop_toBottomOf="@+id/jarImgButton"
+            app:layout_constraintStart_toStartOf="@+id/jarImgButton"
+            app:layout_constraintEnd_toEndOf="@+id/jarImgButton"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="10dp"
+            android:id="@+id/buttonHStack">
+        <ImageButton
+                android:src="@drawable/trophy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/trophyImgButton" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
+        <ImageButton
+                android:src="@drawable/backpack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/backpackImgButton" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
+        <ImageButton
+                android:src="@drawable/house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/houseImgButton" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
+        <ImageButton
+                android:src="@drawable/shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/shopImgButton" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

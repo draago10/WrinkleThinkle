@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FirstFragment" android:id="@+id/constraintLayout">
+        tools:context=".view.FirstFragment" android:id="@+id/constraintLayout">
     <ImageView
             android:src="@drawable/trees_bg_blur"
             android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.wrinklethinkle
+package com.example.wrinklethinkle.model
 
 class Plant {
     var imageResource: Int = 0

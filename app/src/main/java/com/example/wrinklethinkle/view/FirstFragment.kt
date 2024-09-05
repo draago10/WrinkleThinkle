@@ -1,4 +1,4 @@
-package com.example.wrinklethinkle
+package com.example.wrinklethinkle.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.wrinklethinkle.model.Plant
+import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentFirstBinding
 import kotlin.math.min
 /**
@@ -64,7 +66,7 @@ class FirstFragment : Fragment() {
             currentAlpha = min(maxAlpha, currentAlpha)
         }
         // TODO: Update this to match the actual count we want.
-        if (clickCount == 25) {
+        if (clickCount == maxAlpha) {
             Toast.makeText(context, "Complete!", Toast.LENGTH_SHORT).show()
             binding.rainButton.isEnabled = false
             binding.rainButton.isActivated = false

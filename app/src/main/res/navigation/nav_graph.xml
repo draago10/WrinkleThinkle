@@ -3,26 +3,32 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/FirstFragment">
+            app:startDestination="@id/appStartFragment">
 
+    <!-- AppStartFragment is now the start destination -->
     <fragment
-            android:id="@+id/FirstFragment"
-            android:name="com.example.wrinklethinkle.view.FirstFragment"
-            android:label="@string/first_fragment_label"
-            tools:layout="@layout/fragment_first">
+            android:id="@+id/appStartFragment"
+            android:name="com.example.wrinklethinkle.view.AppStartFragment"
+            android:label="@string/app_start_fragment_label"
+            tools:layout="@layout/fragment_app_start">
 
+        <!-- Define an action to navigate from AppStartFragment to FlowerClickFragment -->
         <action
-                android:id="@+id/action_FirstFragment_to_SecondFragment"
-                app:destination="@id/SecondFragment"/>
+                android:id="@+id/action_appStartFragment_to_FlowerClickFragment"
+                app:destination="@id/FlowerClickFragment"/>
     </fragment>
+
+    <!-- FlowerClickFragment -->
     <fragment
-            android:id="@+id/SecondFragment"
-            android:name="com.example.wrinklethinkle.view.SecondFragment"
-            android:label="@string/second_fragment_label"
-            tools:layout="@layout/fragment_second">
+            android:id="@+id/FlowerClickFragment"
+            android:name="com.example.wrinklethinkle.view.FlowerClickFragment"
+            android:label="@string/flower_click_fragment_label"
+            tools:layout="@layout/flower_click_fragment">
 
+        <!-- Define an action to navigate back to AppStartFragment -->
         <action
-                android:id="@+id/action_SecondFragment_to_FirstFragment"
-                app:destination="@id/FirstFragment"/>
+                android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
+                app:destination="@id/appStartFragment"/>
     </fragment>
+
 </navigation>

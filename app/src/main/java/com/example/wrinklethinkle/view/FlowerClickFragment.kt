@@ -10,32 +10,25 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.wrinklethinkle.model.Plant
 import com.example.wrinklethinkle.R
-import com.example.wrinklethinkle.databinding.FragmentFirstBinding
-import com.example.wrinklethinkle.viewmodel.FirstFragmentViewModel
-import kotlin.math.min
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
+import com.example.wrinklethinkle.databinding.FlowerClickFragmentBinding
+import com.example.wrinklethinkle.viewmodel.FlowerClickViewModel
 
-    private var _binding: FragmentFirstBinding? = null
-    private var clickCount = 0
+class FlowerClickFragment : Fragment() {
+
+    private var flowerFragmentBinding: FlowerClickFragmentBinding? = null
     private var plantTest = Plant()
-    private val maxAlpha = 255            // Maximum alpha value
-    private val alphaIncrement = 25       // Alpha increment per 25 clicks
-    private val clicksPerIncrement = 25   // Number of clicks to increase alpha
+    private val maxAlpha = 255
     private var currentAlpha = 10
-    private val viewModel: FirstFragmentViewModel by viewModels()
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val viewModel: FlowerClickViewModel by viewModels()
+
+    private val binding get() = flowerFragmentBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        plantTest.imageResource = R.drawable.plant_pot
+        flowerFragmentBinding = FlowerClickFragmentBinding.inflate(inflater, container, false)
+        plantTest.imageResource = R.drawable.flower_click_fragment_plant_pot
         binding.flowerImage.setImageResource(plantTest.imageResource)
         binding.flowerImage.imageAlpha = currentAlpha
         binding.rainButtonProgressbar.max = maxAlpha
@@ -70,7 +63,7 @@ class FirstFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        flowerFragmentBinding = null
     }
 
 }

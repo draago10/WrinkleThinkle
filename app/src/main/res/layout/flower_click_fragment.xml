@@ -5,10 +5,11 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.FirstFragment" android:id="@+id/constraintLayout">
+        tools:context=".view.FlowerClickFragment" android:id="@+id/constraintLayout">
     <ImageView
-            android:src="@drawable/trees_bg_blur"
+            android:src="@drawable/flower_click_fragment_trees_bg_blur"
             android:layout_width="wrap_content"
+            android:contentDescription="@string/trees_bg_blur_description"
             android:layout_height="wrap_content" android:id="@+id/treesBackground"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -22,15 +23,18 @@
             android:layout_marginTop="16dp"/>
     <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="0dp" android:id="@+id/flowerImage"
+            android:layout_height="0dp"
+            android:contentDescription="@string/flower_image_description"
+            android:id="@+id/flowerImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintBottom_toTopOf="@+id/rainButton"
             app:layout_constraintTop_toBottomOf="@+id/buttonHStack"/>
     <ImageButton
-            android:src="@drawable/test_button"
+            android:src="@drawable/flower_click_fragment_rain_img"
             android:layout_width="0dp"
+            android:contentDescription="@string/rain_image_button_description"
             android:layout_height="150dp" android:id="@+id/rainButton" android:scaleType="centerCrop"
             android:backgroundTint="@color/cardview_shadow_end_color" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" tools:circularflow_radiusInDP="10"
@@ -45,22 +49,25 @@
             app:layout_constraintStart_toStartOf="@+id/rainButton" android:progressTint="#00FF00"/>
     <ImageButton
             android:src="@drawable/cleaner_img"
+            android:contentDescription="@string/cleaner_image_button_description"
             android:layout_width="0dp"
             android:layout_height="150dp" android:id="@+id/cleanerImgButton"
             android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="44dp" android:adjustViewBounds="true"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="70dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="45dp"/>
     <ImageButton
-            android:src="@drawable/sun_img"
+            android:src="@drawable/flower_click_fragment_sun_img"
+            android:contentDescription="@string/sun_image_button_description"
             android:layout_width="0dp"
             android:layout_height="150dp" android:id="@+id/sunImgButton"
             android:scaleType="centerCrop"
             android:backgroundTint="@color/cardview_shadow_end_color"
             app:layout_constraintBottom_toBottomOf="@+id/treesBackground" android:layout_marginBottom="44dp"
-            android:adjustViewBounds="true" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="70dp"/>
+            android:adjustViewBounds="true" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="45dp"/>
     <ImageButton
-            android:src="@drawable/jar_img"
+            android:src="@drawable/flower_click_fragment_jar_img"
+            android:contentDescription="@string/jar_image_button_description"
             android:layout_width="0dp"
             android:layout_height="150dp" android:id="@+id/jarImgButton" android:scaleType="centerCrop"
             android:backgroundTint="#00FFFFFF"
@@ -98,22 +105,26 @@
             app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="10dp"
             android:id="@+id/buttonHStack">
         <ImageButton
-                android:src="@drawable/trophy"
+                android:contentDescription="@string/trophy_image_button_description"
+                android:src="@drawable/icon_trophy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/trophyImgButton" android:layout_weight="1"
                 android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
         <ImageButton
-                android:src="@drawable/backpack"
+                android:contentDescription="@string/backpack_image_button_description"
+                android:src="@drawable/icon_backpack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/backpackImgButton" android:layout_weight="1"
                 android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
         <ImageButton
-                android:src="@drawable/house"
+                android:contentDescription="@string/house_image_button_description"
+                android:src="@drawable/icon_house"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/houseImgButton" android:layout_weight="1"
                 android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>
         <ImageButton
-                android:src="@drawable/shop"
+                android:contentDescription="@string/shop_image_button_description"
+                android:src="@drawable/icon_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/shopImgButton" android:layout_weight="1"
                 android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"/>

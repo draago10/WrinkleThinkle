@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.math.min
 
-class FirstFragmentViewModel : ViewModel() {
+class FlowerClickViewModel : ViewModel() {
 
     private val _clickCount = MutableLiveData<Int>().apply { value = 0 }
     val clickCount: LiveData<Int> get() = _clickCount

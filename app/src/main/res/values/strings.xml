@@ -29,6 +29,8 @@
     <string name="go_home_button_cd">go_home_btn_cd</string>
     <string name="flower_click_fragment_label">flower click frag\n</string>
     <string name="app_start_fragment_label">app start frag</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- END App Start fragment -->
 
 </resources>

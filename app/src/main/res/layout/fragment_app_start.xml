@@ -20,14 +20,24 @@
 
     <ImageButton
             android:id="@+id/go_home_button"
-            android:layout_width="193dp"
-            android:layout_height="206dp"
+            android:layout_width="208dp"
+            android:layout_height="142dp"
             android:src="@drawable/icon_house"
             android:scaleType="centerCrop"
             android:backgroundTint="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/app_start_background_iv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/go_home_button_cd"/>
+            android:layout_marginBottom="124dp"
+            android:contentDescription="@string/go_home_button_cd"
+            app:layout_constraintHorizontal_bias="0.497"/>
+    <ImageView
+            android:src="@drawable/starthere_icon"
+            android:layout_width="375dp"
+            android:layout_height="247dp" android:id="@+id/start_here_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/app_start_background_iv"
+            app:layout_constraintTop_toTopOf="@+id/app_start_background_iv"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/go_home_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

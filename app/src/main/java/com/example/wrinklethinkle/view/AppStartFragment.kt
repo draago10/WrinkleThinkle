@@ -27,7 +27,7 @@ class AppStartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.goHomeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_appStartFragment_to_FlowerClickFragment)
+            findNavController().navigate(R.id.action_appStartFragment_to_InsideHouseFragment)
         }
     }
 

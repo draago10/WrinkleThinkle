@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="101" />
+                            <option name="y" value="162" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -29,18 +29,39 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="InsideHouseFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-87" />
+                            <option name="y" value="-141" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_InsideHouseFragment_to_FlowerClickFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="appStartFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-373" />
+                            <option name="y" value="-141" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_appStartFragment_to_FlowerClickFragment">
+                            <entry key="action_appStartFragment_to_InsideHouseFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

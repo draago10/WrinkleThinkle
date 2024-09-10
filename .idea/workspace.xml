@@ -47,14 +47,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Added start_here icon to main screen, started a new fragment for inside_house screen">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_grow_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_inventory_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_map_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_shop_button.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/inside_house_background.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inside_house.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inside_house.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +117,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -233,7 +233,7 @@
       <workItem from="1725827182155" duration="416000" />
       <workItem from="1725898191344" duration="6395000" />
       <workItem from="1725904708160" duration="570000" />
-      <workItem from="1725921509795" duration="1274000" />
+      <workItem from="1725921509795" duration="5807000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -243,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725904642111</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
+      <option name="closed" value="true" />
+      <created>1725923005053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725923005053</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

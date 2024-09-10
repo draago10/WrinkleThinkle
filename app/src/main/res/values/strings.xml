@@ -33,4 +33,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- END App Start fragment -->
 
+    <!-- START AaronsCode fragment_inside_house -->
+    <string name="inside_house_fragmentBGCD">content description</string>
+    <string name="inside_house_map_button">content description</string>
+    <string name="inside_house_grow_button">content description</string>
+    <string name="inside_house_shop_button">content description</string>
+    <string name="inside_house_inventory_button">content description</string>
+
 </resources>

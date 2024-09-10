@@ -8,8 +8,49 @@
     <ImageView
             android:src="@drawable/inside_house_background"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/imageView3"
+            android:layout_height="wrap_content" android:id="@+id/InsideHouseBG"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/inside_house_fragmentBGCD"
+    />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/InsideHouseBG" android:id="@+id/linearLayout"
+    >
+        <ImageButton
+                android:background="@drawable/inside_house_shop_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:id="@+id/ShopButton" android:scaleType="centerCrop"
+                android:layout_gravity="right"
+                android:contentDescription="@string/inside_house_shop_button"/>
+        <ImageButton
+                android:background="@drawable/inside_house_grow_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:id="@+id/GrowButton" android:scaleType="centerCrop"
+                android:layout_gravity="right"/>
+        <ImageButton
+                android:background="@drawable/inside_house_inventory_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:id="@+id/InventoryButton" android:scaleType="centerCrop"
+                android:layout_gravity="right"/>
+        <ImageButton
+                android:background="@drawable/inside_house_map_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:id="@+id/MapButton" android:scaleType="centerCrop"
+                android:layout_gravity="right"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

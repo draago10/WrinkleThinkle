@@ -2,16 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.InsideHouseFragment">
 
     <ImageView
             android:src="@drawable/inside_house_background"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/InsideHouseBG"
+            android:layout_height="wrap_content"
+            android:id="@+id/InsideHouseBG"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:scaleType="centerCrop"
             android:contentDescription="@string/inside_house_fragmentBGCD"
     />
@@ -21,36 +25,56 @@
             android:layout_height="wrap_content"
 
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/InsideHouseBG" android:id="@+id/linearLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/InsideHouseBG"
+            android:id="@+id/linearLayout"
     >
         <ImageButton
+                android:id="@+id/ShopButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:src="@drawable/inside_house_shop_button"
+                android:scaleType="centerCrop"
                 android:background="@drawable/inside_house_shop_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-
-                android:id="@+id/ShopButton" android:scaleType="centerCrop"
                 android:layout_gravity="right"
+
                 android:contentDescription="@string/inside_house_shop_button"/>
+
         <ImageButton
+                android:id="@+id/GrowButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:src="@drawable/inside_house_grow_button"
+                android:scaleType="centerCrop"
                 android:background="@drawable/inside_house_grow_button"
+                android:layout_gravity="right"
+
+                android:contentDescription="@string/inside_house_grow_button"/>
+
+        <ImageButton
+                android:id="@+id/InventoryButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
 
-                android:id="@+id/GrowButton" android:scaleType="centerCrop"
-                android:layout_gravity="right"/>
-        <ImageButton
+                android:src="@drawable/inside_house_inventory_button"
+                android:scaleType="centerCrop"
                 android:background="@drawable/inside_house_inventory_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_gravity="right"
 
-                android:id="@+id/InventoryButton" android:scaleType="centerCrop"
-                android:layout_gravity="right"/>
+                android:contentDescription="@string/inside_house_inventory_button"/>
+
         <ImageButton
-                android:background="@drawable/inside_house_map_button"
+                android:id="@+id/MapButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
 
-                android:id="@+id/MapButton" android:scaleType="centerCrop"
-                android:layout_gravity="right"/>
+                android:src="@drawable/inside_house_map_button"
+                android:scaleType="centerCrop"
+                android:background="@drawable/inside_house_map_button"
+                android:layout_gravity="right"
+
+                android:contentDescription="@string/inside_house_map_button"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

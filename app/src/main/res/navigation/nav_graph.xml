@@ -12,10 +12,9 @@
             android:label="@string/app_start_fragment_label"
             tools:layout="@layout/fragment_app_start">
 
-        <!-- Define an action to navigate from AppStartFragment to FlowerClickFragment -->
         <action
-                android:id="@+id/action_appStartFragment_to_FlowerClickFragment"
-                app:destination="@id/FlowerClickFragment"/>
+                android:id="@+id/action_appStartFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
     <!-- FlowerClickFragment -->
@@ -29,6 +28,16 @@
         <action
                 android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
                 app:destination="@id/appStartFragment"/>
+    </fragment>
+
+    <!-- InsideHouseFragment -->
+    <fragment android:id="@+id/InsideHouseFragment"
+              android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
+              android:label="InsideHouseFragment"
+              tools:layout="@layout/fragment_inside_house">
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_FlowerClickFragment"
+                app:destination="@id/FlowerClickFragment"/>
     </fragment>
 
 </navigation>

@@ -5,7 +5,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.FlowerClickFragment" android:id="@+id/constraintLayout">
+        tools:context=".view.FlowerClickFragment"
+        android:id="@+id/constraintLayout">
+
     <ImageView
             android:src="@drawable/flower_click_fragment_trees_bg_blur"
             android:layout_width="wrap_content"

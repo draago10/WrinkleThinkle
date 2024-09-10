@@ -29,7 +29,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="124dp"
-            android:contentDescription="@string/go_home_button_cd" app:layout_constraintHorizontal_bias="0.497"/>
+            android:contentDescription="@string/go_home_button_cd"
+            app:layout_constraintHorizontal_bias="0.497"/>
     <ImageView
             android:src="@drawable/starthere_icon"
             android:layout_width="375dp"

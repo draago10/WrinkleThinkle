@@ -2,7 +2,6 @@ package com.example.wrinklethinkle.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -37,4 +36,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    //Todo: Implement the tap function with the new designs provided by Perle.
+    //Todo: Add the API implementation
 }

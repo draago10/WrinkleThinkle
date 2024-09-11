@@ -17,12 +17,12 @@
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
-    <!-- FlowerClickFragment -->
+    <!-- GrowFragment -->
     <fragment
-            android:id="@+id/FlowerClickFragment"
-            android:name="com.example.wrinklethinkle.view.FlowerClickFragment"
-            android:label="@string/flower_click_fragment_label"
-            tools:layout="@layout/flower_click_fragment">
+            android:id="@+id/GrowFragment"
+            android:name="com.example.wrinklethinkle.view.GrowFragment"
+            android:label="@string/grow_fragment_label"
+            tools:layout="@layout/grow_fragment">
 
         <!-- Define an action to navigate back to AppStartFragment -->
         <action
@@ -36,8 +36,8 @@
               android:label="InsideHouseFragment"
               tools:layout="@layout/fragment_inside_house">
         <action
-                android:id="@+id/action_InsideHouseFragment_to_FlowerClickFragment"
-                app:destination="@id/FlowerClickFragment"/>
+                android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
+                app:destination="@id/GrowFragment"/>
     </fragment>
 
 </navigation>

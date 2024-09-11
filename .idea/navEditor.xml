@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="FlowerClickFragment">
+                  <entry key="GrowFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="101" />
-                            <option name="y" value="162" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -34,13 +34,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-87" />
-                            <option name="y" value="-141" />
+                            <option name="x" value="-165" />
+                            <option name="y" value="-139" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_InsideHouseFragment_to_FlowerClickFragment">
+                            <entry key="action_InsideHouseFragment_to_GrowFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

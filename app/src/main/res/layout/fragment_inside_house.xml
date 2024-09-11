@@ -27,52 +27,48 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/InsideHouseBG"
             android:id="@+id/linearLayout"
-    >
+            android:paddingHorizontal="10dp">
         <ImageButton
                 android:id="@+id/ShopButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
 
-                android:src="@drawable/inside_house_shop_button"
                 android:scaleType="centerCrop"
-                android:background="@drawable/inside_house_shop_button"
-                android:layout_gravity="right"
+                android:background="@drawable/button_shop"
+                android:layout_gravity="end"
 
                 android:contentDescription="@string/inside_house_shop_button"/>
 
         <ImageButton
                 android:id="@+id/GrowButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
 
-                android:src="@drawable/inside_house_grow_button"
                 android:scaleType="centerCrop"
-                android:background="@drawable/inside_house_grow_button"
-                android:layout_gravity="right"
+                android:background="@drawable/button_grow"
+                android:layout_gravity="end"
 
                 android:contentDescription="@string/inside_house_grow_button"/>
 
         <ImageButton
                 android:id="@+id/InventoryButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
 
-                android:src="@drawable/inside_house_inventory_button"
                 android:scaleType="centerCrop"
-                android:background="@drawable/inside_house_inventory_button"
-                android:layout_gravity="right"
+                android:background="@drawable/button_inventory"
+                android:layout_gravity="end"
 
                 android:contentDescription="@string/inside_house_inventory_button"/>
 
         <ImageButton
                 android:id="@+id/MapButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
 
-                android:src="@drawable/inside_house_map_button"
                 android:scaleType="centerCrop"
-                android:background="@drawable/inside_house_map_button"
-                android:layout_gravity="right"
+                android:background="@drawable/button_map"
+                android:layout_gravity="end"
 
                 android:contentDescription="@string/inside_house_map_button"/>
 

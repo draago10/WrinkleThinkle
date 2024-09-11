@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".view.InventoryFragment">
+    <ImageView
+            android:src="@drawable/flower_click_fragment_trees_bg_blur"
+            android:layout_width="633dp"
+            android:layout_height="1130dp" android:id="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="1.0"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/test" app:layout_constraintTop_toTopOf="parent" android:paddingHorizontal="10dp">
+        <ImageButton
+                android:src="@drawable/icon_trophy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageButton0" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF"/>
+        <ImageButton
+                android:src="@drawable/icon_house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageButton1" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_backpack"/>
+        <ImageButton
+                android:src="@drawable/icon_trophy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageButton2" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_house"/>
+        <ImageButton
+                android:src="@drawable/icon_trophy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/imageButton3" android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_shop"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

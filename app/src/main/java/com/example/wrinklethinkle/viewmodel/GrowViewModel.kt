@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlin.math.min
 
-class FlowerClickViewModel : ViewModel() {
+class GrowViewModel : ViewModel() {
 
     private val _clickCount = MutableLiveData<Int>().apply { value = 0 }
     val clickCount: LiveData<Int> get() = _clickCount

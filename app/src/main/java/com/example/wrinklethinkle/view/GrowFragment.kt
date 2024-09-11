@@ -10,25 +10,25 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.wrinklethinkle.model.Plant
 import com.example.wrinklethinkle.R
-import com.example.wrinklethinkle.databinding.FlowerClickFragmentBinding
-import com.example.wrinklethinkle.viewmodel.FlowerClickViewModel
+import com.example.wrinklethinkle.databinding.GrowFragmentBinding
+import com.example.wrinklethinkle.viewmodel.GrowViewModel
 
-class FlowerClickFragment : Fragment() {
+class GrowFragment : Fragment() {
 
-    private var flowerFragmentBinding: FlowerClickFragmentBinding? = null
+    private var growFragmentBinding: GrowFragmentBinding? = null
     private var plantTest = Plant()
     private val maxAlpha = 255
     private var currentAlpha = 10
-    private val viewModel: FlowerClickViewModel by viewModels()
+    private val viewModel: GrowViewModel by viewModels()
 
-    private val binding get() = flowerFragmentBinding!!
+    private val binding get() = growFragmentBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        flowerFragmentBinding = FlowerClickFragmentBinding.inflate(inflater, container, false)
-        plantTest.imageResource = R.drawable.flower_click_fragment_plant_pot
+        growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
+        //plantTest.imageResource = R.drawable.flower_click_fragment_plant_pot
         binding.flowerImage.setImageResource(plantTest.imageResource)
         binding.flowerImage.imageAlpha = currentAlpha
         binding.rainButtonProgressbar.max = maxAlpha
@@ -63,7 +63,7 @@ class FlowerClickFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        flowerFragmentBinding = null
+        growFragmentBinding = null
     }
 
 }

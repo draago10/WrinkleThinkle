@@ -12,7 +12,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintVertical_bias="0.992"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -24,22 +24,30 @@
         <ImageButton
                 android:src="@drawable/icon_trophy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/imageButton0" android:layout_weight="1"
-                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF"/>
+                android:layout_height="wrap_content" android:id="@+id/fragment_inventory_grow_screen_button"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF"
+                android:contentDescription="leaf icon to grow screen"/>
         <ImageButton
                 android:src="@drawable/icon_house"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/imageButton1" android:layout_weight="1"
-                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_backpack"/>
+                android:layout_height="wrap_content" android:id="@+id/fragment_inventory_inventory_screen_button"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_backpack"
+                android:contentDescription="inventory screen"/>
         <ImageButton
                 android:src="@drawable/icon_trophy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/imageButton2" android:layout_weight="1"
-                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_house"/>
+                android:layout_height="wrap_content" android:id="@+id/fragment_inventory_shop_screen_button"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_house"
+                android:contentDescription="shop screen button"/>
         <ImageButton
                 android:src="@drawable/icon_trophy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/imageButton3" android:layout_weight="1"
-                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_shop"/>
+                android:layout_height="wrap_content" android:id="@+id/fragment_inventory_map_screen_button"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" android:backgroundTint="#00FFFFFF" tools:src="@drawable/icon_shop"
+                android:contentDescription="map screen button"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

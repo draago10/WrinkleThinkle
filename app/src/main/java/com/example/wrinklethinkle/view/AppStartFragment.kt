@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentAppStartBinding
 import android.view.animation.AnimationUtils
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 
 
@@ -26,8 +27,10 @@ class AppStartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
+        val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_in_right).build()
         binding.goHomeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_appStartFragment_to_InsideHouseFragment)
+            navController.navigate(R.id.action_appStartFragment_to_InsideHouseFragment, null, navOptions)
         }
     }
 

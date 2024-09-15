@@ -40,4 +40,11 @@
     <string name="inside_house_shop_button">content description</string>
     <string name="inside_house_inventory_button">content description</string>
 
+    <!-- START Perle's code fragment_inventory -->
+    <string name="grow_screen_button">leaf icon to grow screen</string>
+    <string name="inventory_screen_button">inventory screen</string>
+    <string name="shop_screen_button">shop screen button</string>
+    <string name="map_screen_button">map screen button</string>
+
+
 </resources>

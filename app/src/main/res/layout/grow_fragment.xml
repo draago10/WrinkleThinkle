@@ -43,6 +43,11 @@
             android:background="@drawable/icon_fertilizer"
             app:layout_constraintEnd_toEndOf="@+id/treesBackground"
             app:layout_constraintTop_toBottomOf="@+id/pesticideButton"/>
+    <ImageView
+            android:src="@drawable/icon_house"
+            android:layout_width="100dp"
+            android:layout_height="100dp" android:id="@+id/goHomeButton"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

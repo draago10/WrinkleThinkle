@@ -1,7 +1,6 @@
 package com.example.wrinklethinkle.view
 
 import android.os.Bundle
-import android.os.Debug
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.wrinklethinkle.R
+import android.view.animation.AnimationUtils
 import com.example.wrinklethinkle.databinding.GrowFragmentBinding
 import com.example.wrinklethinkle.model.BlackDahlia
 import com.example.wrinklethinkle.viewmodel.GrowViewModel
@@ -75,10 +75,14 @@ class GrowFragment : Fragment() {
                 }
             }
         })
-
+        val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
         // Increment count when button is clicked
         binding.flowerImage.setOnClickListener {
             viewModel.incrementCount()
+            binding.flowerImage.startAnimation(shrinkGrowAnimation)
+        }
+        binding.goHomeButton.setOnClickListener {
+            
         }
     }
 

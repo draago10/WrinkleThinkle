@@ -12,6 +12,7 @@
 # Ignore Gradle files
 .gradle/
 /local.properties
+/local.properties
 **/build
 **/captures
 

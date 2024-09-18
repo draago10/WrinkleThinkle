@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/appStartFragment">
+            app:startDestination="@id/FlowerDetailFragment">
 
     <!-- AppStartFragment is now the start destination -->
     <fragment
@@ -38,6 +38,16 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
                 app:destination="@id/GrowFragment"/>
+    </fragment>
+
+    <!-- Flower Detail Fragment -->
+    <fragment android:id="@+id/FlowerDetailFragment"
+              android:name="com.example.wrinklethinkle.view.FlowerDetailFragment"
+              android:label="FlowerDetailFragment"
+              tools:layout="@layout/fragment_flower_detail">
+        <action
+                android:id="@+id/action_test"
+                app:destination="@+id/GrowFragment"/>
     </fragment>
 
 </navigation>

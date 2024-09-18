@@ -40,4 +40,14 @@
                 app:destination="@id/GrowFragment"/>
     </fragment>
 
+    <!-- Flower Detail Fragment -->
+    <fragment android:id="@+id/FlowerDetailFragment"
+              android:name="com.example.wrinklethinkle.view.FlowerDetailFragment"
+              android:label="FlowerDetailFragment"
+              tools:layout="@layout/fragment_flower_detail">
+        <action
+                android:id="@+id/action_test"
+                app:destination="@+id/GrowFragment"/>
+    </fragment>
+
 </navigation>

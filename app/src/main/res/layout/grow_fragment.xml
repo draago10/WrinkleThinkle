@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         tools:context=".view.GrowFragment"
         android:id="@+id/constraintLayout">
@@ -25,87 +25,36 @@
             android:layout_marginTop="16dp"/>
     <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/flower_image_description"
             android:id="@+id/flowerImage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintBottom_toTopOf="@+id/rainButton"
-            app:layout_constraintTop_toBottomOf="@+id/buttonHStack"/>
+            app:layout_constraintEnd_toStartOf="@+id/pesticideButton" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonHStack"/>
     <ImageButton
-            android:src="@drawable/flower_click_fragment_rain_img"
-            android:layout_width="0dp"
-            android:contentDescription="@string/rain_image_button_description"
-            android:layout_height="150dp" android:id="@+id/rainButton" android:scaleType="centerCrop"
-            android:backgroundTint="@color/cardview_shadow_end_color" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" tools:circularflow_radiusInDP="10"
-            tools:circularflow_defaultRadius="50dp" android:adjustViewBounds="true"
-            app:layout_constraintBottom_toTopOf="@+id/cleanerImgButton" android:layout_marginBottom="25dp"/>
-    <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/rainButtonProgressbar"
-            app:layout_constraintEnd_toEndOf="@+id/rainButton" app:layout_constraintTop_toBottomOf="@+id/rainButton"
-            app:layout_constraintStart_toStartOf="@+id/rainButton" android:progressTint="#00FF00"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp" android:id="@+id/pesticideButton"
+            android:background="@drawable/icon_pesticide"
+            android:scaleType="centerCrop" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="125dp"/>
     <ImageButton
-            android:src="@drawable/cleaner_img"
-            android:contentDescription="@string/cleaner_image_button_description"
-            android:layout_width="0dp"
-            android:layout_height="150dp" android:id="@+id/cleanerImgButton"
-            android:scaleType="centerCrop" android:backgroundTint="@color/cardview_shadow_end_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="44dp" android:adjustViewBounds="true"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="45dp"/>
-    <ImageButton
-            android:src="@drawable/flower_click_fragment_sun_img"
-            android:contentDescription="@string/sun_image_button_description"
-            android:layout_width="0dp"
-            android:layout_height="150dp" android:id="@+id/sunImgButton"
-            android:scaleType="centerCrop"
-            android:backgroundTint="@color/cardview_shadow_end_color"
-            app:layout_constraintBottom_toBottomOf="@+id/treesBackground" android:layout_marginBottom="44dp"
-            android:adjustViewBounds="true" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="45dp"/>
-    <ImageButton
-            android:src="@drawable/flower_click_fragment_jar_img"
-            android:contentDescription="@string/jar_image_button_description"
-            android:layout_width="0dp"
-            android:layout_height="150dp" android:id="@+id/jarImgButton" android:scaleType="centerCrop"
-            android:backgroundTint="#00FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/rainButtonProgressbar" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" android:adjustViewBounds="true"/>
-    <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/cleanerProgressBar"
-            app:layout_constraintStart_toStartOf="@+id/cleanerImgButton"
-            app:layout_constraintEnd_toEndOf="@+id/cleanerImgButton" android:progressTint="#00FF00"
-            app:layout_constraintTop_toBottomOf="@+id/cleanerImgButton"/>
-    <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/sunProgressBar"
-            app:layout_constraintStart_toStartOf="@+id/sunImgButton"
-            app:layout_constraintEnd_toEndOf="@+id/sunImgButton"
-            app:layout_constraintTop_toBottomOf="@+id/sunImgButton"/>
-    <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/jarProgressBar"
-            app:layout_constraintTop_toBottomOf="@+id/jarImgButton"
-            app:layout_constraintStart_toStartOf="@+id/jarImgButton"
-            app:layout_constraintEnd_toEndOf="@+id/jarImgButton"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp" android:id="@+id/fertilizerButton"
+            android:background="@drawable/icon_fertilizer"
+            app:layout_constraintEnd_toEndOf="@+id/treesBackground"
+            app:layout_constraintTop_toBottomOf="@+id/pesticideButton"/>
+    <ImageView
+            android:src="@drawable/icon_house"
+            android:layout_width="100dp"
+            android:layout_height="100dp" android:id="@+id/goHomeButton"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textCount" android:layout_marginTop="10dp"
-            android:id="@+id/buttonHStack">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/buttonHStack" app:layout_constraintBottom_toBottomOf="parent">
         <ImageButton
                 android:contentDescription="@string/trophy_image_button_description"
                 android:src="@drawable/icon_trophy"

@@ -12,7 +12,6 @@
 # Ignore Gradle files
 .gradle/
 /local.properties
-/local.properties
 **/build
 **/captures
 
@@ -44,16 +43,10 @@
 .AppleDouble
 .LSOverride
 
-# Ignore files for a Java project
-*.class
-*.war
-*.jar
-
 # Android Studio Navigation Editor temp files
 .navigation/
 
 # Ignore logs, binary files, or compiled classes
-*.log
 *.bin
 *.dmp
 *.swp
@@ -61,8 +54,6 @@
 *.tmp
 
 # Ignore IntelliJ IDEA generated files
-.idea
-*.iml
 .idea/workspace.xml
 .idea/libraries
 .idea/tasks.xml

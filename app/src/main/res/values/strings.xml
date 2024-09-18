@@ -21,6 +21,9 @@
     <string name="backpack_image_button_description">backpack_imgBtn_cd</string>
     <string name="house_image_button_description">house_imgBtn_cd</string>
     <string name="shop_image_button_description">shop_imgBtn_cd</string>
+    <string name="coin_image_icon_description">coin_img_cd</string>
+    <string name="fertilizer_image_icon_description">fertilizer_imgBtn_cd</string>
+    <string name="pesticide_image_icon_description">pesticide_imgBtn_cd</string>
     <!-- END Flower Click fragment -->
 
     <!-- START App Start fragment -->
@@ -32,6 +35,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- END App Start fragment -->
+
+    <!-- START Austin's code descriptions -->
+    <string name="map_icon_description">map_imgBtn_cd</string>
+    <string name="grow_icon_description">grow_imgBtn_cd</string>
+    <string name="inventory_icon_description">inventory_imgBtn_cd</string>
+    <string name="shop_icon_description">shop_imgBtn_cd</string>
+    <string name="pricetag_icon_description">pricetag_img_cd</string>
+    <string name="seeds_icon_description">seeds_imgBtn_cd</string>
+    <string name="shelves_image_description">shelves_img_cd</string>
+    <string name="shop_sign_image_description">shopSign_img_cd</string>
+    <string name="navbar_background_description">navbar_img_cd</string>
+    <!-- END Austin's code descriptions -->
 
     <!-- START AaronsCode fragment_inside_house -->
     <string name="inside_house_fragmentBGCD">content description</string>

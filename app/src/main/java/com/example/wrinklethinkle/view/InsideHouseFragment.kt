@@ -20,8 +20,11 @@ class InsideHouseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.GrowButton.setOnClickListener {
+        binding.HouseGrowButton.setOnClickListener {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_GrowFragment)
+        }
+        binding.HouseInventoryButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InsideHouseFragment_to_InventoryFragment2)
         }
     }
 

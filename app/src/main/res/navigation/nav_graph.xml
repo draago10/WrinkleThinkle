@@ -23,8 +23,6 @@
             android:name="com.example.wrinklethinkle.view.GrowFragment"
             android:label="@string/grow_fragment_label"
             tools:layout="@layout/grow_fragment">
-
-        <!-- Define an action to navigate back to AppStartFragment -->
         <action
                 android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
                 app:destination="@id/appStartFragment"/>
@@ -38,6 +36,17 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
                 app:destination="@id/GrowFragment"/>
+        <action android:id="@+id/action_InsideHouseFragment_to_InventoryFragment2"
+                app:destination="@id/InventoryFragment"/>
+    </fragment>
+
+    <!-- InventoryFragment -->
+    <fragment android:id="@+id/InventoryFragment"
+              android:name="com.example.wrinklethinkle.view.InventoryFragment"
+              android:label="InventoryFragment"
+              tools:layout="@layout/fragment_inventory">
+        <action android:id="@+id/action_InventoryFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
     <!-- Flower Detail Fragment -->

@@ -24,8 +24,15 @@ class InsideHouseFragment : Fragment() {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_GrowFragment)
         }
         binding.HouseInventoryButton.setOnClickListener {
-            findNavController().navigate(R.id.action_InsideHouseFragment_to_InventoryFragment2)
+            findNavController().navigate(R.id.action_InsideHouseFragment_to_InventoryFragment)
         }
+        binding.HouseShopButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InsideHouseFragment_to_ShopFragment)
+        }
+        binding.HouseMapButton.setOnClickListener {
+            findNavController().navigate(R.id.action_InsideHouseFragment_to_MapFragment)
+        }
+
     }
 
     override fun onDestroyView() {

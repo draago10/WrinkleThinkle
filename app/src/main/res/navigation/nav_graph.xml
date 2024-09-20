@@ -17,6 +17,25 @@
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
+    <!-- InsideHouseFragment -->
+    <fragment android:id="@+id/InsideHouseFragment"
+              android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
+              android:label="InsideHouseFragment"
+              tools:layout="@layout/fragment_inside_house">
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
+                app:destination="@id/GrowFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_InventoryFragment"
+                app:destination="@id/InventoryFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_ShopFragment"
+                app:destination="@id/ShopFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_MapFragment"
+                app:destination="@id/MapFragment"/>
+    </fragment>
+
     <!-- GrowFragment -->
     <fragment
             android:id="@+id/GrowFragment"
@@ -26,18 +45,6 @@
         <action
                 android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
                 app:destination="@id/appStartFragment"/>
-    </fragment>
-
-    <!-- InsideHouseFragment -->
-    <fragment android:id="@+id/InsideHouseFragment"
-              android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
-              android:label="InsideHouseFragment"
-              tools:layout="@layout/fragment_inside_house">
-        <action
-                android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
-                app:destination="@id/GrowFragment"/>
-        <action android:id="@+id/action_InsideHouseFragment_to_InventoryFragment2"
-                app:destination="@id/InventoryFragment"/>
     </fragment>
 
     <!-- InventoryFragment -->
@@ -57,6 +64,28 @@
         <action
                 android:id="@+id/action_test"
                 app:destination="@+id/GrowFragment"/>
+    </fragment>
+
+    <!-- Shop Fragment -->
+    <fragment
+            android:id="@+id/ShopFragment"
+            android:name="com.example.wrinklethinkle.view.ShopFragment"
+            android:label="ShopFragment"
+            tools:layout="@layout/fragment_shop">
+        <action
+                android:id="@+id/action_ShopFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
+    </fragment>
+
+    <!-- Map Fragment -->
+    <fragment
+            android:id="@+id/MapFragment"
+            android:name="com.example.wrinklethinkle.view.MapFragment"
+            android:label="MapFragment"
+            tools:layout="@layout/fragment_map">
+        <action
+                android:id="@+id/action_MapFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
 </navigation>

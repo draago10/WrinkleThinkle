@@ -34,17 +34,17 @@
     <!-- END App Start fragment -->
 
     <!-- START AaronsCode fragment_inside_house -->
-    <string name="inside_house_fragmentBGCD">content description</string>
-    <string name="inside_house_map_button">content description</string>
-    <string name="inside_house_grow_button">content description</string>
-    <string name="inside_house_shop_button">content description</string>
-    <string name="inside_house_inventory_button">content description</string>
+    <string name="inside_house_fragmentBGCD">House Background</string>
+    <string name="inside_house_map_button">House map button</string>
+    <string name="inside_house_grow_button">House grow button</string>
+    <string name="inside_house_shop_button">House shop button</string>
+    <string name="inside_house_inventory_button">House inventory button</string>
 
     <!-- START Perle's code fragment_inventory -->
-    <string name="grow_screen_button">leaf icon to grow screen</string>
-    <string name="inventory_screen_button">inventory screen</string>
-    <string name="shop_screen_button">shop screen button</string>
-    <string name="map_screen_button">map screen button</string>
+    <string name="inventory_grow_button">Inventory grow button</string>
+    <string name="inventory_inventory_button">Inventory inventory button</string>
+    <string name="inventory_shop_button">Inventory shop button</string>
+    <string name="inventory_map_button">Inventory map button</string>
 
 
     <!-- START Austin's code descriptions -->

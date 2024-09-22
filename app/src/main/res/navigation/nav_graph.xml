@@ -17,19 +17,6 @@
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
-    <!-- GrowFragment -->
-    <fragment
-            android:id="@+id/GrowFragment"
-            android:name="com.example.wrinklethinkle.view.GrowFragment"
-            android:label="@string/grow_fragment_label"
-            tools:layout="@layout/grow_fragment">
-
-        <!-- Define an action to navigate back to AppStartFragment -->
-        <action
-                android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
-                app:destination="@id/appStartFragment"/>
-    </fragment>
-
     <!-- InsideHouseFragment -->
     <fragment android:id="@+id/InsideHouseFragment"
               android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
@@ -38,6 +25,67 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
                 app:destination="@id/GrowFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_InventoryFragment"
+                app:destination="@id/InventoryFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_ShopFragment"
+                app:destination="@id/ShopFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_MapFragment"
+                app:destination="@id/MapFragment"/>
+    </fragment>
+
+    <!-- GrowFragment -->
+    <fragment
+            android:id="@+id/GrowFragment"
+            android:name="com.example.wrinklethinkle.view.GrowFragment"
+            android:label="@string/grow_fragment_label"
+            tools:layout="@layout/grow_fragment">
+        <action
+                android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
+                app:destination="@id/appStartFragment"/>
+    </fragment>
+
+    <!-- InventoryFragment -->
+    <fragment android:id="@+id/InventoryFragment"
+              android:name="com.example.wrinklethinkle.view.InventoryFragment"
+              android:label="InventoryFragment"
+              tools:layout="@layout/fragment_inventory">
+        <action android:id="@+id/action_InventoryFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
+    </fragment>
+
+    <!-- Flower Detail Fragment -->
+    <fragment android:id="@+id/FlowerDetailFragment"
+              android:name="com.example.wrinklethinkle.view.FlowerDetailFragment"
+              android:label="FlowerDetailFragment"
+              tools:layout="@layout/fragment_flower_detail">
+        <action
+                android:id="@+id/action_test"
+                app:destination="@+id/GrowFragment"/>
+    </fragment>
+
+    <!-- Shop Fragment -->
+    <fragment
+            android:id="@+id/ShopFragment"
+            android:name="com.example.wrinklethinkle.view.ShopFragment"
+            android:label="ShopFragment"
+            tools:layout="@layout/fragment_shop">
+        <action
+                android:id="@+id/action_ShopFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
+    </fragment>
+
+    <!-- Map Fragment -->
+    <fragment
+            android:id="@+id/MapFragment"
+            android:name="com.example.wrinklethinkle.view.MapFragment"
+            android:label="MapFragment"
+            tools:layout="@layout/fragment_map">
+        <action
+                android:id="@+id/action_MapFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
 </navigation>

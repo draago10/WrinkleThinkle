@@ -34,17 +34,32 @@
     <!-- END App Start fragment -->
 
     <!-- START AaronsCode fragment_inside_house -->
-    <string name="inside_house_fragmentBGCD">content description</string>
-    <string name="inside_house_map_button">content description</string>
-    <string name="inside_house_grow_button">content description</string>
-    <string name="inside_house_shop_button">content description</string>
-    <string name="inside_house_inventory_button">content description</string>
+    <string name="inside_house_fragmentBGCD">House Background</string>
+    <string name="inside_house_map_button">House map button</string>
+    <string name="inside_house_grow_button">House grow button</string>
+    <string name="inside_house_shop_button">House shop button</string>
+    <string name="inside_house_inventory_button">House inventory button</string>
 
     <!-- START Perle's code fragment_inventory -->
-    <string name="grow_screen_button">leaf icon to grow screen</string>
-    <string name="inventory_screen_button">inventory screen</string>
-    <string name="shop_screen_button">shop screen button</string>
-    <string name="map_screen_button">map screen button</string>
+    <string name="inventory_grow_button">Inventory grow button</string>
+    <string name="inventory_inventory_button">Inventory inventory button</string>
+    <string name="inventory_shop_button">Inventory shop button</string>
+    <string name="inventory_map_button">Inventory map button</string>
 
+
+    <!-- START Austin's code descriptions -->
+    <string name="map_icon_description">map_imgBtn_cd</string>
+    <string name="grow_icon_description">grow_imgBtn_cd</string>
+    <string name="inventory_icon_description">inventory_imgBtn_cd</string>
+    <string name="shop_icon_description">shop_imgBtn_cd</string>
+    <string name="pricetag_icon_description">pricetag_img_cd</string>
+    <string name="seeds_icon_description">seeds_imgBtn_cd</string>
+    <string name="shelves_image_description">shelves_img_cd</string>
+    <string name="shop_sign_image_description">shopSign_img_cd</string>
+    <string name="navbar_background_description">navbar_img_cd</string>
+    <string name="coin_image_icon_description">coin_img_cd</string>
+    <string name="fertilizer_image_icon_description">fertilizer_imgBtn_cd</string>
+    <string name="pesticide_image_icon_description">pesticide_imgBtn_cd</string>
+    <!-- END Austin's code descriptions -->
 
 </resources>

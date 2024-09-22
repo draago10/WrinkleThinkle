@@ -42,11 +42,6 @@ class GrowViewModel : ViewModel() {
         // Update internal _clickCount state
         _clickCount.value = newCount
 
-        // Update alpha if it's a multiple of clicksPerIncrement. Alpha will be changed, used for testing.
-        if (newCount % clicksPerIncrement == 0) {
-            val newAlpha = min(maxAlpha, (_currentAlpha.value ?: 10) + alphaIncrement)
-            _currentAlpha.value = newAlpha
-        }
 
         // If the count reaches 25, mark as complete. This will be changed to the actual value later. 25 is for testing
         if (newCount == 25) {

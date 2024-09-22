@@ -3,7 +3,21 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/appStartFragment">
+            app:startDestination="@id/SignInScreenFragment">
+
+    <!-- SIGN UP/IN FRAGMENT Start -->
+    <fragment
+            android:id="@+id/SignInScreenFragment"
+            android:name="com.example.wrinklethinkle.view.SignInFragment"
+            android:label="@string/SignInFragment"
+            tools:layout="@layout/fragment_sign_in_screen">
+
+        <action
+                android:id="@+id/action_signInFragment_to_appStartFrament"
+                app:destination="@id/appStartFragment"/>
+    </fragment>
+
+
 
     <!-- AppStartFragment is now the start destination -->
     <fragment
@@ -31,9 +45,7 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_ShopFragment"
                 app:destination="@id/ShopFragment"/>
-        <action
-                android:id="@+id/action_InsideHouseFragment_to_MapFragment"
-                app:destination="@id/MapFragment"/>
+
     </fragment>
 
     <!-- GrowFragment -->
@@ -77,15 +89,6 @@
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
-    <!-- Map Fragment -->
-    <fragment
-            android:id="@+id/MapFragment"
-            android:name="com.example.wrinklethinkle.view.MapFragment"
-            android:label="MapFragment"
-            tools:layout="@layout/fragment_map">
-        <action
-                android:id="@+id/action_MapFragment_to_InsideHouseFragment"
-                app:destination="@id/InsideHouseFragment"/>
-    </fragment>
+
 
 </navigation>

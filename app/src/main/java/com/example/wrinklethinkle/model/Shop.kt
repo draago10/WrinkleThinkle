@@ -1,13 +1,16 @@
 package com.example.wrinklethinkle.model
 
 class Shop {
-    fun buySeed(player: Player, type: FlowerType, seedCost: Int) {
+    // Buy seeds for a specific flower type
+    fun buySeed(player: Player, type: FlowerType, quantity: Int = 1) {
+        val seedCost = type.seedCost * quantity
         if (player.gold >= seedCost) {
             player.gold -= seedCost
-            player.inventory.addSeed(type, 1)
+            player.inventory.addSeed(type, quantity)
         }
     }
 
+    // Buy pesticide
     fun buyPesticide(player: Player) {
         val price = 20
         if (player.gold >= price) {
@@ -16,6 +19,7 @@ class Shop {
         }
     }
 
+    // Buy fertilizer
     fun buyFertilizer(player: Player) {
         val price = 1
         if (player.gold >= price) {

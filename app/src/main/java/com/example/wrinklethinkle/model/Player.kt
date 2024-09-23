@@ -6,13 +6,13 @@ class Player {
     var clickPower: Double = 1.0    // Base click power, increases with level
     var experience: Int = 0         // Player's current experience
     val inventory = Inventory()     // Player's inventory
-    var bugCount: Int = 0           // Current number of bugs affecting the player
-    private val maxBugs = 10        // Maximum number of bugs that can spawn
 
+    // Calculate experience required for next level
     fun expToNextLevel(): Int {
         return 100 * level
     }
 
+    // Gain experience and level up if necessary
     fun gainExperience(exp: Int) {
         experience += exp
         if (experience >= expToNextLevel()) {
@@ -20,29 +20,16 @@ class Player {
         }
     }
 
+    // Level up the player
     private fun levelUp() {
         level++
         experience = 0
         clickPower += 0.1
     }
 
-    fun applyClick() {
-        if (bugCount > 0) {
-            clickPower = maxOf(clickPower - (0.1 * bugCount), 0.0)
-        }
-    }
-
-    fun spawnBug(clicks: Int) {
-        if (clicks % 5 == 0 && Math.random() <= 0.20 && bugCount < maxBugs) {
-            bugCount++
-        }
-    }
-
-    fun usePesticide() {
-        if (inventory.pesticide > 0 && bugCount > 0) {
-            inventory.pesticide--
-            bugCount = maxOf(bugCount - 5, 0)
-            clickPower = 1.0 + (level * 0.1)
-        }
+    // Sell a flower and earn gold
+    fun sellFlower(flower: Flower) {
+        val goldEarned = inventory.sellFlower(flower)
+        gold += goldEarned
     }
 }

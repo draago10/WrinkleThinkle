@@ -35,6 +35,11 @@
           <theme>@style/Theme.WrinkleThinkle</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_screen.xml">
+        <config>
+          <theme>@style/Theme.WrinkleThinkle</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml">
         <config>
           <theme>@style/Theme.WrinkleThinkle</theme>
@@ -51,39 +56,28 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Created Inside_house fragment, &#10;added background image to inside_house fragment&#10;created a linear layout&#10;added 4 buttons to linear layout">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InventoryFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inventory.xml" afterDir="false" />
-=======
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="added git ignore">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/shrink_and_grow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_fertilizer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_pesticide.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
->>>>>>> main
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Plant.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/AppStartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/AppStartFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/GrowViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/GrowViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" afterDir="false" />
->>>>>>> main
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Shop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Shop.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_grow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_inventory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/button_shop.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +87,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/perlecatt/.android/avd/Pixel_8_Pro_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\darkf\.android\avd\Pixel_8_Pro_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -139,16 +133,12 @@
     &quot;assignee&quot;: &quot;A-A-Ron-Woods&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/draago10/WrinkleThinkle.git&quot;,
-<<<<<<< HEAD
-    &quot;accountId&quot;: &quot;bcf328cd-03c1-463d-a996-f8e544bf2072&quot;
-=======
-    &quot;accountId&quot;: &quot;07834973-bea8-4fc1-abd3-e9873a7a4deb&quot;
->>>>>>> main
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/draago10/WrinkleThinkle.git",
+    "accountId": "a8103a89-2097-4273-9f8a-8eaca281bbb5"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -169,7 +159,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/perleTasks&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/Classes&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/darkf/.gradle&quot;,
@@ -197,7 +187,44 @@
       <recent name="com.example.wrinklethinkle.view" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.IdeaProjects.WrinkleThinkle.app">
+    <configuration name="IdeaProjects.WrinkleThinkle.app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="IdeaProjects.WrinkleThinkle.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="WrinkleThinkle.app.main" />
       <option name="DEPLOY" value="true" />
@@ -239,8 +266,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
       </set>
     </attachedChunks>
   </component>
@@ -268,12 +295,10 @@
       <workItem from="1725904708160" duration="570000" />
       <workItem from="1725921509795" duration="6691000" />
       <workItem from="1725930889517" duration="5607000" />
-<<<<<<< HEAD
       <workItem from="1726094988713" duration="322000" />
-=======
       <workItem from="1726089105188" duration="6548000" />
       <workItem from="1726180129820" duration="36007000" />
->>>>>>> main
+      <workItem from="1727130923614" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />

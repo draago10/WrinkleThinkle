@@ -30,16 +30,15 @@
             android:paddingHorizontal="10dp" app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/poop_log" android:gravity="center_horizontal">
         <ImageButton
-                android:id="@+id/House_ShopButton"
+                android:id="@+id/House_MapButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
 
                 android:scaleType="centerCrop"
-                android:background="@drawable/icon_shop"
+                android:background="@drawable/icon_map"
                 android:layout_gravity="center_vertical"
 
-                android:contentDescription="@string/inside_house_shop_button"/>
-
+                android:contentDescription="@string/inside_house_map_button"/>
         <ImageButton
                 android:id="@+id/House_GrowButton"
                 android:layout_width="85dp"
@@ -50,7 +49,6 @@
                 android:layout_gravity="center_vertical"
 
                 android:contentDescription="@string/inside_house_grow_button"/>
-
         <ImageButton
                 android:id="@+id/House_InventoryButton"
                 android:layout_width="85dp"
@@ -61,17 +59,16 @@
                 android:layout_gravity="center_vertical"
 
                 android:contentDescription="@string/inside_house_inventory_button"/>
-
         <ImageButton
-                android:id="@+id/House_MapButton"
+                android:id="@+id/House_ShopButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
 
                 android:scaleType="centerCrop"
-                android:background="@drawable/icon_map"
+                android:background="@drawable/icon_shop"
                 android:layout_gravity="center_vertical"
 
-                android:contentDescription="@string/inside_house_map_button"/>
+                android:contentDescription="@string/inside_house_shop_button"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

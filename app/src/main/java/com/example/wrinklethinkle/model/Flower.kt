@@ -18,3 +18,28 @@ object BlackDahlia : Flower(
     tapCount = 0,
     location = "Garden"
 )
+
+/*
+class Flower(
+    val type: FlowerType,     // The type of the flower (Rose, Tulip, etc.)
+    var growthStage: Int = 1, // Current growth stage of the flower (1 to 4)
+    var clicksNeeded: Int     // Number of clicks needed to grow to the next stage
+){
+    fun grow(clicks: Int) {
+        clicksNeeded -= clicks
+        if (clicksNeeded <= 0 && growthStage < 4) {
+            growthStage++
+            clicksNeeded = calculateClicksForNextStage()
+        }
+    }
+
+    private fun calculateClicksForNextStage(): Int {
+        return when (type) {
+            FlowerType.ROSE -> 25 * growthStage
+            FlowerType.TULIP -> 50 * growthStage
+            FlowerType.LILY -> 75 * growthStage
+            FlowerType.DAHLIA -> 100 * growthStage
+        }
+    }
+}
+ */

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "34634637245",
+    "project_id": "team-wrinkle-thinkle",
+    "storage_bucket": "team-wrinkle-thinkle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34634637245:android:eb8fd2b98728fa552a7cd4",
+        "android_client_info": {
+          "package_name": "com.example.wrinklethinkle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwMrRQDabNeGpW676PwmyGlsfrUjcZeO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

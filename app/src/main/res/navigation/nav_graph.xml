@@ -14,9 +14,22 @@
 
         <action
                 android:id="@+id/action_signInFragment_to_appStartFrament"
-                app:destination="@id/appStartFragment"/>
+                app:destination="@id/appStartFragment" />
+        <action
+                android:id="@+id/action_signInFragment_to_signUpFragment"
+                app:destination="@id/SignUpFragment"/>
     </fragment>
 
+    <fragment
+            android:id="@+id/SignUpFragment"
+            android:name="com.example.wrinklethinkle.view.SignUpFragment"
+            android:label="@string/SignUpFragment"
+            tools:layout="@layout/fragment_sign_up">
+
+        <action
+                android:id="@+id/action_signUpFragment_to_signInFragment"
+                app:destination="@id/appStartFragment"/>
+    </fragment>
 
 
     <!-- AppStartFragment is now the start destination -->

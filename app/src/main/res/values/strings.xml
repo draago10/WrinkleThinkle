@@ -73,6 +73,7 @@
     <!-- GLOBAL STRINGS -->
     <string name="hint_text_email">Email</string>
     <string name="hint_text_password">Password</string>
+    <string name="SignUpFragment">Sign Up Fragment</string>
 
 
 </resources>

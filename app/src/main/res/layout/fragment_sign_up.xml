@@ -112,7 +112,7 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="125dp"
-                android:id="@+id/sing_in_screen_sign_in_button"
+                android:id="@+id/sign_up_screen_signup_button"
                 app:layout_constraintTop_toBottomOf="@+id/sign_in_screen_password"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

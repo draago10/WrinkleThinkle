@@ -26,10 +26,11 @@ class Player {
         experience = 0
         clickPower += 0.1
     }
-
+/*
     // Sell a flower and earn gold
     fun sellFlower(flower: Flower) {
         val goldEarned = inventory.sellFlower(flower)
         gold += goldEarned
     }
+ */
 }

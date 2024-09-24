@@ -34,12 +34,13 @@ class Inventory {
         completedFlowers.add(flower)
     }
 
-    // Sell a completed flower and remove it from the inventory
-    fun sellFlower(flower: Flower): Int {
-        if (completedFlowers.contains(flower) && flower.growthStage == Flower.MAX_GROWTH_STAGE) {
-            completedFlowers.remove(flower)
-            return flower.getSellPrice() // Return the amount of gold earned from the sale
-        }
-        return 0 // If the flower isn't fully grown or not in inventory, return 0
-    }
+//    // Sell a completed flower and remove it from the inventory
+//    fun sellFlower(flower: Flower): Int {
+//        if (completedFlowers.contains(flower) && flower.growthStage == Flower.MAX_GROWTH_STAGE) {
+//            completedFlowers.remove(flower)
+//            return flower.getSellPrice() // Return the amount of gold earned from the sale
+//        }
+//        return 0 // If the flower isn't fully grown or not in inventory, return 0
+//    }
+
 }

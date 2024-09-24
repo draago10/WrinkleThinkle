@@ -1,7 +1,7 @@
 package com.example.wrinklethinkle.model
 
 import com.example.wrinklethinkle.R
-/*
+
 open class Flower(
     val name: String,
     val image: Int,
@@ -18,9 +18,9 @@ object BlackDahlia : Flower(
     tapCount = 0,
     location = "Garden"
 )
-*/
 
 
+/*
 class Flower(
     val type: FlowerType,     // The type of the flower (Rose, Tulip, etc.)
     var growthStage: Int = 1, // Current growth stage of the flower (1 to 4)
@@ -58,3 +58,4 @@ class Flower(
         return if (growthStage == MAX_GROWTH_STAGE) type.sellPrice else 0
     }
 }
+*/

@@ -12,14 +12,16 @@
             android:layout_height="wrap_content" android:id="@+id/main_background"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="1.0"
+            android:scaleType="centerCrop"/>
     <ImageView
             android:contentDescription="@string/shelves_image_description"
             android:layout_width="408dp"
             android:layout_height="600dp" android:id="@+id/shelves_background"
             android:background="@drawable/shelves_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="32dp"/>
     <ImageView
             android:contentDescription="@string/navbar_background_description"
             android:layout_width="409dp"
@@ -34,8 +36,8 @@
             android:layout_height="80dp" android:id="@+id/shop_sign"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/shelves_background" app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497" android:background="@drawable/icon_shop_sign"/>
+            android:background="@drawable/icon_shop_sign" app:layout_constraintStart_toEndOf="@+id/home_button"
+            app:layout_constraintEnd_toStartOf="@+id/coin_balance" app:layout_constraintHorizontal_bias="1.0"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="325dp"
@@ -75,7 +77,6 @@
             android:layout_height="71dp" android:id="@+id/home_button"
             android:background="@drawable/inside_house_icon"
             app:layout_constraintTop_toTopOf="@+id/main_background" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/shop_sign" app:layout_constraintHorizontal_bias="0.09"
             android:layout_marginTop="16dp" app:layout_constraintBottom_toTopOf="@+id/shop_sign"
             app:layout_constraintVertical_bias="0.257"/>
     <TextView
@@ -88,9 +89,8 @@
             android:textSize="30sp"
             android:fontFamily="@font/pixelify_sans" android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/pesticide_pricetag" app:layout_constraintHorizontal_bias="0.437"
-            app:layout_constraintBottom_toTopOf="@+id/purchase_cf_celosia" android:layout_marginBottom="72dp"
-    />
+            app:layout_constraintEnd_toStartOf="@+id/pesticide_pricetag" app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintBottom_toTopOf="@+id/seeds" android:layout_marginBottom="60dp"/>
     <TextView
             android:contentDescription="@string/pricetag_icon_description"
             android:text="4S"
@@ -102,7 +102,8 @@
             android:fontFamily="@font/pixelify_sans" android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/navbar"
             android:layout_marginBottom="112dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="84dp"/>
+            android:layout_marginStart="80dp" app:layout_constraintTop_toBottomOf="@+id/seeds"
+            app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:contentDescription="@string/pricetag_icon_description"
             android:text="4S"
@@ -115,7 +116,8 @@
             app:layout_constraintBottom_toTopOf="@+id/navbar"
             app:layout_constraintStart_toEndOf="@+id/cf_celosia_pricetag"
             app:layout_constraintEnd_toStartOf="@+id/lily_pricetag" android:layout_marginBottom="112dp"
-            app:layout_constraintHorizontal_bias="0.58"/>
+            app:layout_constraintHorizontal_bias="0.48" app:layout_constraintTop_toBottomOf="@+id/seeds"
+            app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:contentDescription="@string/pricetag_icon_description"
             android:text="4S"
@@ -126,8 +128,9 @@
             android:textSize="30sp"
             android:fontFamily="@font/pixelify_sans" android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/navbar"
-            android:layout_marginBottom="112dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="60dp"/>
+            android:layout_marginBottom="124dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="52dp"
+            app:layout_constraintTop_toBottomOf="@+id/seeds" app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:contentDescription="@string/pricetag_icon_description"
             android:text="160"
@@ -137,9 +140,9 @@
             android:gravity="center|center_horizontal"
             android:textSize="30sp"
             android:fontFamily="@font/pixelify_sans" android:textColor="@color/black"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="52dp"
             app:layout_constraintEnd_toEndOf="@+id/main_background"
-            app:layout_constraintBottom_toTopOf="@+id/purchase_lily" android:layout_marginBottom="72dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/seeds" android:layout_marginBottom="60dp"/>
     <ImageButton
             android:contentDescription="@string/fertilizer_image_icon_description"
             android:layout_width="59dp"
@@ -157,30 +160,6 @@
             app:layout_constraintTop_toTopOf="@+id/shelves_background"
             android:layout_marginTop="40dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="64dp"
             app:layout_constraintBottom_toTopOf="@+id/pesticide_pricetag" app:layout_constraintVertical_bias="0.071"/>
-    <ImageButton
-            android:contentDescription="@string/seeds_icon_description"
-            android:layout_width="63dp"
-            android:layout_height="72dp" android:id="@+id/purchase_cf_celosia"
-            android:background="@drawable/seeds_cf_celosia"
-            app:layout_constraintBottom_toTopOf="@+id/cf_celosia_pricetag"
-            android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="88dp"/>
-    <ImageButton
-            android:contentDescription="@string/seeds_icon_description"
-            android:layout_width="63dp"
-            android:layout_height="72dp" android:id="@+id/purchase_blk_dahlia"
-            android:background="@drawable/seeds_black_dahlia"
-            app:layout_constraintBottom_toTopOf="@+id/blk_dahlia_pricetag"
-            android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/purchase_cf_celosia"
-            app:layout_constraintEnd_toStartOf="@+id/purchase_lily" app:layout_constraintHorizontal_bias="0.54"/>
-    <ImageButton
-            android:contentDescription="@string/seeds_icon_description"
-            android:layout_width="63dp"
-            android:layout_height="72dp" android:id="@+id/purchase_lily"
-            android:background="@drawable/seeds_lily"
-            app:layout_constraintBottom_toTopOf="@+id/lily_pricetag"
-            android:layout_marginBottom="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="64dp"/>
     <ImageView
             android:contentDescription="@string/coin_image_icon_description"
             android:src="@drawable/icon_coin"
@@ -203,4 +182,31 @@
             android:fontFamily="@font/pixelify_sans" android:textColor="@color/black"
             android:layout_marginStart="204dp" app:layout_constraintEnd_toStartOf="@+id/coin_icon"
             android:layout_marginEnd="4dp" app:layout_constraintHorizontal_bias="1.0"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="302dp"
+            android:layout_height="103dp"
+            android:weightSum="3" android:divider="@android:drawable/divider_horizontal_dim_dark"
+            android:id="@+id/seeds" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.605"
+            app:layout_constraintTop_toTopOf="@+id/shelves_background" android:layout_marginTop="212dp">
+        <ImageButton
+                android:contentDescription="@string/seeds_icon_description"
+                android:layout_width="63dp"
+                android:layout_height="72dp" android:id="@+id/purchase_cf_celosia"
+                android:background="@drawable/seeds_cf_celosia"
+                android:layout_weight="1" android:layout_margin="20dp"/>
+        <ImageButton
+                android:contentDescription="@string/seeds_icon_description"
+                android:layout_width="63dp"
+                android:layout_height="72dp" android:id="@+id/purchase_blk_dahlia"
+                android:background="@drawable/seeds_black_dahlia"
+                android:layout_weight="1" android:layout_margin="20dp"/>
+        <ImageButton
+                android:contentDescription="@string/seeds_icon_description"
+                android:layout_width="63dp"
+                android:layout_height="72dp" android:id="@+id/purchase_lily"
+                android:background="@drawable/seeds_lily"
+                android:layout_weight="1" android:layout_margin="20dp"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,12 +14,6 @@ class GrowViewModel : ViewModel() {
     private val _currentAlpha = MutableLiveData<Int>().apply { value = 10 }
     val currentAlpha: LiveData<Int> get() = _currentAlpha
 
-    // Maximum alpha value - Temp
-    private val maxAlpha = 255
-    // Alpha increment per 25 clicks
-    private val alphaIncrement = 25
-    // Number of clicks to increase alpha
-    private val clicksPerIncrement = 5
 
     private val _isComplete = MutableLiveData<Boolean>().apply { value = false }
     val isComplete: LiveData<Boolean> get() = _isComplete
@@ -42,11 +36,6 @@ class GrowViewModel : ViewModel() {
         // Update internal _clickCount state
         _clickCount.value = newCount
 
-        // Update alpha if it's a multiple of clicksPerIncrement. Alpha will be changed, used for testing.
-        if (newCount % clicksPerIncrement == 0) {
-            val newAlpha = min(maxAlpha, (_currentAlpha.value ?: 10) + alphaIncrement)
-            _currentAlpha.value = newAlpha
-        }
 
         // If the count reaches 25, mark as complete. This will be changed to the actual value later. 25 is for testing
         if (newCount == 25) {

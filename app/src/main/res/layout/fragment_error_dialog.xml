@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Background Image -->
+
+    <!-- Title Text -->
+
+    <ImageView
+            android:id="@+id/popup_image"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/error_screen_cat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintHorizontal_bias="0.497" />
+
+    <TextView
+android:id="@+id/popup_title"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="Oops! Something went wrong..."
+android:textStyle="bold"
+android:textSize="20sp"
+android:textColor="@android:color/black"
+app:layout_constraintTop_toBottomOf="@id/popup_image"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:gravity="center"/>
+
+        <!-- Subtext -->
+<TextView
+android:id="@+id/popup_message"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:text="Please try again."
+android:textSize="16sp"
+android:textColor="@android:color/darker_gray"
+app:layout_constraintTop_toBottomOf="@id/popup_title"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:gravity="center"
+android:paddingTop="8dp"/>
+
+        <!-- Button 1 (Cancel) -->
+    <Button
+            android:id="@+id/popup_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            app:layout_constraintTop_toBottomOf="@id/popup_message"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="8dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Button 2 (Retry) -->
+    <Button
+            android:id="@+id/popup_button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            app:layout_constraintTop_toBottomOf="@id/popup_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="8dp"
+            android:layout_marginTop="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>

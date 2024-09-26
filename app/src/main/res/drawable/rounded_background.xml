@@ -1,0 +1,15 @@
+<!-- res/drawable/rounded_popup_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Set the solid color of the background -->
+    <solid android:color="#194A60" />
+
+    <!-- Define corner radius to round the edges -->
+    <corners android:radius="30dp" />
+
+    <!-- Optional: Add padding if needed -->
+    <padding
+            android:left="16dp"
+            android:right="16dp"
+            android:top="16dp"
+            android:bottom="16dp" />
+</shape>

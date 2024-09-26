@@ -44,6 +44,9 @@ class ShopFragment : Fragment() {
         binding.iconMap.setOnClickListener {
             findNavController().navigate(R.id.action_ShopFragment_to_MapFragment)
         }
+        binding.homeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
+        }
     }
 
     override fun onDestroy() {

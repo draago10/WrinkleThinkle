@@ -79,6 +79,9 @@
               tools:layout="@layout/fragment_inventory">
         <action android:id="@+id/action_InventoryFragment_to_InsideHouseFragment"
                 app:destination="@id/InsideHouseFragment"/>
+        <action android:id="@+id/action_InventoryFragment_to_GrowFragment" app:destination="@id/GrowFragment"/>
+        <action android:id="@+id/action_InventoryFragment_to_MapFragment" app:destination="@id/MapFragment"/>
+        <action android:id="@+id/action_InventoryFragment_to_ShopFragment" app:destination="@id/ShopFragment"/>
     </fragment>
 
     <!-- Flower Detail Fragment -->
@@ -109,6 +112,8 @@
         <action
                 android:id="@+id/action_ShopFragment_to_MapFragment"
                 app:destination="@id/MapFragment"/>
+        <action android:id="@+id/action_ShopFragment_to_InsideHouseFragment2"
+                app:destination="@id/InsideHouseFragment"/>
 
     </fragment>
 

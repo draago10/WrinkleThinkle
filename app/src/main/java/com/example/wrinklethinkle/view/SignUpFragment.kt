@@ -7,8 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import com.example.wrinklethinkle.R
+import com.example.wrinklethinkle.Utility.Utility
 import com.example.wrinklethinkle.databinding.FragmentSignUpBinding
-import com.example.wrinklethinkle.viewmodel.SignUpViewModel
+import com.example.wrinklethinkle.viewmodel.SignUpScreenViewModel
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
@@ -17,10 +21,11 @@ class SignUpFragment : Fragment() {
     private var signUpFragment: FragmentSignUpBinding? = null
     private val binding get() = signUpFragment!!
 
-    private val viewModel: SignUpViewModel by viewModels()
+    private val viewModel: SignUpScreenViewModel by viewModels()
     private  lateinit var auth: FirebaseAuth
     var email = ""
     var password = ""
+    var errorMessage = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,20 +47,34 @@ class SignUpFragment : Fragment() {
 
         viewModel.signUpResult.observe(viewLifecycleOwner) { success ->
             if (success) {
-                Toast.makeText(context, "WE WIN", Toast.LENGTH_SHORT).show()
-                //Navigate to app start screen
+                val navController = findNavController()
+                val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
+                navController.navigate(R.id.action_signUpFragment_to_appStartFragment, null, navOptions)
             } else {
-                Toast.makeText(context, "WE LOSE", Toast.LENGTH_SHORT).show()
+                Utility().showErrorPopup(childFragmentManager, requireContext(), "Oops, something went wrong...", errorMessage, { poop() })
             }
         }
 
+        viewModel.errorMessage.observe(viewLifecycleOwner) { error ->
+                error.let {
+                    errorMessage = it
+                }
+        }
+
         binding.signUpScreenSignupButton.setOnClickListener {
-            email = binding.signUpScreenEmail.text.toString().trim()
-            password = binding.signUpScreenPassword.text.toString().trim()
-            //ERROR HANDLING
-            viewModel.createUser(email, password)
+            if (binding.signUpScreenEmail.text.toString().isEmpty() || binding.signUpScreenPassword.text.toString().isEmpty()) {
+                Utility().showErrorPopup(childFragmentManager, requireContext(), "Oops, empty fields detected!", "Please do not leave the fields empty.", {poop()})
+            } else {
+                email = binding.signUpScreenEmail.text.toString().trim()
+                password = binding.signUpScreenPassword.text.toString().trim()
+                viewModel.createUser(email, password)
+            }
         }
     }
+
+    fun poop() {
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

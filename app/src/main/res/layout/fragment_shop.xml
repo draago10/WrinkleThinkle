@@ -38,39 +38,62 @@
             app:layout_constraintBottom_toTopOf="@+id/shelves_background" app:layout_constraintVertical_bias="1.0"
             android:background="@drawable/icon_shop_sign" app:layout_constraintStart_toEndOf="@+id/home_button"
             app:layout_constraintEnd_toStartOf="@+id/coin_balance" app:layout_constraintHorizontal_bias="1.0"/>
+
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="325dp"
-            android:layout_height="73dp"
+            android:layout_height="175dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:weightSum="4"
             android:id="@+id/navbar"
-            app:layout_constraintBottom_toBottomOf="@+id/main_background"
-            app:layout_constraintTop_toTopOf="@+id/navbar_icon" app:layout_constraintStart_toStartOf="@+id/navbar_icon"
-            app:layout_constraintEnd_toEndOf="@+id/navbar_icon">
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:background="@drawable/poop_log"
+            android:foregroundGravity="center_horizontal"
+            tools:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
         <ImageButton
-                android:contentDescription="@string/map_icon_description"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp" android:id="@+id/map_icon" android:layout_weight="1"
-                android:background="@drawable/icon_map"
-        />
-        <ImageButton
-                android:contentDescription="@string/grow_icon_description"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp" android:id="@+id/grow_icon" android:layout_weight="1"
-                android:background="@drawable/icon_grow"
-        />
-        <ImageButton
-                android:contentDescription="@string/inventory_icon_description"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp" android:id="@+id/inventory_icon" android:layout_weight="1"
-                android:background="@drawable/icon_inventory"
-        />
-        <ImageButton
-                android:contentDescription="@string/shop_icon_description"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp" android:id="@+id/shop_icon" android:layout_weight="1"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:id="@+id/shop_icon"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
                 android:background="@drawable/icon_shop"
-        />
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp" />
+
+        <ImageButton
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/icon_grow"
+                android:id="@+id/grow_icon"
+                android:scaleType="centerCrop" />
+
+        <ImageButton
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/icon_inventory"
+                android:id="@+id/icon_inventory"
+                android:scaleType="centerCrop" />
+
+        <ImageButton
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:id="@+id/icon_map"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/icon_map"
+                android:scaleType="centerCrop" />
     </LinearLayout>
+
     <ImageButton
             android:contentDescription="@string/house_image_button_description"
             android:layout_width="78dp"

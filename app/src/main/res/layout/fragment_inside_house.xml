@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.InsideHouseFragment" android:id="@+id/InsideHouseFragment">
+        tools:context=".view.InsideHouseFragment"
+        android:id="@+id/InsideHouseFragment">
 
     <ImageView
             android:src="@drawable/inside_house_background"
@@ -19,59 +20,60 @@
             android:scaleType="centerCrop"
             android:contentDescription="@string/inside_house_fragmentBGCD"
     />
+
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
             android:layout_height="175dp"
-
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/InsideHouseBG"
+            android:weightSum="4"
             android:id="@+id/Navbar_house"
-            android:paddingHorizontal="10dp" app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/poop_log" android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:background="@drawable/poop_log"
+            android:foregroundGravity="center_horizontal"
+            tools:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
         <ImageButton
-                android:id="@+id/House_ShopButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-
+                android:id="@+id/House_ShopButton"
+                android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:background="@drawable/icon_shop"
                 android:layout_gravity="center_vertical"
-
-                android:contentDescription="@string/inside_house_shop_button"/>
+                android:layout_margin="10dp" />
 
         <ImageButton
-                android:id="@+id/House_GrowButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-
-                android:scaleType="centerCrop"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_grow"
-                android:layout_gravity="center_vertical"
-
-                android:contentDescription="@string/inside_house_grow_button"/>
+                android:id="@+id/House_GrowButton"
+                android:scaleType="centerCrop" />
 
         <ImageButton
-                android:id="@+id/House_InventoryButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-
-                android:scaleType="centerCrop"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_inventory"
-                android:layout_gravity="center_vertical"
-
-                android:contentDescription="@string/inside_house_inventory_button"/>
+                android:id="@+id/House_InventoryButton"
+                android:scaleType="centerCrop" />
 
         <ImageButton
-                android:id="@+id/House_MapButton"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-
-                android:scaleType="centerCrop"
-                android:background="@drawable/icon_map"
+                android:layout_weight="1"
+                android:id="@+id/House_MapButton"
                 android:layout_gravity="center_vertical"
-
-                android:contentDescription="@string/inside_house_map_button"/>
-
+                android:background="@drawable/icon_map"
+                android:scaleType="centerCrop" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

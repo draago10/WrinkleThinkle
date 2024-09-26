@@ -64,7 +64,7 @@
 
     <!-- START SignIn and SignUp Fragment strings  -->
     <string name="SignInFragment">Sign In Fragment\n</string>
-    <string name="sign_in_screen_first_name">First Name</string>
+    <string name="sign_in_screen_player_name">Player Name</string>
     <string name="sign_in_screen_last_name">Last Name</string>
     <string name="sign_in_sign_in">Sign In</string>
     <string name="sign_in_screen_need_an_account_text">Need an account?</string>
@@ -74,6 +74,7 @@
     <string name="hint_text_email">Email</string>
     <string name="hint_text_password">Password</string>
     <string name="SignUpFragment">Sign Up Fragment</string>
+    <string name="global_ok">OK</string>
 
 
 </resources>

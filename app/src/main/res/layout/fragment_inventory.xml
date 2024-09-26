@@ -27,9 +27,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:weightSum="4"
             android:id="@+id/Navbar_inventory"
-            android:paddingHorizontal="10dp" android:layout_width="wrap_content" android:background="@drawable/poop_log"
+            android:paddingHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:background="@drawable/poop_log"
             app:layout_constraintBottom_toBottomOf="@id/treesBackground"
-            android:foregroundGravity="center_horizontal" tools:gravity="center_horizontal">
+            android:foregroundGravity="center_horizontal"
+            tools:gravity="center_horizontal">
 
         <ImageButton
                 android:layout_width="85dp"

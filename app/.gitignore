@@ -35,7 +35,6 @@
 *.ear
 *.db
 *.sqlite
-*.xml
 *.json
 
 # Ignore macOS specific files

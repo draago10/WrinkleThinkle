@@ -39,26 +39,29 @@
                 android:scaleType="centerCrop"
                 android:background="@drawable/icon_shop"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp" android:contentDescription="@string/shop_icon_description"/>
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:layout_gravity="center_vertical" android:background="@drawable/icon_grow"
-                android:id="@+id/Inventory_GrowButton" android:scaleType="centerCrop"/>
+                android:id="@+id/Inventory_GrowButton" android:scaleType="centerCrop"
+                android:contentDescription="@string/grow_icon_description"/>
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:layout_gravity="center_vertical" android:background="@drawable/icon_inventory"
-                android:id="@+id/Inventory_InventoryButton" android:scaleType="centerCrop"/>
+                android:id="@+id/Inventory_InventoryButton" android:scaleType="centerCrop"
+                android:contentDescription="@string/inventory_icon_description"/>
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_weight="1"
                 android:id="@+id/Inventory_MapButton" android:layout_gravity="center_vertical"
-                android:background="@drawable/icon_map" android:scaleType="centerCrop"/>
+                android:background="@drawable/icon_map" android:scaleType="centerCrop"
+                android:contentDescription="@string/map_icon_description"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,4 +69,10 @@
             android:background="@drawable/inside_house_icon"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
     />
+    <ScrollView
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/Navbar_inventory"
+            app:layout_constraintStart_toStartOf="@+id/treesBackground"
+            app:layout_constraintEnd_toEndOf="@+id/treesBackground" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/imageButton"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

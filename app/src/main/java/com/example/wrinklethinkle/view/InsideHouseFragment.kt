@@ -1,5 +1,6 @@
 package com.example.wrinklethinkle.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -24,6 +25,7 @@ class InsideHouseFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,8 +46,15 @@ class InsideHouseFragment : Fragment() {
         // Add touch listener to the root layout to detect clicks
         binding.InsideHouseFragment.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                // Show the dialog to select an image at the click location
-                showImageSelectionDialog(event.x, event.y)
+                // Get the height of the navbar (the restricted area)
+                val navbarHeight = binding.NavbarHouse.height
+                val screenHeight = resources.displayMetrics.heightPixels
+
+                // Check if the click is above the navbar area
+                if (event.y < (screenHeight - navbarHeight)) {
+                    // Show the dialog to select an image at the click location if outside navbar
+                    showImageSelectionDialog(event.x, event.y)
+                }
             }
             true
         }

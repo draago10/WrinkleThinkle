@@ -1,7 +1,7 @@
 package com.example.wrinklethinkle.model
 
 class Player {
-    val name: String = "Player"
+    val name: String = ""
     var level: Int = 1              // Player starts at level 1
     var gold: Int = 0               // Player starts with 0 gold
     var clickPower: Double = 1.0    // Base click power, increases with level

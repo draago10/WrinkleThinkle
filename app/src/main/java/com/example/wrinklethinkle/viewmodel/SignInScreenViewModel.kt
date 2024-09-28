@@ -25,8 +25,6 @@ class SignInScreenViewModel : ViewModel() {
                     _errorMessage.postValue(task.exception?.message)
                     _signInResult.postValue(false)
                 }
-
             }
     }
-
 }

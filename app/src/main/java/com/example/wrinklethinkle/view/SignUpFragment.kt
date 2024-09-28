@@ -22,15 +22,14 @@ class SignUpFragment : Fragment() {
     private val binding get() = signUpFragment!!
 
     private val viewModel: SignUpScreenViewModel by viewModels()
-    private  lateinit var auth: FirebaseAuth
     var email = ""
     var password = ""
+    var playerName = ""
     var errorMessage = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(requireContext())
-        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -43,7 +42,6 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // auth = FirebaseAuth.getInstance()
 
         viewModel.signUpResult.observe(viewLifecycleOwner) { success ->
             if (success) {
@@ -67,7 +65,8 @@ class SignUpFragment : Fragment() {
             } else {
                 email = binding.signUpScreenEmail.text.toString().trim()
                 password = binding.signUpScreenPassword.text.toString().trim()
-                viewModel.createUser(email, password)
+                playerName = binding.signUpScreenPlayerName.text.toString().trim()
+                viewModel.createUser(email, password, playerName)
             }
         }
     }

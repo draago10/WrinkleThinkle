@@ -6,7 +6,6 @@
     <!-- Define corner radius to round the edges -->
     <corners android:radius="30dp" />
 
-    <!-- Optional: Add padding if needed -->
     <padding
             android:left="16dp"
             android:right="16dp"

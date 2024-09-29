@@ -29,7 +29,7 @@ class SignUpScreenViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid
                     if (uid != null) {
-                        var defaultUserData = hashMapOf(
+                        val defaultUserData = hashMapOf(
                             "name" to playerName,
                             "level" to 1,
                             "experience" to 0,

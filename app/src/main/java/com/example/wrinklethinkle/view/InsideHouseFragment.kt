@@ -62,33 +62,38 @@ class InsideHouseFragment : Fragment() {
     }
 
     private fun showImageSelectionDialog(x: Float, y: Float) {
-        // Array of image resources to choose from
+        // Get the list of completed flowers from the inventory
         val completedFlowers = Inventory.completedFlowers
-        //Check for completed flowers in inventory
+
+        // Check for completed flowers in inventory
         if (completedFlowers.isEmpty()) {
             AlertDialog.Builder(requireContext())
                 .setTitle("No Completed Flowers")
                 .setMessage("There are no completed flowers in your inventory")
-                .setPositiveButton(android.R.string.ok) { _, _ ->}
+                .setPositiveButton(android.R.string.ok) { _, _ -> }
                 .show()
             return
         }
+
         // Extract the names of the completed flowers
-        val flowerNames = completedFlowers.map { it.name }.toTypedArray()
+        val flowerNames = completedFlowers.map { it.name }.toTypedArray() // Ensure `name` property exists
+
         // Extract the image resource ID of the completed flowers
-        val images = completedFlowers.map { it.image }
+        val images = completedFlowers.map { it.image }.toTypedArray() // Ensure `imageResId` property exists
 
         // Show a dialog for selecting the image
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Select an image")
 
-        // Uses flowerNames in the dialog
+        // Use flowerNames in the dialog
         builder.setItems(flowerNames) { dialog, which ->
             // Set selected image resource by indexing into the images list
             selectedImageResId = images[which]
             // Place the image at the selected location
             placeImageAtLocation(x, y)
         }
+
+        // Show the dialog
         builder.show()
     }
 

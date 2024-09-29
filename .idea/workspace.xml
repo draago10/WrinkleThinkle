@@ -51,8 +51,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Added touch functionality to the house screen:&#10;user can click on any spot on the inside_house fragment to place one of 3 images&#10;&lt;NEEDS REFINEMENT&gt;">
+    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Minor fix to last commit: User can no longer place images on the Navbar">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +247,9 @@
       <workItem from="1726180129820" duration="36007000" />
       <workItem from="1727397676741" duration="111000" />
       <workItem from="1727458559426" duration="3559000" />
-      <workItem from="1727462381724" duration="457000" />
+      <workItem from="1727462381724" duration="754000" />
+      <workItem from="1727545517435" duration="450000" />
+      <workItem from="1727586745846" duration="4149000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -297,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727462140452</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Minor fix to last commit: User can no longer place images on the Navbar">
+      <option name="closed" value="true" />
+      <created>1727463131913</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727463131913</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +339,7 @@
     <MESSAGE value="Added player name to Player class" />
     <MESSAGE value="Minor fixes" />
     <MESSAGE value="Added touch functionality to the house screen:&#10;user can click on any spot on the inside_house fragment to place one of 3 images&#10;&lt;NEEDS REFINEMENT&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added touch functionality to the house screen:&#10;user can click on any spot on the inside_house fragment to place one of 3 images&#10;&lt;NEEDS REFINEMENT&gt;" />
+    <MESSAGE value="Minor fix to last commit: User can no longer place images on the Navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fix to last commit: User can no longer place images on the Navbar" />
   </component>
 </project>

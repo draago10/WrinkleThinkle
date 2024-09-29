@@ -9,7 +9,9 @@ open class Flower(
     var salePrice: Int? = null,
     var tapCount: Int = 0,    // Default tapCount initialized to 0
     var location: String? = null
-)
+) {
+
+}
 
 object BlackDahlia : Flower(
     name = "Black Dahlia",

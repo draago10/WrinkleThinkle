@@ -1,6 +1,6 @@
 package com.example.wrinklethinkle.model
 
-class Inventory {
+object Inventory {
     val seeds = mutableMapOf<FlowerType, Int>()   // Seed inventory, mapping flower type to quantity
     var pesticide: Int = 0                        // Amount of pesticide the player owns
     var fertilizer: Int = 0                       // Amount of fertilizer the player owns
@@ -34,6 +34,11 @@ class Inventory {
         completedFlowers.add(flower)
     }
 
+    // Remove a completed flower from player's inventory
+    fun removeFlower(flower: Flower) {
+        completedFlowers.remove(flower)
+    }
+
 //    // Sell a completed flower and remove it from the inventory
 //    fun sellFlower(flower: Flower): Int {
 //        if (completedFlowers.contains(flower) && flower.growthStage == Flower.MAX_GROWTH_STAGE) {
@@ -42,5 +47,6 @@ class Inventory {
 //        }
 //        return 0 // If the flower isn't fully grown or not in inventory, return 0
 //    }
+
 
 }

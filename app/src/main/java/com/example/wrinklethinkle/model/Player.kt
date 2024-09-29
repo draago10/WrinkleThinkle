@@ -6,7 +6,7 @@ class Player {
     var gold: Int = 0               // Player starts with 0 gold
     var clickPower: Double = 1.0    // Base click power, increases with level
     var experience: Int = 0         // Player's current experience
-    val inventory = Inventory()     // Player's inventory
+    val inventory = Inventory     // Player's inventory
 
     // Calculate experience required for next level
     fun expToNextLevel(): Int {

@@ -65,7 +65,7 @@ class InsideHouseFragment : Fragment() {
         // Get the list of completed flowers from the inventory
         val completedFlowers = Inventory.completedFlowers
 
-        // Check for completed flowers in inventory
+        // Check to make sure there are completed flowers in inventory
         if (completedFlowers.isEmpty()) {
             AlertDialog.Builder(requireContext())
                 .setTitle("No Completed Flowers")
@@ -76,10 +76,10 @@ class InsideHouseFragment : Fragment() {
         }
 
         // Extract the names of the completed flowers
-        val flowerNames = completedFlowers.map { it.name }.toTypedArray() // Ensure `name` property exists
+        val flowerNames = completedFlowers.map { it.name }.toTypedArray()
 
         // Extract the image resource ID of the completed flowers
-        val images = completedFlowers.map { it.image }.toTypedArray() // Ensure `imageResId` property exists
+        val images = completedFlowers.map { it.image }.toTypedArray()
 
         // Show a dialog for selecting the image
         val builder = AlertDialog.Builder(requireContext())
@@ -101,13 +101,25 @@ class InsideHouseFragment : Fragment() {
         // Create a new ImageView and set its image resource
         val imageView = ImageView(requireContext()).apply {
             setImageResource(selectedImageResId)
-            layoutParams = ViewGroup.LayoutParams(200, 200) // Adjust size as needed
-            this.x = x - 100 // Adjust to center image on the click point
+            layoutParams = ViewGroup.LayoutParams(200, 200)
+            this.x = x - 100
             this.y = y - 200
         }
 
         // Add the new ImageView to the root layout
         binding.InsideHouseFragment.addView(imageView)
+
+        imageView.setOnLongClickListener { v ->
+            AlertDialog.Builder(requireContext())
+                .setTitle("Remove Image")
+                .setMessage("Are you sure you want to remove this image?")
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    (v?.parent as? ViewGroup)?.removeView(v)
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+            true
+        }
     }
 
     override fun onDestroyView() {

@@ -6,43 +6,61 @@
                                                    android:layout_height="match_parent"
                                                    tools:context=".view.InventoryFragment"
                                                    android:id="@+id/InventoryFragment">
+
     <ImageView
             android:src="@drawable/flower_click_fragment_trees_bg_blur"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/treesBackground"
+            android:layout_height="wrap_content"
+            android:id="@+id/treesBackground"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-    />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            android:scaleType="centerCrop" />
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_height="175dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:weightSum="4"
             android:id="@+id/Navbar_inventory"
-            android:paddingHorizontal="10dp" android:layout_width="wrap_content" android:background="@drawable/poop_log"
+            android:paddingHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:background="@drawable/poop_log"
             app:layout_constraintBottom_toBottomOf="@id/treesBackground"
-            android:foregroundGravity="center_horizontal" tools:gravity="center_horizontal">
-        <ImageButton
-                android:layout_width="85dp"
-                android:layout_height="85dp" android:id="@+id/Inventory_ShopButton"
-                android:scaleType="centerCrop"
-                android:background="@drawable/icon_shop" android:layout_gravity="center_vertical"
-        />
+            android:foregroundGravity="center_horizontal"
+            tools:gravity="center_horizontal">
+
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
+                android:id="@+id/Inventory_ShopButton"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/icon_shop"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp" />
+        <ImageButton
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical" android:background="@drawable/icon_grow"
                 android:id="@+id/Inventory_GrowButton" android:scaleType="centerCrop"/>
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical" android:background="@drawable/icon_inventory"
                 android:id="@+id/Inventory_InventoryButton" android:scaleType="centerCrop"/>
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
+                android:layout_weight="1"
                 android:id="@+id/Inventory_MapButton" android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_map" android:scaleType="centerCrop"/>
     </LinearLayout>

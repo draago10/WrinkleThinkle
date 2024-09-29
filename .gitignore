@@ -35,7 +35,6 @@
 *.ear
 *.db
 *.sqlite
-*.xml
 *.json
 
 # Ignore macOS specific files
@@ -99,6 +98,7 @@ hs_err_pid*
 .gradle/**/fileHashes.lock
 
 # Ignore binary and cache files
+.gradle
 .gradle/**/fileHashes.bin
 .gradle/**/executionHistory.bin
 .gradle/**/resourceHashesCache.bin

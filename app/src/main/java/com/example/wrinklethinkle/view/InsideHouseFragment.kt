@@ -30,7 +30,7 @@ class InsideHouseFragment : Fragment() {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_ShopFragment)
         }
         binding.HouseMapButton.setOnClickListener {
-            findNavController().navigate(R.id.action_InsideHouseFragment_to_MapFragment)
+            //findNavController().navigate(R.id.action_InsideHouseFragment_to_MapFragment)
         }
 
     }

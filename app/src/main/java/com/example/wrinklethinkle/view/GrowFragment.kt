@@ -13,15 +13,15 @@ import android.view.animation.AnimationUtils
 import com.example.wrinklethinkle.databinding.GrowFragmentBinding
 import com.example.wrinklethinkle.model.BlackDahlia
 import com.example.wrinklethinkle.viewmodel.GrowViewModel
+import android.media.MediaPlayer
 
 class GrowFragment : Fragment() {
 
     private var growFragmentBinding: GrowFragmentBinding? = null
     private var test = BlackDahlia
-    private val maxAlpha = 255
-    private var currentAlpha = 10
     private val viewModel: GrowViewModel by viewModels()
     private var currentImageIndex = 0
+    private lateinit var mediaPlayer: MediaPlayer
 
     private val binding get() = growFragmentBinding!!
 
@@ -30,7 +30,10 @@ class GrowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
-        binding.flowerImage.imageAlpha = currentAlpha
+        mediaPlayer = MediaPlayer.create(context, R.raw.splash_sound)
+
+
+        //binding.flowerImage.imageAlpha = currentAlpha
        //binding.rainButtonProgressbar.max = maxAlpha
         return binding.root
 
@@ -45,16 +48,18 @@ class GrowFragment : Fragment() {
         test.pieces?.let {
             if (it.isNotEmpty()) {
                 binding.flowerImage.setImageResource(it[currentImageIndex])
+                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
             }
         }
+
 
         viewModel.clickCount.observe(viewLifecycleOwner, Observer { count ->
             binding.textCount.text = "Count: $count"
         })
 
-        viewModel.currentAlpha.observe(viewLifecycleOwner, Observer { alpha ->
-            binding.flowerImage.imageAlpha = alpha
-        })
+//        viewModel.currentAlpha.observe(viewLifecycleOwner, Observer { alpha ->
+//            binding.flowerImage.imageAlpha = alpha
+//        })
 
         viewModel.isComplete.observe(viewLifecycleOwner, Observer { isComplete ->
             if (isComplete) {
@@ -79,16 +84,31 @@ class GrowFragment : Fragment() {
         // Increment count when button is clicked
         binding.flowerImage.setOnClickListener {
             viewModel.incrementCount()
-            binding.flowerImage.startAnimation(shrinkGrowAnimation)
+            binding.imageGroup.startAnimation(shrinkGrowAnimation)
+            playSound()
         }
+
         binding.goHomeButton.setOnClickListener {
             
         }
     }
 
+    private fun playSound() {
+        if (mediaPlayer.isPlaying) {
+            // Stop the current sound if already playing
+            mediaPlayer.stop()
+            mediaPlayer.prepare() // Prepare for the next play
+        }
+        mediaPlayer.start()
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         growFragmentBinding = null
+        if (this::mediaPlayer.isInitialized) {
+            mediaPlayer.release()
+        }
     }
 
 }

@@ -11,17 +11,21 @@ import androidx.lifecycle.Observer
 import com.example.wrinklethinkle.R
 import android.view.animation.AnimationUtils
 import com.example.wrinklethinkle.databinding.GrowFragmentBinding
-import com.example.wrinklethinkle.model.BlackDahlia
 import com.example.wrinklethinkle.viewmodel.GrowViewModel
 import android.media.MediaPlayer
+import com.example.wrinklethinkle.model.Flower
+import com.example.wrinklethinkle.model.FlowerType
+import com.example.wrinklethinkle.model.Player
+import com.example.wrinklethinkle.model.Inventory
+import android.app.AlertDialog
 
 class GrowFragment : Fragment() {
 
     private var growFragmentBinding: GrowFragmentBinding? = null
-    private var test = BlackDahlia
     private val viewModel: GrowViewModel by viewModels()
-    private var currentImageIndex = 0
+    private lateinit var selectedFlower: Flower
     private lateinit var mediaPlayer: MediaPlayer
+    private val player = Player
 
     private val binding get() = growFragmentBinding!!
 
@@ -31,65 +35,50 @@ class GrowFragment : Fragment() {
     ): View {
         growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
         mediaPlayer = MediaPlayer.create(context, R.raw.splash_sound)
-
-
-        //binding.flowerImage.imageAlpha = currentAlpha
-       //binding.rainButtonProgressbar.max = maxAlpha
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.selectedFlower(test)
+        // Show seed selection dialog at the start
+        showSeedSelectionDialog()
 
-        // Set the first image initially
-        test.pieces?.let {
-            if (it.isNotEmpty()) {
-                binding.flowerImage.setImageResource(it[currentImageIndex])
-                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
-            }
-        }
+        val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
 
+        // Handle click events on the flower image to grow the flower
+        binding.flowerImage.setOnClickListener {
+            // Check if selectedFlower is initialized
+            if (viewModel.selectedFlower != null) {
+                val clickCount = viewModel.clickCount.value ?: 0
 
-        viewModel.clickCount.observe(viewLifecycleOwner, Observer { count ->
-            binding.textCount.text = "Count: $count"
-        })
+                // Call grow() to update growth and apply clicks
+                selectedFlower.grow(clickCount, player)
 
-//        viewModel.currentAlpha.observe(viewLifecycleOwner, Observer { alpha ->
-//            binding.flowerImage.imageAlpha = alpha
-//        })
+                // Reset the ViewModel's count after applying the clicks
+                viewModel.reset()
 
-        viewModel.isComplete.observe(viewLifecycleOwner, Observer { isComplete ->
-            if (isComplete) {
-                Toast.makeText(context, "Complete!", Toast.LENGTH_SHORT).show()
-
-                test.pieces?.let { pieces ->
-                    if (currentImageIndex < pieces.size - 1) {
-                        // Move to the next image
-                        currentImageIndex++
-                        binding.flowerImage.setImageResource(pieces[currentImageIndex])
-
-                        // Reset state in ViewModel for the new image
-                        viewModel.reset()
-
-                    } else {
-                        Toast.makeText(context, "No more images to display", Toast.LENGTH_SHORT).show()
+                // Update the displayed image based on the flower's growth stage
+                selectedFlower.type.pieces?.let { pieces ->
+                    if (selectedFlower.growthStage - 1 < pieces.size) {
+                        binding.flowerImage.setImageResource(pieces[selectedFlower.growthStage - 1])
                     }
                 }
-            }
-        })
-        val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
-        // Increment count when button is clicked
-        binding.flowerImage.setOnClickListener {
-            viewModel.incrementCount()
-            binding.imageGroup.startAnimation(shrinkGrowAnimation)
-            playSound()
-        }
 
-        binding.goHomeButton.setOnClickListener {
-            
+                // Start the animation
+                binding.imageGroup.startAnimation(shrinkGrowAnimation)
+                playSound()
+
+                // Check if the flower is fully grown
+                if (selectedFlower.growthStage == Flower.MAX_GROWTH_STAGE) {
+                    Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
+                    player.inventory.addCompletedFlower(selectedFlower) // Add flower to player's inventory
+                    resetGrowScreen()
+                }
+            } else {
+                // Error handling if selectedFlower is null
+                Toast.makeText(requireContext(), "Flower not selected", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -102,6 +91,37 @@ class GrowFragment : Fragment() {
         mediaPlayer.start()
     }
 
+    private fun showSeedSelectionDialog() {
+        // Get available seeds from inventory
+        val availableSeeds = player.inventory.getAvailableSeeds()
+        if (availableSeeds.isEmpty()) {
+            Toast.makeText(context, "No seeds available!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val seedNames = availableSeeds.map { it.name }.toTypedArray()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Select a seed to plant")
+        builder.setItems(seedNames) { _, which ->
+            val selectedSeedType = availableSeeds[which]
+            selectedFlower = Flower(selectedSeedType)
+
+            // Set initial image
+            selectedFlower.type.pieces?.let { pieces ->
+                binding.flowerImage.setImageResource(pieces[0])
+                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
+            }
+
+            player.inventory.removeSeed(selectedSeedType)
+        }
+        builder.show()
+    }
+
+    private fun resetGrowScreen() {
+        selectedFlower = Flower(FlowerType.ROSE) // Reset to default flower or any choice
+        binding.flowerImage.setImageResource(R.drawable.icon_pot_blue) // Placeholder image
+        binding.textCount.text = "Count: 0"
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -110,5 +130,4 @@ class GrowFragment : Fragment() {
             mediaPlayer.release()
         }
     }
-
 }

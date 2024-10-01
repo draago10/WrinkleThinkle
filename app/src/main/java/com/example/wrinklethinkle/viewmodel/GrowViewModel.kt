@@ -18,7 +18,7 @@ class GrowViewModel : ViewModel() {
     private val _isComplete = MutableLiveData<Boolean>().apply { value = false }
     val isComplete: LiveData<Boolean> get() = _isComplete
 
-    private var selectedFlower: Flower? = null
+    var selectedFlower: Flower? = null
 
     fun selectedFlower(flower: Flower) {
         selectedFlower = flower

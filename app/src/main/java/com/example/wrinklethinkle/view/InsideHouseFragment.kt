@@ -12,7 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
+import com.example.wrinklethinkle.model.Player
 import com.example.wrinklethinkle.model.Inventory
+import com.example.wrinklethinkle.model.Flower
 
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null
@@ -63,7 +65,7 @@ class InsideHouseFragment : Fragment() {
 
     private fun showImageSelectionDialog(x: Float, y: Float) {
         // Get the list of completed flowers from the inventory
-        val completedFlowers = Inventory.completedFlowers
+        val completedFlowers = Player.inventory.completedFlowers
 
         // Check to make sure there are completed flowers in inventory
         if (completedFlowers.isEmpty()) {
@@ -76,10 +78,10 @@ class InsideHouseFragment : Fragment() {
         }
 
         // Extract the names of the completed flowers
-        val flowerNames = completedFlowers.map { it.name }.toTypedArray()
+        val flowerNames = completedFlowers.map { it.type.name }.toTypedArray()
 
         // Extract the image resource ID of the completed flowers
-        val images = completedFlowers.map { it.image }.toTypedArray()
+        val images = completedFlowers.map { it.type.image }.toTypedArray()
 
         // Show a dialog for selecting the image
         val builder = AlertDialog.Builder(requireContext())

@@ -120,7 +120,6 @@ class GrowFragment : Fragment() {
     private fun resetGrowScreen() {
         selectedFlower = Flower(FlowerType.ROSE) // Reset to default flower or any choice
         binding.flowerImage.setImageResource(R.drawable.icon_pot_blue) // Placeholder image
-        binding.textCount.text = "Count: 0"
     }
 
     override fun onDestroyView() {

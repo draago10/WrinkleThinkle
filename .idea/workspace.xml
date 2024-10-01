@@ -51,7 +51,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Working on the decoration dialog - minor error fixes">
+    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Major overhaul of classes and GrowFragment - WORK NEEDED">
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -59,12 +59,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Shop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Shop.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +255,8 @@
       <workItem from="1727586745846" duration="4630000" />
       <workItem from="1727635316811" duration="946000" />
       <workItem from="1727713027529" duration="1809000" />
-      <workItem from="1727798534549" duration="5028000" />
+      <workItem from="1727798534549" duration="5292000" />
+      <workItem from="1727810485128" duration="2137000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -348,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727714845823</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Major overhaul of classes and GrowFragment - WORK NEEDED">
+      <option name="closed" value="true" />
+      <created>1727803827200</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727803827200</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +381,7 @@
     <MESSAGE value="Minor fix to last commit: User can no longer place images on the Navbar" />
     <MESSAGE value="Working on the decoration dialog - minor errors(?)" />
     <MESSAGE value="Working on the decoration dialog - minor error fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on the decoration dialog - minor error fixes" />
+    <MESSAGE value="Major overhaul of classes and GrowFragment - WORK NEEDED" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major overhaul of classes and GrowFragment - WORK NEEDED" />
   </component>
 </project>

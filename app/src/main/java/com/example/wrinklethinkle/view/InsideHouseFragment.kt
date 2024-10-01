@@ -15,6 +15,7 @@ import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
 import com.example.wrinklethinkle.model.Player
 import com.example.wrinklethinkle.model.Inventory
 import com.example.wrinklethinkle.model.Flower
+import com.example.wrinklethinkle.model.FlowerType
 
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null

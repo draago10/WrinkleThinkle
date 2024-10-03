@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
-
+    <ImageView
+            android:layout_width="225dp"
+            android:layout_height="181dp" app:srcCompat="@drawable/item_background" android:id="@+id/imageView4"
+            tools:layout_editor_absoluteY="191dp" tools:layout_editor_absoluteX="16dp"/>
+    <ImageView
+            android:layout_width="131dp"
+            android:layout_height="100dp" app:srcCompat="@drawable/seeds_lily" android:id="@+id/imageView5"
+            tools:layout_editor_absoluteY="237dp" tools:layout_editor_absoluteX="64dp"/>
+    <TextView
+            android:text="7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView2" tools:layout_editor_absoluteY="198dp"
+            tools:layout_editor_absoluteX="124dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

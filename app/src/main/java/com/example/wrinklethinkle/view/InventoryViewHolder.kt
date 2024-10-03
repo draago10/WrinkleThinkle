@@ -21,6 +21,12 @@ class InventoryAdapter(val inventory:List<String>) : RecyclerView.Adapter<Invent
     }
 
     override fun onBindViewHolder(p0: InventoryViewHolder, p1: Int) {
-        val item = inventory[p1]
+        val item = inventory[p1];
+        p0.itemAmount.text = item
+//        p0.itemImage.setImageResource(item.imageResId)
+    }
+    override fun getItemCount(): Int {
+        return inventory.size
     }
 }
+

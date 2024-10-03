@@ -1,5 +1,7 @@
 package com.example.wrinklethinkle.model
 
+import Player
+
 class Flower(
     val type: FlowerType,     // The type of the flower (Rose, Tulip, etc.)
     var growthStage: Int = 1, // Current growth stage of the flower (1 to 4)
@@ -23,7 +25,7 @@ class Flower(
             player.gainExperience(xpGain)
 
             // Add the fully grown flower to the player's inventory
-            player.inventory.addCompletedFlower(this)
+            //player.inventory.addCompletedFlower(this)
         }
     }
 

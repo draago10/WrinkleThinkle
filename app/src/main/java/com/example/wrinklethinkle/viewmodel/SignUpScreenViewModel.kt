@@ -3,6 +3,7 @@ package com.example.wrinklethinkle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.wrinklethinkle.model.FlowerType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -29,13 +30,24 @@ class SignUpScreenViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid
                     if (uid != null) {
+                        val inventory = mutableMapOf<String, Map<String, Any>>()
+                        val startFlower = FlowerType.ROSE
+                        val startFlowerMap = mapOf(
+                             "rank" to startFlower.rank,
+                            "location" to startFlower.location,
+                            "seedCost" to startFlower.seedCost,
+                            "clickMultiplier" to startFlower.clickMultiplier,
+                            "sellPrice" to startFlower.sellPrice
+                        )
+                        inventory[startFlower.name] = startFlowerMap
+
                         val defaultUserData = hashMapOf(
                             "name" to playerName,
                             "level" to 1,
                             "experience" to 0,
                             "clickPower" to 1.0,
-                            "gold" to 100,
-                            "inventory" to emptyList<String>()
+                            "gold" to 0,
+                            "inventory" to inventory
                         )
 
                         database.child("users").child(uid).setValue(defaultUserData)

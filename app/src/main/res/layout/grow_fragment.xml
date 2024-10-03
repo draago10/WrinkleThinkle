@@ -102,7 +102,7 @@
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:id="@+id/grow_frag_map_icon"
+                android:id="@+id/grow_frag_shop_icon"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:background="@drawable/icon_shop"
@@ -126,14 +126,14 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_inventory"
-                android:id="@+id/House_InventoryButton"
+                android:id="@+id/grow_InventoryButton"
                 android:scaleType="centerCrop" />
 
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_weight="1"
-                android:id="@+id/House_MapButton"
+                android:id="@+id/grow_MapButton"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_map"
                 android:scaleType="centerCrop" />

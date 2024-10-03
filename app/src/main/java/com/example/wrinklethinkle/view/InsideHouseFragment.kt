@@ -7,15 +7,15 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
-import com.example.wrinklethinkle.model.Player
-import com.example.wrinklethinkle.model.Inventory
-import com.example.wrinklethinkle.model.Flower
-import com.example.wrinklethinkle.model.FlowerType
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
+import com.example.wrinklethinkle.viewmodel.SignInScreenViewModel
 
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null
@@ -23,15 +23,26 @@ class InsideHouseFragment : Fragment() {
 
     // Selected image resource ID, default to some image
     private var selectedImageResId: Int = R.drawable.black_dahlia_flower_sprout
+    private val playerViewModel: PlayerViewModel by activityViewModels()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         insideHouseFragmentBinding = FragmentInsideHouseBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
+            player?.let {
+                // Use Player data
+                Toast.makeText(context, "Player: ${player.name}, Level: ${player.level}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
         // Set up existing navigation buttons
         binding.HouseGrowButton.setOnClickListener {
@@ -62,19 +73,17 @@ class InsideHouseFragment : Fragment() {
             }
             true
         }
+        //Toast.makeText(context, Player.name, Toast.LENGTH_SHORT).show()
     }
 
     private fun showImageSelectionDialog(x: Float, y: Float) {
         // Get the list of completed flowers from the inventory
-        val completedFlowers = Player.inventory.completedFlowers
+        /*val completedFlowers = Player.inventory.completedFlowers
 
         // Check to make sure there are completed flowers in inventory
         if (completedFlowers.isEmpty()) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("No Completed Flowers")
-                .setMessage("There are no completed flowers in your inventory")
-                .setPositiveButton(android.R.string.ok) { _, _ -> }
-                .show()
+            Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oops, something went wrong...", "You don't have any completed flowers in your inventory.")
+
             return
         }
 
@@ -97,7 +106,7 @@ class InsideHouseFragment : Fragment() {
         }
 
         // Show the dialog
-        builder.show()
+        builder.show()*/
     }
 
     private fun placeImageAtLocation(x: Float, y: Float) {

@@ -1,5 +1,6 @@
 package com.example.wrinklethinkle.view
 
+import Player
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.wrinklethinkle.R
 import android.view.animation.AnimationUtils
 import com.example.wrinklethinkle.databinding.GrowFragmentBinding
@@ -15,9 +15,8 @@ import com.example.wrinklethinkle.viewmodel.GrowViewModel
 import android.media.MediaPlayer
 import com.example.wrinklethinkle.model.Flower
 import com.example.wrinklethinkle.model.FlowerType
-import com.example.wrinklethinkle.model.Player
-import com.example.wrinklethinkle.model.Inventory
-import android.app.AlertDialog
+import androidx.navigation.fragment.findNavController
+import com.example.wrinklethinkle.Utility.Utility
 
 class GrowFragment : Fragment() {
 
@@ -25,7 +24,7 @@ class GrowFragment : Fragment() {
     private val viewModel: GrowViewModel by viewModels()
     private lateinit var selectedFlower: Flower
     private lateinit var mediaPlayer: MediaPlayer
-    private val player = Player
+    //private val player = Player
 
     private val binding get() = growFragmentBinding!!
 
@@ -45,6 +44,21 @@ class GrowFragment : Fragment() {
         showSeedSelectionDialog()
 
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
+        binding.goHomeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_InsideHouseFragment)
+        }
+        binding.growFragShopIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_ShopFragment)
+        }
+        binding.growInventoryButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_InventoryFragment)
+        }
+        binding.growMapButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_MapFragment)
+        }
+        binding.growIcon.setOnClickListener {
+            Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
+        }
 
         // Handle click events on the flower image to grow the flower
         binding.flowerImage.setOnClickListener {
@@ -53,7 +67,7 @@ class GrowFragment : Fragment() {
                 val clickCount = viewModel.clickCount.value ?: 0
 
                 // Call grow() to update growth and apply clicks
-                selectedFlower.grow(clickCount, player)
+                //selectedFlower.grow(clickCount, player)
 
                 // Reset the ViewModel's count after applying the clicks
                 viewModel.reset()
@@ -72,7 +86,7 @@ class GrowFragment : Fragment() {
                 // Check if the flower is fully grown
                 if (selectedFlower.growthStage == Flower.MAX_GROWTH_STAGE) {
                     Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
-                    player.inventory.addCompletedFlower(selectedFlower) // Add flower to player's inventory
+                    //player.inventory.addCompletedFlower(selectedFlower) // Add flower to player's inventory
                     resetGrowScreen()
                 }
             } else {
@@ -93,28 +107,28 @@ class GrowFragment : Fragment() {
 
     private fun showSeedSelectionDialog() {
         // Get available seeds from inventory
-        val availableSeeds = player.inventory.getAvailableSeeds()
-        if (availableSeeds.isEmpty()) {
-            Toast.makeText(context, "No seeds available!", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val seedNames = availableSeeds.map { it.name }.toTypedArray()
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Select a seed to plant")
-        builder.setItems(seedNames) { _, which ->
-            val selectedSeedType = availableSeeds[which]
-            selectedFlower = Flower(selectedSeedType)
-
-            // Set initial image
-            selectedFlower.type.pieces?.let { pieces ->
-                binding.flowerImage.setImageResource(pieces[0])
-                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
-            }
-
-            player.inventory.removeSeed(selectedSeedType)
-        }
-        builder.show()
+//        val availableSeeds = player.inventory.getAvailableSeeds()
+//        if (availableSeeds.isEmpty()) {
+//            Toast.makeText(context, "No seeds available!", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        val seedNames = availableSeeds.map { it.name }.toTypedArray()
+//        val builder = AlertDialog.Builder(requireContext())
+//        builder.setTitle("Select a seed to plant")
+//        builder.setItems(seedNames) { _, which ->
+//            val selectedSeedType = availableSeeds[which]
+//            selectedFlower = Flower(selectedSeedType)
+//
+//            // Set initial image
+//            selectedFlower.type.pieces?.let { pieces ->
+//                binding.flowerImage.setImageResource(pieces[0])
+//                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
+//            }
+//
+//            player.inventory.removeSeed(selectedSeedType)
+//        }
+//        builder.show()
     }
 
     private fun resetGrowScreen() {

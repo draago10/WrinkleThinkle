@@ -1,19 +1,19 @@
-package com.example.wrinklethinkle.model
+import android.os.Parcel
+import android.os.Parcelable
 
-object Player {
-    val name: String = ""
-    var level: Int = 1              // Player starts at level 1
-    var gold: Int = 0               // Player starts with 0 gold
-    var clickPower: Double = 1.0    // Base click power, increases with level
-    var experience: Int = 0         // Player's current experience
-    val inventory = Inventory     // Player's inventory
+data class Player(
+    var name: String = "",
+    var level: Int = 1,             // Player starts at level 1
+    var gold: Int = 0,              // Player starts with 0 gold
+    var clickPower: Double = 1.0,   // Base click power, increases with level
+    var experience: Int = 0,        // Player's current experience
+    var inventory: MutableList<String> = mutableListOf()   // Player's inventory
+) : Parcelable {
 
-    // Calculate experience required for next level
     fun expToNextLevel(): Int {
         return 100 * level
     }
 
-    // Gain experience and level up if necessary
     fun gainExperience(exp: Int) {
         experience += exp
         if (experience >= expToNextLevel()) {
@@ -21,10 +21,42 @@ object Player {
         }
     }
 
-    // Level up the player
     private fun levelUp() {
         level++
         experience = 0
         clickPower += 0.1
+    }
+
+    // Parcelable implementation
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readDouble(),
+        parcel.readInt(),
+        parcel.createStringArrayList() as MutableList<String>
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeInt(level)
+        parcel.writeInt(gold)
+        parcel.writeDouble(clickPower)
+        parcel.writeInt(experience)
+        parcel.writeStringList(inventory)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Player> {
+        override fun createFromParcel(parcel: Parcel): Player {
+            return Player(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Player?> {
+            return arrayOfNulls(size)
+        }
     }
 }

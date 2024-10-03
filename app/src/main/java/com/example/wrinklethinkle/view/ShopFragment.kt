@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
-import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
 import com.example.wrinklethinkle.databinding.FragmentShopBinding
 
 class ShopFragment : Fragment() {
     private var shopFragmentBinding: FragmentShopBinding? = null
     private val binding get() = shopFragmentBinding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class ShopFragment : Fragment() {
             findNavController().navigate(R.id.action_ShopFragment_to_MapFragment)
         }
         binding.homeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
+            //findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
         }
     }
 

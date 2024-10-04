@@ -9,16 +9,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
 import com.example.wrinklethinkle.model.PlayerCharacter
 import com.example.wrinklethinkle.model.FlowerType
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null
     private val binding get() = insideHouseFragmentBinding!!
 
+    private val playerViewModel: PlayerViewModel by activityViewModels()
     lateinit var player: PlayerCharacter
 
     // Selected image resource ID, default to some image
@@ -26,6 +29,7 @@ class InsideHouseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         insideHouseFragmentBinding = FragmentInsideHouseBinding.inflate(inflater, container, false)
+        player = playerViewModel.player ?: PlayerCharacter(name = "Player")
         return binding.root
     }
 

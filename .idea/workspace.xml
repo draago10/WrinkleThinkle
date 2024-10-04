@@ -51,22 +51,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" afterDir="false" />
+    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/PlayerViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Flower.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Inventory.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Player.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/Shop.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/GrowViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/GrowViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +262,7 @@
       <workItem from="1727995106258" duration="5162000" />
       <workItem from="1728009594394" duration="4949000" />
       <workItem from="1728053541159" duration="869000" />
-      <workItem from="1728059247835" duration="4984000" />
+      <workItem from="1728059247835" duration="6805000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -373,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727813449517</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;">
+      <option name="closed" value="true" />
+      <created>1728064550836</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1728064550836</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,6 +406,7 @@
     <MESSAGE value="Major overhaul of classes and GrowFragment - WORK NEEDED" />
     <MESSAGE value="Major overhaul of classes and GrowFragment #2 - WORK NEEDED" />
     <MESSAGE value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment." />
-    <option name="LAST_COMMIT_MESSAGE" value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment." />
+    <MESSAGE value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;" />
   </component>
 </project>

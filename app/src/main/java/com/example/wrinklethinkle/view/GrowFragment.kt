@@ -12,13 +12,17 @@ import android.view.animation.AnimationUtils
 import com.example.wrinklethinkle.databinding.GrowFragmentBinding
 import android.media.MediaPlayer
 import android.app.AlertDialog
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.wrinklethinkle.model.*
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 
 class GrowFragment : Fragment() {
 
     private var growFragmentBinding: GrowFragmentBinding? = null
     private lateinit var selectedFlowerType: FlowerType
     private lateinit var mediaPlayer: MediaPlayer
+    private val playerViewModel: PlayerViewModel by activityViewModels()
     lateinit var player: PlayerCharacter
     private var clickCount = 0
     private var growthStage = 0  // New property to track growth stage
@@ -30,6 +34,7 @@ class GrowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
+        player = playerViewModel.player ?: PlayerCharacter(name = "Player")
         mediaPlayer = MediaPlayer.create(context, R.raw.splash_sound)
         return binding.root
     }

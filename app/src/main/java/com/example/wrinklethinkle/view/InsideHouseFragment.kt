@@ -73,7 +73,7 @@ class InsideHouseFragment : Fragment() {
         val availableFlowers = player.flowers.filter { it.value > 0 }
 
         // Check to make sure there are available flowers in inventory
-        if (availableFlowers.size <= 0) {
+        if (availableFlowers.isEmpty()) {
             AlertDialog.Builder(requireContext())
                 .setTitle("No Completed Flowers")
                 .setMessage("There are no completed flowers in your inventory")
@@ -99,7 +99,7 @@ class InsideHouseFragment : Fragment() {
             // Set selected image resource by indexing into the images list
             selectedImageResId = images[which]
             // Place the image at the selected location
-            placeImageAtLocation(x, y)
+            placeImageAtLocation(x, y, flowerNames[which])
             player.removeFlower(flowerNames[which], 1)
         }
 
@@ -107,13 +107,15 @@ class InsideHouseFragment : Fragment() {
         builder.show()
     }
 
-    private fun placeImageAtLocation(x: Float, y: Float) {
+    private fun placeImageAtLocation(x: Float, y: Float, flowerName: String) {
         // Create a new ImageView and set its image resource
         val imageView = ImageView(requireContext()).apply {
             setImageResource(selectedImageResId)
             layoutParams = ViewGroup.LayoutParams(200, 200)
             this.x = x - 100 // Adjust placement as needed
             this.y = y - 200
+
+            tag = flowerName
         }
 
         // Add the new ImageView to the root layout
@@ -125,7 +127,14 @@ class InsideHouseFragment : Fragment() {
                 .setTitle("Remove Image")
                 .setMessage("Are you sure you want to remove this image?")
                 .setPositiveButton(android.R.string.ok) { _, _ ->
+                    // Remove the image from the layout
                     (v?.parent as? ViewGroup)?.removeView(v)
+
+                    // Retrieve the flower name from the tag and add it back to the player's flowers map
+                    val flowerNameToAdd = v?.tag as? String
+                    if (flowerNameToAdd != null) {
+                        player.addFlower(flowerNameToAdd, 1)
+                    }
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()

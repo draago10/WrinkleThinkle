@@ -63,7 +63,8 @@ class GrowFragment : Fragment() {
             } else {
                 // Handle fully grown flower
                 Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
-                player.addFlower(selectedFlowerType.name, 1) // Add flower to player's inventory
+                player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
+                player.removeSeed(selectedFlowerType.name, 1) // Remove seed from player's seeds map
                 resetGrowScreen()
             }
         }

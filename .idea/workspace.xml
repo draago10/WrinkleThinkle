@@ -20,7 +20,7 @@
           <theme>@style/Theme.WrinkleThinkle</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_app_start.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_error_dialog.xml">
         <config>
           <theme>@style/Theme.WrinkleThinkle</theme>
         </config>
@@ -51,24 +51,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Added PlayerViewModel and passed the PlayerCharacter instance between GrowFragment and InsideHouseFragment">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/project_gnome.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="THE MERGING OF THE DANIELAARON">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/AppStartFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/InsideHouseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/SignInFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/SignInFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/SignUpFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/SignUpFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/SignInScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/SignInScreenViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/SignUpScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/viewmodel/SignUpScreenViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_app_start.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,8 +157,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="C:\Users\darkf\IdeaProjects\WrinkleThinkle\app\src\main\res\drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="C:\Users\darkf\IdeaProjects\WrinkleThinkle\app\src\main\res\layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
     </key>
@@ -270,7 +255,8 @@
       <workItem from="1728009594394" duration="4949000" />
       <workItem from="1728053541159" duration="869000" />
       <workItem from="1728059247835" duration="6949000" />
-      <workItem from="1728073443801" duration="2885000" />
+      <workItem from="1728073443801" duration="3162000" />
+      <workItem from="1728078276670" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -392,7 +378,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728066261513</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="THE MERGING OF THE DANIELAARON">
+      <option name="closed" value="true" />
+      <created>1728076575064</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1728076575064</updated>
+    </task>
+    <task id="LOCAL-00017" summary="THE MERGING OF THE DANIELAARON">
+      <option name="closed" value="true" />
+      <created>1728076623863</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1728076623863</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,6 +426,7 @@
     <MESSAGE value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment." />
     <MESSAGE value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;" />
     <MESSAGE value="Added PlayerViewModel and passed the PlayerCharacter instance between GrowFragment and InsideHouseFragment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added PlayerViewModel and passed the PlayerCharacter instance between GrowFragment and InsideHouseFragment" />
+    <MESSAGE value="THE MERGING OF THE DANIELAARON" />
+    <option name="LAST_COMMIT_MESSAGE" value="THE MERGING OF THE DANIELAARON" />
   </component>
 </project>

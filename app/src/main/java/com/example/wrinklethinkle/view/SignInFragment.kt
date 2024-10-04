@@ -24,7 +24,7 @@ class SignInFragment : Fragment() {
     private val playerViewModel: PlayerViewModel by activityViewModels()
     private lateinit var auth: FirebaseAuth
 
-    private var emailText = ""
+    private var emailText = " "
     private var passwordText = ""
     private var errorMessage = ""
 

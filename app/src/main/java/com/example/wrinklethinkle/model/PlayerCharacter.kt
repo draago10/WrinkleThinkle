@@ -1,7 +1,7 @@
 package com.example.wrinklethinkle.model
 
 class PlayerCharacter (
-    val name: String,          // Player's name
+    var name: String,          // Player's name
     var level: Int = 1,        // Player's level
     var experience: Int = 0,   // Player's experience points
     var gold: Int = 0,         // Player's gold currency

@@ -36,7 +36,7 @@ class InsideHouseFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        player.addFlower("rose", 1)
         // Set up existing navigation buttons
         binding.HouseGrowButton.setOnClickListener {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_GrowFragment)
@@ -73,7 +73,7 @@ class InsideHouseFragment : Fragment() {
         val availableFlowers = player.flowers.filter { it.value > 0 }
 
         // Check to make sure there are available flowers in inventory
-        if (availableFlowers.isEmpty()) {
+        if (availableFlowers.size <= 0) {
             AlertDialog.Builder(requireContext())
                 .setTitle("No Completed Flowers")
                 .setMessage("There are no completed flowers in your inventory")
@@ -100,6 +100,7 @@ class InsideHouseFragment : Fragment() {
             selectedImageResId = images[which]
             // Place the image at the selected location
             placeImageAtLocation(x, y)
+            player.removeFlower(flowerNames[which], 1)
         }
 
         // Show the dialog

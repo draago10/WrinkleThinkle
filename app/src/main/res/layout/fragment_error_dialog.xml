@@ -19,18 +19,15 @@
             android:clipChildren="true"
             android:clipToPadding="true"
             android:background="@drawable/rounded_background">
-        <!-- Title Text -->
 
         <ImageView
                 android:id="@+id/popup_image"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:src="@drawable/error_screen_cat"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintHorizontal_bias="0.497" />
+                android:scaleType="centerCrop" />
 
         <TextView
                 android:id="@+id/popup_title"
@@ -38,20 +35,20 @@
                 android:layout_height="wrap_content"
                 android:text="Oops! Something went wrong..."
                 android:textStyle="bold"
-                android:textSize="35sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/popup_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center" />
-
+                android:gravity="center"
+                android:layout_marginTop="16dp" />
         <!-- Subtext -->
         <TextView
                 android:id="@+id/popup_message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Please try again."
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintTop_toBottomOf="@id/popup_title"
                 app:layout_constraintStart_toStartOf="parent"

@@ -47,21 +47,21 @@ class SignUpFragment : Fragment() {
             if (success) {
                 val navController = findNavController()
                 val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
-                navController.navigate(R.id.action_signUpFragment_to_appStartFragment, null, navOptions)
+                navController.navigate(R.id.action_signUpFragment_to_insideHouseFragment, null, navOptions)
             } else {
-                Utility().showErrorPopup(childFragmentManager, requireContext(), "Oops, something went wrong...", errorMessage, { poop() })
+                Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat,"Oops, something went wrong...", errorMessage, { poop() })
             }
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) { error ->
-                error.let {
-                    errorMessage = it
-                }
+            error.let {
+                errorMessage = it
+            }
         }
 
         binding.signUpScreenSignupButton.setOnClickListener {
             if (binding.signUpScreenEmail.text.toString().isEmpty() || binding.signUpScreenPassword.text.toString().isEmpty()) {
-                Utility().showErrorPopup(childFragmentManager, requireContext(), "Oops, empty fields detected!", "Please do not leave the fields empty.", {poop()})
+                Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat,"Oops, empty fields detected!", "Please do not leave the fields empty.", {poop()})
             } else {
                 email = binding.signUpScreenEmail.text.toString().trim()
                 password = binding.signUpScreenPassword.text.toString().trim()

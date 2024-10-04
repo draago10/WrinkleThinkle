@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.wrinklethinkle.databinding.FragmentErrorDialogBinding
 
 class ErrorPopupDialog(
+    private val image: Int,
     private val title: String,
     private val message: String,
     private val onCancelClicked: () -> Unit
@@ -18,7 +19,7 @@ class ErrorPopupDialog(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentErrorDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -26,7 +27,8 @@ class ErrorPopupDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set title and message
+        // Set title image, and message
+        binding.popupImage.setImageResource(image)
         binding.popupTitle.text = title
         binding.popupMessage.text = message
 

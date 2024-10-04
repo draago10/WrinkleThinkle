@@ -41,7 +41,7 @@ class GrowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        player.addSeed("rose", 1)
         // Show seed selection dialog at the start
         showSeedSelectionDialog(player)
 

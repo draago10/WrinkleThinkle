@@ -1,8 +1,8 @@
 package com.example.wrinklethinkle.model
 
-class Player {
+object Player {
     var level: Int = 1              // Player starts at level 1
-    var gold: Int = 0               // Player starts with 0 gold
+    var gold: Int = 200               // Player starts with 0 gold
     var clickPower: Double = 1.0    // Base click power, increases with level
     var experience: Int = 0         // Player's current experience
     val inventory = Inventory()     // Player's inventory

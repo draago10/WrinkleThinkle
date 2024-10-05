@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
 import com.example.wrinklethinkle.databinding.FragmentShopBinding
+import com.example.wrinklethinkle.model.FlowerType
+import com.example.wrinklethinkle.model.Player
+import com.example.wrinklethinkle.model.Shop
 
 class ShopFragment : Fragment() {
     private var shopFragmentBinding: FragmentShopBinding? = null
@@ -31,6 +34,17 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var player = Player
+        var shop = Shop
+
+        player.inventory.seeds.put(FlowerType.ROSE, 0)
+        player.inventory.seeds.put(FlowerType.TULIP, 0)
+        player.inventory.seeds.put(FlowerType.LILY, 0)
+        player.inventory.seeds.put(FlowerType.DAHLIA, 0)
+
+        binding.coinBalance.text = player.gold.toString()
+
         binding.growIcon.setOnClickListener {
             findNavController().navigate(R.id.action_ShopFragment_to_GrowFragment)
         }
@@ -46,6 +60,57 @@ class ShopFragment : Fragment() {
         }
         binding.homeButton.setOnClickListener {
             findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
+        }
+        binding.purchaseFertilizer.setOnClickListener {
+
+            if (player.gold >= 10)
+            {
+                shop.buyFertilizer(player, 10)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+        }
+        binding.purchasePesticide.setOnClickListener {
+
+            if (player.gold >= 30)
+            {
+                shop.buyPesticide(player, 30)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+        }
+        binding.purchaseRose.setOnClickListener {
+
+            if (player.gold >= FlowerType.ROSE.seedCost)
+            {
+                shop.buySeed(player, FlowerType.ROSE)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+        }
+        binding.purchaseTulip.setOnClickListener {
+            if (player.gold >= FlowerType.TULIP.seedCost)
+            {
+                shop.buySeed(player, FlowerType.TULIP)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+        }
+        binding.purchaseLily.setOnClickListener {
+            if (player.gold >= FlowerType.LILY.seedCost)
+            {
+                shop.buySeed(player, FlowerType.LILY)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+        }
+        binding.purchaseDahlia.setOnClickListener {
+            if (player.gold >= FlowerType.DAHLIA.seedCost)
+            {
+                shop.buySeed(player, FlowerType.DAHLIA)
+                binding.coinBalance.text = player.gold.toString()
+            }
+            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
         }
     }
 

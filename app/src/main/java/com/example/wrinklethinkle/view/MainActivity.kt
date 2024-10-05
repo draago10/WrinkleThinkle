@@ -18,16 +18,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-    private val playerViewModel: PlayerViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Initialize player
-        playerViewModel.player = PlayerCharacter(name = "Player")
 
         // Set up toolbar
         setSupportActionBar(binding.toolbar)

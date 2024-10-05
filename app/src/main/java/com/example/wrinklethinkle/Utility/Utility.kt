@@ -9,6 +9,7 @@ class Utility {
     fun showErrorPopup(
         fragmentManager: FragmentManager,
         context: Context,
+        image: Int,
         title: String = "Error",
         message: String = "Something went wrong. Please try again.",
         onCancelClicked: () -> Unit = {
@@ -21,6 +22,7 @@ class Utility {
         }
     ) {
         val dialog = ErrorPopupDialog(
+            image = image,
             title = title,
             message = message,
             onCancelClicked = {

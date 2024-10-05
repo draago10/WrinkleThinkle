@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.example.wrinklethinkle.model.PlayerCharacter
+import kotlinx.coroutines.flow.flow
 
 
 class SignInScreenViewModel : ViewModel() {
@@ -44,33 +45,36 @@ class SignInScreenViewModel : ViewModel() {
     }
 
     // Fetch user data from Firebase and post Player object to LiveData
-//    fun fetchUserData(userId: String) {
-//        val userRef = database.child("users").child(userId)
-//        userRef.get().addOnSuccessListener { snapshot ->
-//            if (snapshot.exists()) {
-//                val userData = snapshot.value as? Map<String, Any>
-//                if (userData != null) {
-//                    val name = userData["name"].toString()
-//                    val level = (userData["level"] as? Long)?.toInt() ?: 1
-//                    val gold = (userData["gold"] as? Long)?.toInt() ?: 0
-//                    val clickPower = (userData["clickPower"] as? Double) ?: 1.0
-//                    val experience = (userData["experience"] as? Long)?.toInt() ?: 0
-//                    val inventoryList = userData["inventory"] as? Map<String, Map<String, Any>> ?: mapOf()
-//
-//                    // Create a Player object with the fetched data
-//                    val player = PlayerCharacter()
-//
-//                    // Post Player object to LiveData
-//                    _playerData.postValue(player)
-//
-//                    // Log success
-//                    Log.d("SignInScreenViewModel", "Player data successfully fetched: $player")
-//                }
-//            } else {
-//                Log.d("SignInScreenViewModel", "User data does not exist.")
-//            }
-//        }.addOnFailureListener { exception ->
-//            Log.e("SignInScreenViewModel", "Error fetching user data: ${exception.message}")
-//        }
-//    }
+    fun fetchUserData(userId: String) {
+        val userRef = database.child("users").child(userId)
+        userRef.get().addOnSuccessListener { snapshot ->
+            if (snapshot.exists()) {
+                val userData = snapshot.value as? Map<String, Any>
+                if (userData != null) {
+                    val name = userData["name"].toString()
+                    val level = (userData["level"] as? Long)?.toInt() ?: 1
+                    val gold = (userData["gold"] as? Long)?.toInt() ?: 0
+                    val clickPower = (userData["clickPower"] as? Double) ?: 1.0
+                    val experience = (userData["experience"] as? Long)?.toInt() ?: 0
+                    val pesticide = (userData["pesticide"] as? Long)?.toInt() ?: 1
+                    val fertilizer = (userData["fertilizer"] as? Long)?.toInt() ?: 1
+                    var flowers = userData["flowers"] as? MutableMap<String, Int> ?: mutableMapOf()
+                    var seeds = userData["seeds"] as? MutableMap<String, Int> ?: mutableMapOf()
+
+                    // Create a Player object with the fetched data
+                    val player = PlayerCharacter(name, level, experience, gold, clickPower, pesticide, fertilizer, flowers, seeds)
+
+                    // Post Player object to LiveData
+                    _playerData.postValue(player)
+
+                    // Log success
+                    Log.d("SignInScreenViewModel", "Player data successfully fetched: $player")
+                }
+            } else {
+                Log.d("SignInScreenViewModel", "User data does not exist.")
+            }
+        }.addOnFailureListener { exception ->
+            Log.e("SignInScreenViewModel", "Error fetching user data: ${exception.message}")
+        }
+    }
 }

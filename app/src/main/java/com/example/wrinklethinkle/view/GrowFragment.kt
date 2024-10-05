@@ -23,7 +23,6 @@ class GrowFragment : Fragment() {
     private lateinit var selectedFlowerType: FlowerType
     private lateinit var mediaPlayer: MediaPlayer
     private val playerViewModel: PlayerViewModel by activityViewModels()
-    lateinit var player: PlayerCharacter
     private var clickCount = 0
     private var growthStage = 0  // New property to track growth stage
 
@@ -34,38 +33,36 @@ class GrowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
-        player = playerViewModel.player ?: PlayerCharacter(name = "Player")
         mediaPlayer = MediaPlayer.create(context, R.raw.splash_sound)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        player.addSeed("rose", 1)
-        // Show seed selection dialog at the start
-        showSeedSelectionDialog(player)
-
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
+        playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
+            // Show seed selection dialog at the start
+            showSeedSelectionDialog(player)
+            // Handle click events on the flower image to grow the flower
+            binding.flowerImage.setOnClickListener {
+                if (growthStage < 4) {  // Limit growth stages to 4
+                    // Increase the click count based on player clickPower
+                    clickCount += (1 * player.clickPower).toInt()
 
-        // Handle click events on the flower image to grow the flower
-        binding.flowerImage.setOnClickListener {
-            if (growthStage < 4) {  // Limit growth stages to 4
-                // Increase the click count based on player clickPower
-                clickCount += (1 * player.clickPower).toInt()
-
-                // If clickCount reaches 50, grow the flower and reset clickCount
-                if (clickCount >= 50) {
-                    clickCount = 0  // Reset click count after reaching 50
-                    growFlower()
-                    binding.imageGroup.startAnimation(shrinkGrowAnimation)
-                    playSound()
+                    // If clickCount reaches 50, grow the flower and reset clickCount
+                    if (clickCount >= 50) {
+                        clickCount = 0  // Reset click count after reaching 50
+                        growFlower()
+                        binding.imageGroup.startAnimation(shrinkGrowAnimation)
+                        playSound()
+                    }
+                } else {
+                    // Handle fully grown flower
+                    Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
+                    player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
+                    player.removeSeed(selectedFlowerType.name, 1) // Remove seed from player's seeds map
+                    resetGrowScreen()
                 }
-            } else {
-                // Handle fully grown flower
-                Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
-                player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
-                player.removeSeed(selectedFlowerType.name, 1) // Remove seed from player's seeds map
-                resetGrowScreen()
             }
         }
     }

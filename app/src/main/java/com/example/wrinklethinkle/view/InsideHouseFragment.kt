@@ -22,21 +22,18 @@ class InsideHouseFragment : Fragment() {
     private val binding get() = insideHouseFragmentBinding!!
 
     private val playerViewModel: PlayerViewModel by activityViewModels()
-    lateinit var player: PlayerCharacter
 
     // Selected image resource ID, default to some image
     private var selectedImageResId: Int = R.drawable.black_dahlia_flower_sprout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         insideHouseFragmentBinding = FragmentInsideHouseBinding.inflate(inflater, container, false)
-        player = playerViewModel.player ?: PlayerCharacter(name = "Player")
         return binding.root
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        player.addFlower("rose", 1)
         // Set up existing navigation buttons
         binding.HouseGrowButton.setOnClickListener {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_GrowFragment)
@@ -61,14 +58,16 @@ class InsideHouseFragment : Fragment() {
                 // Check if the click is above the navbar area
                 if (event.y < (screenHeight - navbarHeight)) {
                     // Show the dialog to select an image at the click location if outside navbar
-                    showImageSelectionDialog(event.x, event.y)
+                    playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
+                        showImageSelectionDialog(player,event.x, event.y)
+                    }
                 }
             }
             true
         }
     }
 
-    private fun showImageSelectionDialog(x: Float, y: Float) {
+    private fun showImageSelectionDialog(player: PlayerCharacter,x: Float, y: Float) {
         // Get the list of flowers from the PlayerCharacter's flowers map
         val availableFlowers = player.flowers.filter { it.value > 0 }
 
@@ -99,7 +98,7 @@ class InsideHouseFragment : Fragment() {
             // Set selected image resource by indexing into the images list
             selectedImageResId = images[which]
             // Place the image at the selected location
-            placeImageAtLocation(x, y, flowerNames[which])
+            placeImageAtLocation(player, x, y, flowerNames[which])
             player.removeFlower(flowerNames[which], 1)
         }
 
@@ -107,7 +106,7 @@ class InsideHouseFragment : Fragment() {
         builder.show()
     }
 
-    private fun placeImageAtLocation(x: Float, y: Float, flowerName: String) {
+    private fun placeImageAtLocation(player: PlayerCharacter,x: Float, y: Float, flowerName: String) {
         // Create a new ImageView and set its image resource
         val imageView = ImageView(requireContext()).apply {
             setImageResource(selectedImageResId)

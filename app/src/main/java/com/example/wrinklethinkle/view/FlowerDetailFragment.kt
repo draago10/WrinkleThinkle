@@ -20,20 +20,6 @@ class FlowerDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val token = "augA35caT0-s8xF3iwFPSZhf0TMIQteDZ_SoY57BSvg"
-        var searchQuery = "coconut"
-
-        viewModel.flowers.observe(this, Observer { flowers ->
-            flowers.forEach { flower ->
-                println("Plant Name: ${flower.bibliography}, Scientific Name: ${flower.scientific_name}")
-            }
-        })
-
-        viewModel.error.observe(this, Observer { error ->
-            Toast.makeText(context, error, Toast.LENGTH_LONG).show()
-        })
-
-        viewModel.searchFlowers(token, searchQuery)
     }
 
     override fun onCreateView(

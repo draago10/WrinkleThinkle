@@ -31,14 +31,20 @@ class SignUpScreenViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid
                     if (uid != null) {
-
+                        val emptyFlowers = mutableMapOf<String, Int>()
+                        var defaultSeed = mutableMapOf(
+                            "rose" to 1
+                        )
                         val defaultUserData = hashMapOf(
                             "name" to playerName,
                             "level" to 1,
                             "experience" to 0,
                             "clickPower" to 1.0,
                             "gold" to 0,
-
+                            "pesticide" to 0,
+                            "fertilizer" to 0,
+                            "flowers" to emptyFlowers,
+                            "seeds" to defaultSeed
                         )
 
                         database.child("users").child(uid).setValue(defaultUserData)

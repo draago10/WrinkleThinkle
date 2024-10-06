@@ -1,5 +1,6 @@
 package com.example.wrinklethinkle.model
 
+import com.example.wrinklethinkle.network.FirebaseManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -15,10 +16,10 @@ object Shop
 
             // Firebase reference for the player's flowers
             val userId = FirebaseAuth.getInstance().currentUser?.uid
-            val flowerRef = FirebaseDatabase.getInstance().reference.child("users").child(userId!!).child("seeds").child(type.name)
+            val seedRef = FirebaseDatabase.getInstance().reference.child("users").child(userId!!).child("seeds").child(type.name)
 
             // Fetch the current amount of seeds in Firebase and then add the new quantity
-            flowerRef.get().addOnSuccessListener { snapshot ->
+            seedRef.get().addOnSuccessListener { snapshot ->
                 val currentQuantity = snapshot.getValue(Int::class.java) ?: 0
                 val newQuantity = currentQuantity + quantity
 

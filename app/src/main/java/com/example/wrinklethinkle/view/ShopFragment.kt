@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
-import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
+import com.example.wrinklethinkle.Utility.Utility
 import com.example.wrinklethinkle.databinding.FragmentShopBinding
 import com.example.wrinklethinkle.model.FlowerType
-import com.example.wrinklethinkle.model.Player
 import com.example.wrinklethinkle.model.Shop
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 
 class ShopFragment : Fragment() {
     private var shopFragmentBinding: FragmentShopBinding? = null
     private val binding get() = shopFragmentBinding!!
+    private val playerViewModel: PlayerViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,83 +36,98 @@ class ShopFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var player = Player
-        var shop = Shop
+        val shop = Shop
+        playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
 
-        player.inventory.seeds.put(FlowerType.ROSE, 0)
-        player.inventory.seeds.put(FlowerType.TULIP, 0)
-        player.inventory.seeds.put(FlowerType.LILY, 0)
-        player.inventory.seeds.put(FlowerType.DAHLIA, 0)
+            binding.coinBalance.text = player.gold.toString()
 
-        binding.coinBalance.text = player.gold.toString()
+            binding.growIcon.setOnClickListener {
+                findNavController().navigate(R.id.action_ShopFragment_to_GrowFragment)
+            }
+            binding.iconInventory.setOnClickListener {
+                findNavController().navigate(R.id.action_ShopFragment_to_InventoryFragment)
+            }
+            binding.shopIcon.setOnClickListener {
+                Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
+            }
+            binding.iconMap.setOnClickListener {
+                findNavController().navigate(R.id.action_ShopFragment_to_MapFragment)
+            }
+            binding.homeButton.setOnClickListener {
+                findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
+            }
+            binding.purchaseFertilizer.setOnClickListener {
 
-        binding.growIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_ShopFragment_to_GrowFragment)
-        }
-        binding.iconInventory.setOnClickListener {
-            findNavController().navigate(R.id.action_ShopFragment_to_InventoryFragment)
-        }
-        binding.shopIcon.setOnClickListener {
-            Toast.makeText(context, "ALREADY HERE", Toast.LENGTH_SHORT).show()
-            //findNavController().navigate(R.id.action_InsideHouseFragment_to_ShopFragment)
-        }
-        binding.iconMap.setOnClickListener {
-            findNavController().navigate(R.id.action_ShopFragment_to_MapFragment)
-        }
-        binding.homeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_ShopFragment_to_InsideHouseFragment)
-        }
-        binding.purchaseFertilizer.setOnClickListener {
+                if (player.gold >= 10)
+                {
+                    shop.buyFertilizer(player, 10)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Fertilizer purchased!", "Fertilizer has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
+            }
+            binding.purchasePesticide.setOnClickListener {
 
-            if (player.gold >= 10)
-            {
-                shop.buyFertilizer(player, 10)
-                binding.coinBalance.text = player.gold.toString()
+                if (player.gold >= 30)
+                {
+                    shop.buyPesticide(player, 30)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Pesticide purchased!", "Pesticide has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
             }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
-        }
-        binding.purchasePesticide.setOnClickListener {
+            binding.purchaseRose.setOnClickListener {
 
-            if (player.gold >= 30)
-            {
-                shop.buyPesticide(player, 30)
-                binding.coinBalance.text = player.gold.toString()
+                if (player.gold >= FlowerType.ROSE.cost)
+                {
+                    shop.buySeed(player, FlowerType.ROSE)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
             }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
+            binding.purchaseTulip.setOnClickListener {
+                if (player.gold >= FlowerType.TULIP.cost)
+                {
+                    shop.buySeed(player, FlowerType.TULIP)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Tulip seed purchased!", "Tulip seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
+            }
+            binding.purchaseLily.setOnClickListener {
+                if (player.gold >= FlowerType.LILY.cost)
+                {
+                    shop.buySeed(player, FlowerType.LILY)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Lily seed purchased!", "Lily seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
+            }
+            binding.purchaseDahlia.setOnClickListener {
+                if (player.gold >= FlowerType.DAHLIA.cost)
+                {
+                    shop.buySeed(player, FlowerType.DAHLIA)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Dahlia seed purchased!", "Dahlia seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
+            }
         }
-        binding.purchaseRose.setOnClickListener {
 
-            if (player.gold >= FlowerType.ROSE.seedCost)
-            {
-                shop.buySeed(player, FlowerType.ROSE)
-                binding.coinBalance.text = player.gold.toString()
-            }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
-        }
-        binding.purchaseTulip.setOnClickListener {
-            if (player.gold >= FlowerType.TULIP.seedCost)
-            {
-                shop.buySeed(player, FlowerType.TULIP)
-                binding.coinBalance.text = player.gold.toString()
-            }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
-        }
-        binding.purchaseLily.setOnClickListener {
-            if (player.gold >= FlowerType.LILY.seedCost)
-            {
-                shop.buySeed(player, FlowerType.LILY)
-                binding.coinBalance.text = player.gold.toString()
-            }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
-        }
-        binding.purchaseDahlia.setOnClickListener {
-            if (player.gold >= FlowerType.DAHLIA.seedCost)
-            {
-                shop.buySeed(player, FlowerType.DAHLIA)
-                binding.coinBalance.text = player.gold.toString()
-            }
-            else { Toast.makeText(context, "Not enough gold!", Toast.LENGTH_SHORT).show() }
-        }
+
     }
 
     override fun onDestroy() {

@@ -14,6 +14,8 @@ import android.media.MediaPlayer
 import android.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.wrinklethinkle.Utility.Utility
 import com.example.wrinklethinkle.model.*
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 
@@ -39,22 +41,38 @@ class GrowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.goHomeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_InsideHouseFragment)
+        }
+        binding.growFragShopIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_ShopFragment)
+        }
+        binding.growInventoryButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_InventoryFragment)
+        }
+        binding.growMapButton.setOnClickListener {
+            findNavController().navigate(R.id.action_GrowFragment_to_MapFragment)
+        }
+        binding.growIcon.setOnClickListener {
+            Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
+        }
+
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
             // Show seed selection dialog at the start
             showSeedSelectionDialog(player)
             // Handle click events on the flower image to grow the flower
             binding.flowerImage.setOnClickListener {
+                binding.imageGroup.startAnimation(shrinkGrowAnimation)
+                playSound()
                 if (growthStage < 4) {  // Limit growth stages to 4
                     // Increase the click count based on player clickPower
                     clickCount += (1 * player.clickPower).toInt()
 
                     // If clickCount reaches 50, grow the flower and reset clickCount
-                    if (clickCount >= 50) {
+                    if (clickCount >= 1) {
                         clickCount = 0  // Reset click count after reaching 50
                         growFlower()
-                        binding.imageGroup.startAnimation(shrinkGrowAnimation)
-                        playSound()
                     }
                 } else {
                     // Handle fully grown flower
@@ -68,6 +86,9 @@ class GrowFragment : Fragment() {
     }
 
     private fun growFlower() {
+        if (growthStage >= 5) {
+            return
+        }
         // Update the growth stage
         growthStage++
 
@@ -102,7 +123,8 @@ class GrowFragment : Fragment() {
             .setItems(seedMenuItems.toTypedArray()) { _, which ->
                 val selectedSeed = seedMenuItems[which]
                 selectedFlowerType = FlowerType.valueOf(selectedSeed.uppercase()) // Update selectedFlowerType
-                binding.flowerImage.setImageResource(selectedFlowerType.seedImage)
+                binding.flowerImage.setImageResource(selectedFlowerType.sproutImage)
+                binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
                 growthStage = 1 // Reset growth stage when new seed is selected
                 clickCount = 0  // Reset click count when a new flower is selected
             }
@@ -112,8 +134,11 @@ class GrowFragment : Fragment() {
     }
 
     private fun resetGrowScreen() {
-        binding.flowerImage.setImageResource(R.drawable.icon_pot_blue) // Reset to placeholder image
-        growthStage = 0 // Reset growth stage
+       // binding.flowerImage.setImageResource(R.drawable.icon_pot_blue) // Reset to placeholder image
+        //growthStage = 0 // Reset growth stage
+        playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
+            showSeedSelectionDialog(player)
+        }
         clickCount = 0 // Reset click count
     }
 

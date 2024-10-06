@@ -33,7 +33,7 @@ class SignUpScreenViewModel : ViewModel() {
                     if (uid != null) {
                         val emptyFlowers = mutableMapOf<String, Int>()
                         var defaultSeed = mutableMapOf(
-                            "rose" to 1
+                            "ROSE" to 1
                         )
                         val defaultUserData = hashMapOf(
                             "name" to playerName,

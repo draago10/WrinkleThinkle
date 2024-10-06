@@ -14,7 +14,6 @@ class Utility {
         message: String = "Something went wrong. Please try again.",
         onCancelClicked: () -> Unit = {
             // Default cancel action (can be overridden)
-            Toast.makeText(context, "Cancel clicked", Toast.LENGTH_SHORT).show()
         },
         onRetryClicked: () -> Unit = {
             // Default retry action (can be overridden)

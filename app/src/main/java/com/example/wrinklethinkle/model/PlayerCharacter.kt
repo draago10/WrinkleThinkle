@@ -24,6 +24,7 @@ class PlayerCharacter (
 
             // Functions to add/remove flowers ------------------------------------------------------------------------
     fun addFlower(flowerName: String, amount: Int) {
+        // Add firebase ref
         flowers[flowerName] = flowers.getOrDefault(flowerName, 0) + amount
     }
 
@@ -59,11 +60,11 @@ class PlayerCharacter (
     }
 
             // Functions to add/remove pesticide ----------------------------------------------------------------------
-    fun addPesticide(pesticideName: String, amount: Int) {
+    fun addPesticide(amount: Int) {
         pesticide += amount
     }
 
-    fun removePesticide(pesticideName: String, amount: Int) {
+    fun removePesticide(amount: Int) {
         val currentAmount = pesticide
         if (currentAmount >= amount) {
             pesticide -= amount
@@ -71,11 +72,11 @@ class PlayerCharacter (
     }
 
             // Functions to add/remove fertilizer ---------------------------------------------------------------------
-    fun addFertilizer(fertilizerName: String, amount: Int) {
+    fun addFertilizer(amount: Int) {
         fertilizer += amount
     }
 
-    fun removeFertilizer(fertilizerName: String, amount: Int) {
+    fun removeFertilizer(amount: Int) {
         val currentAmount = fertilizer
         if (currentAmount >= amount) {
             fertilizer -= amount

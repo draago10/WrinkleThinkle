@@ -1,5 +1,8 @@
 package com.example.wrinklethinkle.view
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +41,15 @@ class ErrorPopupDialog(
             dismiss()
         }
     }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        // Set the dialog window background to transparent
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        return dialog
+    }
+
 
     // Set Dialog Fragment to full-screen or other styles if needed
     override fun onStart() {

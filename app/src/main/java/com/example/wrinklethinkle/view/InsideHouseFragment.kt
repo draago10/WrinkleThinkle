@@ -97,6 +97,7 @@ class InsideHouseFragment : Fragment() {
         builder.setItems(flowerNames) { _, which ->
             // Set selected image resource by indexing into the images list
             selectedImageResId = images[which]
+
             // Place the image at the selected location
             placeImageAtLocation(player, x, y, flowerNames[which])
             player.removeFlower(flowerNames[which], 1)

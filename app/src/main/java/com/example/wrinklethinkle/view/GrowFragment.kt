@@ -125,6 +125,7 @@ class GrowFragment : Fragment() {
                 selectedFlowerType = FlowerType.valueOf(selectedSeed.uppercase()) // Update selectedFlowerType
                 binding.flowerImage.setImageResource(selectedFlowerType.sproutImage)
                 binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
+                binding.flowerImage.visibility = View.VISIBLE
                 growthStage = 1 // Reset growth stage when new seed is selected
                 clickCount = 0  // Reset click count when a new flower is selected
             }
@@ -134,8 +135,10 @@ class GrowFragment : Fragment() {
     }
 
     private fun resetGrowScreen() {
-       // binding.flowerImage.setImageResource(R.drawable.icon_pot_blue) // Reset to placeholder image
-        //growthStage = 0 // Reset growth stage
+        binding.flowerImage.visibility = View.GONE
+        growthStage = 0
+        clickCount = 0
+
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
             showSeedSelectionDialog(player)
         }

@@ -1,14 +1,10 @@
 package com.example.wrinklethinkle.model
 
-enum class FlowerType(
-    val rank: Int,        // Rank of the flower
-    val location: String, // Where it can be grown (Garden/Greenhouse)
-    val seedCost: Int,    // Cost of the seed in gold
-    val clickMultiplier: Int, // Multiplier for clicks needed per stage
-    val sellPrice: Int    // Price for selling the completed flower
-) {
-    ROSE(1, "GARDEN", 50, 25, 100),       // Rank 1: Common
-    TULIP(2, "GARDEN", 75, 50, 150),      // Rank 2: Uncommon
-    LILY(3, "GREENHOUSE", 100, 75, 200),  // Rank 3: Rare
-    DAHLIA(4, "GREENHOUSE", 150, 100, 300) // Rank 4: Legendary
+import com.example.wrinklethinkle.R
+
+enum class FlowerType(val seedImage: Int, val sproutImage: Int, val buddingImage: Int, val flowerImage: Int, val cost: Int) {
+    ROSE(R.drawable.seeds_rose, R.drawable.black_dahlia_flower_sprout, R.drawable.black_dahlia_flower_budding, R.drawable.black_dahlia_flower_complete, 50),
+    TULIP(R.drawable.seeds_tulip, R.drawable.black_dahlia_flower_sprout, R.drawable.black_dahlia_flower_budding, R.drawable.black_dahlia_flower_complete, 75),
+    LILY(R.drawable.seeds_lily, R.drawable.black_dahlia_flower_sprout, R.drawable.black_dahlia_flower_budding, R.drawable.black_dahlia_flower_complete, 100),
+    DAHLIA(R.drawable.seeds_dahlia, R.drawable.black_dahlia_flower_sprout, R.drawable.black_dahlia_flower_budding, R.drawable.black_dahlia_flower_complete, 150);
 }

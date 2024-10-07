@@ -17,12 +17,12 @@
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.0" android:scaleType="centerCrop"
             app:layout_constraintHorizontal_bias="0.0" android:adjustViewBounds="false"/>
-    <TextView
-            android:text="Count: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textCount" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"/>
+    <!--    <TextView-->
+    <!--            android:text="Count: "-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content" android:id="@+id/textCount" app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"-->
+    <!--            android:layout_marginTop="16dp"/>-->
     <FrameLayout
             android:id="@+id/imageGroup"
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="255dp"
                 android:layout_marginRight="15dp"
-        />
+                />
     </FrameLayout>
 
     <ImageButton
@@ -60,9 +60,9 @@
             android:background="@drawable/icon_pesticide"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textCount"
+
             android:layout_marginTop="125dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
             android:layout_width="50dp"
@@ -102,7 +102,7 @@
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:id="@+id/grow_frag_map_icon"
+                android:id="@+id/grow_frag_shop_icon"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 android:background="@drawable/icon_shop"
@@ -126,14 +126,14 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_inventory"
-                android:id="@+id/House_InventoryButton"
+                android:id="@+id/grow_InventoryButton"
                 android:scaleType="centerCrop" />
 
         <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_weight="1"
-                android:id="@+id/House_MapButton"
+                android:id="@+id/grow_MapButton"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/icon_map"
                 android:scaleType="centerCrop" />

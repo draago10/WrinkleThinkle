@@ -3,9 +3,11 @@ package com.example.wrinklethinkle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.wrinklethinkle.model.FlowerType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.example.wrinklethinkle.model.PlayerCharacter
 
 class SignUpScreenViewModel : ViewModel() {
     private val auth: FirebaseAuth by lazy {
@@ -29,13 +31,20 @@ class SignUpScreenViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid
                     if (uid != null) {
-                        var defaultUserData = hashMapOf(
+                        val emptyFlowers = mutableMapOf<String, Int>()
+                        var defaultSeed = mutableMapOf(
+                            "ROSE" to 1
+                        )
+                        val defaultUserData = hashMapOf(
                             "name" to playerName,
                             "level" to 1,
                             "experience" to 0,
                             "clickPower" to 1.0,
-                            "gold" to 100,
-                            "inventory" to emptyList<String>()
+                            "gold" to 0,
+                            "pesticide" to 0,
+                            "fertilizer" to 0,
+                            "flowers" to emptyFlowers,
+                            "seeds" to defaultSeed
                         )
 
                         database.child("users").child(uid).setValue(defaultUserData)

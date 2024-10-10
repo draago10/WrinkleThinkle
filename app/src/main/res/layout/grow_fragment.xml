@@ -176,6 +176,22 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextText"
             app:layout_constraintHorizontal_bias="0.562"
             app:layout_constraintVertical_bias="1.0"/>
+    <ImageView
+            android:src="@drawable/button_grow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/SeedSelection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonHStack"/>
+    <TextView
+            android:text=" SEEDS "
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            app:layout_constraintBottom_toTopOf="@+id/SeedSelection" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="4dp" android:background="#0B0B0B"
+            app:layout_constraintStart_toEndOf="@+id/imageGroup" app:layout_constraintHorizontal_bias="0.903"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

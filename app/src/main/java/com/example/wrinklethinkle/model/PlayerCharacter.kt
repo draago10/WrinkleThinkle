@@ -22,7 +22,7 @@ class PlayerCharacter(
         if (experience >= level * 100) {
             val leftover: Int = experience - (level * 100)
             level++
-            clickPower += 0.1
+            clickPower += 1
             experience = 0 + leftover
         }
     }

@@ -51,13 +51,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="THE MERGING OF THE DANIELAARON">
+    <list default="true" id="26d1188a-7128-415d-8cc2-10f6a15c0e69" name="Changes" comment="Implemented Experience point progress bar on the Grow Screen, with a TextView showing the current level, and the progress bar underneath the level.&#10;Updated the GrowFragment.kt to handle giving experience points when a flower is created, based on the completed flower's rank.&#10;Added flowerRank to the FlowerType enum class">
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/FlowerType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/model/PlayerCharacter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/wrinklethinkle/view/GrowFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/grow_fragment.xml" afterDir="false" />
     </list>
@@ -137,6 +138,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Android App.IdeaProjects.WrinkleThinkle.app.executor": "Run",
     "Android App.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -172,7 +174,44 @@
       <recent name="com.example.wrinklethinkle.view" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.IdeaProjects.WrinkleThinkle.app">
+    <configuration name="IdeaProjects.WrinkleThinkle.app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="IdeaProjects.WrinkleThinkle.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="WrinkleThinkle.app.main" />
       <option name="DEPLOY" value="true" />
@@ -266,6 +305,7 @@
       <workItem from="1728241011343" duration="166000" />
       <workItem from="1728243701145" duration="428000" />
       <workItem from="1728317485740" duration="829000" />
+      <workItem from="1728580161687" duration="2962000" />
     </task>
     <task id="LOCAL-00001" summary="Added start_here icon to main screen, started a new fragment for inside_house screen">
       <option name="closed" value="true" />
@@ -403,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728076623863</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implemented Experience point progress bar on the Grow Screen, with a TextView showing the current level, and the progress bar underneath the level.&#10;Updated the GrowFragment.kt to handle giving experience points when a flower is created, based on the completed flower's rank.&#10;Added flowerRank to the FlowerType enum class">
+      <option name="closed" value="true" />
+      <created>1728531670383</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1728531670383</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,6 +484,7 @@
     <MESSAGE value="2nd Major overhaul of grow screen and house decoration functionality. Deleted all classes except PlayerCharacter and FlowerType. Refactored GrowFragment, GrowViewModel, and InsideHouseFragment. &lt;STILL NEEDS WORK&gt;" />
     <MESSAGE value="Added PlayerViewModel and passed the PlayerCharacter instance between GrowFragment and InsideHouseFragment" />
     <MESSAGE value="THE MERGING OF THE DANIELAARON" />
-    <option name="LAST_COMMIT_MESSAGE" value="THE MERGING OF THE DANIELAARON" />
+    <MESSAGE value="Implemented Experience point progress bar on the Grow Screen, with a TextView showing the current level, and the progress bar underneath the level.&#10;Updated the GrowFragment.kt to handle giving experience points when a flower is created, based on the completed flower's rank.&#10;Added flowerRank to the FlowerType enum class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Experience point progress bar on the Grow Screen, with a TextView showing the current level, and the progress bar underneath the level.&#10;Updated the GrowFragment.kt to handle giving experience points when a flower is created, based on the completed flower's rank.&#10;Added flowerRank to the FlowerType enum class" />
   </component>
 </project>

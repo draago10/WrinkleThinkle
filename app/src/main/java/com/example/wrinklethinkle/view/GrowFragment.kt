@@ -64,10 +64,14 @@ class GrowFragment : Fragment() {
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
 
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
-            // Show seed selection dialog at the start
-            showSeedSelectionDialog(player)
+
             updateExperienceProgressBar(player) // Update the XP bar initially
             updatePlayerLevelText(player) // Update player level initially
+
+            // Set click listener for the SeedSelection button to show seed selection dialog
+            binding.SeedSelection.setOnClickListener {
+                showSeedSelectionDialog(player)  // Show seed selection dialog when button is clicked
+            }
 
             // Handle click events on the flower image to grow the flower
             binding.flowerImage.setOnClickListener {
@@ -79,7 +83,7 @@ class GrowFragment : Fragment() {
 
                     // If clickCount reaches 50, grow the flower and reset clickCount
                     //  SET TO >= 1 FOR TESTING -------------------------------------------------------------
-                    if (clickCount >= 1) {
+                    if (clickCount >= 10) {
                         clickCount = 0  // Reset click count after reaching 50
                         growFlower()
                     }
@@ -164,14 +168,11 @@ class GrowFragment : Fragment() {
     }
 
     private fun resetGrowScreen() {
+        // remove the flower image when resetting screen after a flower is fully grown
         binding.flowerImage.visibility = View.GONE
+        // reset growth stage and click count
         growthStage = 0
         clickCount = 0
-
-        playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
-            showSeedSelectionDialog(player)
-        }
-        clickCount = 0 // Reset click count
     }
 
     override fun onDestroyView() {

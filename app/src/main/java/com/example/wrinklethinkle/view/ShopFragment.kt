@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.replace
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.Utility.Utility
@@ -35,7 +36,6 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val shop = Shop
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
 
@@ -81,16 +81,19 @@ class ShopFragment : Fragment() {
                 }
             }
             binding.purchaseRose.setOnClickListener {
-
-                if (player.gold >= FlowerType.ROSE.cost)
-                {
-                    shop.buySeed(player, FlowerType.ROSE)
-                    binding.coinBalance.text = player.gold.toString()
-                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
+                val bundle = Bundle().apply {
+                    putString("flower", FlowerType.ROSE.name)
                 }
-                else {
-                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
-                }
+                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+//                if (player.gold >= FlowerType.ROSE.cost)
+//                {
+//                    shop.buySeed(player, FlowerType.ROSE)
+//                    binding.coinBalance.text = player.gold.toString()
+//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
+//                }
+//                else {
+//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+//                }
             }
             binding.purchaseTulip.setOnClickListener {
                 if (player.gold >= FlowerType.TULIP.cost)

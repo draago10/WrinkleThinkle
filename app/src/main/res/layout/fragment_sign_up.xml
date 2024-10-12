@@ -28,7 +28,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="16dp"
+            android:layout_marginTop="10dp" />
 
     <LinearLayout
             android:id="@+id/sign_in_screen_linear_layout"

@@ -46,6 +46,9 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_ShopFragment"
                 app:destination="@id/ShopFragment"/>
+        <action
+                android:id="@+id/action_logout_user"
+                app:destination="@id/SignInScreenFragment"/>
 
     </fragment>
 

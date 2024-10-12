@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.flow
 
 
 class SignInScreenViewModel : ViewModel() {
-
     private val auth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -27,11 +26,9 @@ class SignInScreenViewModel : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
-    // LiveData to hold Player object
-    private val _playerData = MutableLiveData<PlayerCharacter>()
-    val playerData: LiveData<PlayerCharacter> = _playerData
+    private val _playerData = MutableLiveData<PlayerCharacter?>()
+    val playerData: LiveData<PlayerCharacter?> = _playerData
 
-    // Sign-in method (same as before)
     fun signInUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -44,37 +41,35 @@ class SignInScreenViewModel : ViewModel() {
             }
     }
 
-    // Fetch user data from Firebase and post Player object to LiveData
     fun fetchUserData(userId: String) {
         val userRef = database.child("users").child(userId)
         userRef.get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
                 val userData = snapshot.value as? Map<String, Any>
                 if (userData != null) {
-                    val name = userData["name"].toString()
-                    val level = (userData["level"] as? Long)?.toInt() ?: 1
-                    val gold = (userData["gold"] as? Long)?.toInt() ?: 0
-                    val clickPower = (userData["clickPower"] as? Double) ?: 1.0
-                    val experience = (userData["experience"] as? Long)?.toInt() ?: 0
-                    val pesticide = (userData["pesticide"] as? Long)?.toInt() ?: 1
-                    val fertilizer = (userData["fertilizer"] as? Long)?.toInt() ?: 1
-                    var flowers = userData["flowers"] as? MutableMap<String, Int> ?: mutableMapOf()
-                    var seeds = userData["seeds"] as? MutableMap<String, Int> ?: mutableMapOf()
-
-                    // Create a Player object with the fetched data
-                    val player = PlayerCharacter(name, level, experience, gold, clickPower, pesticide, fertilizer, flowers, seeds)
-
-                    // Post Player object to LiveData
+                    val player = createPlayerFromData(userData)
                     _playerData.postValue(player)
-
-                    // Log success
-                    Log.d("SignInScreenViewModel", "Player data successfully fetched: $player")
                 }
             } else {
-                Log.d("SignInScreenViewModel", "User data does not exist.")
+                _errorMessage.postValue("User data does not exist.")
+                _playerData.postValue(null)
             }
         }.addOnFailureListener { exception ->
-            Log.e("SignInScreenViewModel", "Error fetching user data: ${exception.message}")
+            _errorMessage.postValue("Error fetching user data: ${exception.message}")
+            _playerData.postValue(null)
         }
+    }
+
+    private fun createPlayerFromData(userData: Map<String, Any>): PlayerCharacter {
+        val name = userData["name"].toString()
+        val level = (userData["level"] as? Long)?.toInt() ?: 1
+        val gold = (userData["gold"] as? Long)?.toInt() ?: 0
+        val clickPower = (userData["clickPower"] as? Double) ?: 1.0
+        val experience = (userData["experience"] as? Long)?.toInt() ?: 0
+        val pesticide = (userData["pesticide"] as? Long)?.toInt() ?: 1
+        val fertilizer = (userData["fertilizer"] as? Long)?.toInt() ?: 1
+        val flowers = userData["flowers"] as? MutableMap<String, Int> ?: mutableMapOf()
+        val seeds = userData["seeds"] as? MutableMap<String, Int> ?: mutableMapOf()
+        return PlayerCharacter(name, level, experience, gold, clickPower, pesticide, fertilizer, flowers, seeds)
     }
 }

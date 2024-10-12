@@ -40,12 +40,6 @@ fun getFlowerDetails(context: Context, flowerName: String): Flower? {
     val flowerType = object : TypeToken<FlowerResponse>() {}.type
     val flowerResponse: FlowerResponse = gson.fromJson(jsonString, flowerType)
 
-    // Log the JSON string to verify it's being read correctly
-    println("JSON String: $jsonString")
-
-    // Log the parsed flowers to verify data
-    println("Parsed flowers: ${flowerResponse.flowers}")
-
     // Find and return the flower with the matching name
     return flowerResponse.flowers.find { it.name.equals(flowerName, ignoreCase = true) }
 }

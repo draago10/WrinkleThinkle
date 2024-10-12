@@ -16,11 +16,14 @@ import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
 import com.example.wrinklethinkle.model.PlayerCharacter
 import com.example.wrinklethinkle.model.FlowerType
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null
     private val binding get() = insideHouseFragmentBinding!!
-
+    private val auth: FirebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
     private val playerViewModel: PlayerViewModel by activityViewModels()
 
     // Selected image resource ID, default to some image
@@ -34,6 +37,7 @@ class InsideHouseFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Set up existing navigation buttons
         binding.HouseGrowButton.setOnClickListener {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_GrowFragment)
@@ -46,6 +50,12 @@ class InsideHouseFragment : Fragment() {
         }
         binding.HouseMapButton.setOnClickListener {
             // Navigation to MapFragment (if implemented)
+        }
+
+        // Logout function
+        binding.logoutIcon.setOnClickListener {
+            auth.signOut()
+            findNavController().navigate(R.id.action_logout_user)
         }
 
         // Add touch listener to the root layout to detect clicks

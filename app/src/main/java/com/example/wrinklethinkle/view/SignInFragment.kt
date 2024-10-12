@@ -32,19 +32,6 @@ class SignInFragment : Fragment() {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(requireContext())
         auth = FirebaseAuth.getInstance()
-
-        // Check if user is already signed in
-        if (auth.currentUser?.uid != null) {
-            viewModel.fetchUserData(auth.currentUser!!.uid)
-
-            // Observe Player data and navigate to another screen once fetched
-            viewModel.playerData.observe(this) { player ->
-                playerViewModel.setPlayerData(player)
-                val navController = findNavController()
-                val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
-                navController.navigate(R.id.action_signInFragment_to_insideHouseFragment, null, navOptions)
-            }
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -60,12 +47,21 @@ class SignInFragment : Fragment() {
 
         viewModel.signInResult.observe(viewLifecycleOwner) { success ->
             if (success) {
-                // Navigate to app start screen after sign in
+                // Fetch user data only after successful login
+                auth.currentUser?.uid?.let { userId ->
+                    viewModel.fetchUserData(userId)
+                }
+            } else {
+                Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat, "Oops, something went wrong...", errorMessage, { poop() })
+            }
+        }
+
+        viewModel.playerData.observe(viewLifecycleOwner) { player ->
+            // Make sure player data is fetched and set in PlayerViewModel before navigating
+            player?.let {
+                playerViewModel.setPlayerData(it)
                 val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
                 navController.navigate(R.id.action_signInFragment_to_insideHouseFragment, null, navOptions)
-            } else {
-                // Display error message
-                Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat, "Oops, something went wrong...", errorMessage, { poop() })
             }
         }
 
@@ -90,5 +86,10 @@ class SignInFragment : Fragment() {
 
     fun poop() {
         // Placeholder function for error popup action
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        signInFragment = null
     }
 }

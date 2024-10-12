@@ -65,7 +65,7 @@ class FlowerDetailFragment : Fragment() {
         return when(flowerName) {
             "ROSE" -> listOf(R.drawable.rose_flower_real, R.drawable.rose_flower_complete)
             "TULIP" -> listOf(R.drawable.tulip_flower_real, R.drawable.tulip_flower_complete)
-            "BLACK DAHLIA" -> listOf(R.drawable.black_dahlia_real, R.drawable.black_dahlia_flower_complete)
+            "DAHLIA" -> listOf(R.drawable.black_dahlia_real, R.drawable.black_dahlia_flower_complete)
             "LILY" -> listOf(R.drawable.lily_flower_real, R.drawable.lily_flower_complete)
             else -> listOf(R.drawable.error_screen_cat, R.drawable.project_gnome)
         }

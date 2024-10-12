@@ -22,7 +22,7 @@ class PlayerCharacter(
         if (experience >= level * 100) {
             val leftover: Int = experience - (level * 100)
             level++
-            clickPower += 0.1
+            clickPower += 1
             experience = 0 + leftover
         }
     }
@@ -64,11 +64,46 @@ class PlayerCharacter(
     }
 
     fun removeFlower(flowerName: String, amount: Int) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val currentAmount = flowers.getOrDefault(flowerName, 0)
+
         if (currentAmount >= amount) {
+            // Update locally first
             flowers[flowerName] = currentAmount - amount
+
+            val flowerRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("flowers").child(flowerName)
+
+            flowerRef.get().addOnSuccessListener { snapshot ->
+                val currentFlowerQuantity = snapshot.getValue(Int::class.java) ?: 0
+                val newFlowerQuantity = currentFlowerQuantity - amount
+
+                // Ensure new quantity is not negative
+                if (newFlowerQuantity >= 0) {
+                    val fbUpdates = mapOf("flowers/$flowerName" to newFlowerQuantity)
+
+                    FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                // Firebase updated successfully
+                            } else {
+                                // Firebase update failed, rollback local change
+                                flowers[flowerName] = currentAmount
+                            }
+                        }
+                } else {
+                    // Handle case where new quantity would be negative
+                    // Optional: Log a message or show a warning to the user
+                }
+            }.addOnFailureListener {
+                // Handle the failure when trying to get the snapshot from Firebase
+                // Optional: Log a message or show a warning to the user
+            }
+        } else {
+            // Handle case when the local flower amount is insufficient
+            // Optional: Log a message or show a warning to the user
         }
     }
+
 
     // Functions to add/remove seeds --------------------------------------------------------------------------
     fun addSeed(seedName: String, amount: Int) {
@@ -79,6 +114,25 @@ class PlayerCharacter(
         val currentAmount = seeds.getOrDefault(seedName, 0)
         if (currentAmount >= amount) {
             seeds[seedName] = currentAmount - amount
+        }
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        val seedsRef = FirebaseDatabase.getInstance().reference.child("users").child(userId!!).child("seeds").child(seedName)
+
+        seedsRef.get().addOnSuccessListener { snapshot ->
+            val currentFlowerQuantity = snapshot.getValue(Int::class.java) ?: 0
+            val newFlowerQuantity = currentFlowerQuantity - amount
+
+            val fbUpdates = hashMapOf<String, Any>(
+                "seeds/${seedName}" to newFlowerQuantity
+            )
+
+            FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                if(task.isSuccessful && seeds.isNotEmpty()) {
+                    seeds[seedName] = seeds.getOrDefault(seedName, 0) - amount
+                } else {
+                    //FB updates failed
+                }
+            }
         }
     }
 

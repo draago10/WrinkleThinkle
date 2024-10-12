@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.wrinklethinkle.R
+import com.google.firebase.database.DatabaseReference
 
 class InventoryFragment : Fragment() {
 

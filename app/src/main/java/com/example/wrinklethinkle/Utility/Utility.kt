@@ -9,11 +9,11 @@ class Utility {
     fun showErrorPopup(
         fragmentManager: FragmentManager,
         context: Context,
+        image: Int,
         title: String = "Error",
         message: String = "Something went wrong. Please try again.",
         onCancelClicked: () -> Unit = {
             // Default cancel action (can be overridden)
-            Toast.makeText(context, "Cancel clicked", Toast.LENGTH_SHORT).show()
         },
         onRetryClicked: () -> Unit = {
             // Default retry action (can be overridden)
@@ -21,6 +21,7 @@ class Utility {
         }
     ) {
         val dialog = ErrorPopupDialog(
+            image = image,
             title = title,
             message = message,
             onCancelClicked = {

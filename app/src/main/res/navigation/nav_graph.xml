@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
- <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/SignInScreenFragment">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/SignInScreenFragment">
 
     <!-- SIGN UP/IN FRAGMENT Start -->
     <fragment
@@ -13,8 +13,8 @@
             tools:layout="@layout/fragment_sign_in_screen">
 
         <action
-                android:id="@+id/action_signInFragment_to_appStartFrament"
-                app:destination="@id/appStartFragment" />
+                android:id="@+id/action_signInFragment_to_insideHouseFragment"
+                app:destination="@id/InsideHouseFragment" />
         <action
                 android:id="@+id/action_signInFragment_to_signUpFragment"
                 app:destination="@id/SignUpFragment"/>
@@ -27,28 +27,16 @@
             tools:layout="@layout/fragment_sign_up">
 
         <action
-                android:id="@+id/action_signUpFragment_to_appStartFragment"
-                app:destination="@id/appStartFragment"/>
-    </fragment>
-
-
-    <!-- AppStartFragment is now the start destination -->
-    <fragment
-            android:id="@+id/appStartFragment"
-            android:name="com.example.wrinklethinkle.view.AppStartFragment"
-            android:label="@string/app_start_fragment_label"
-            tools:layout="@layout/fragment_app_start">
-
-        <action
-                android:id="@+id/action_appStartFragment_to_InsideHouseFragment"
+                android:id="@+id/action_signUpFragment_to_insideHouseFragment"
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
+
     <!-- InsideHouseFragment -->
     <fragment android:id="@+id/InsideHouseFragment"
-              android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
-              android:label="InsideHouseFragment"
-              tools:layout="@layout/fragment_inside_house">
+            android:name="com.example.wrinklethinkle.view.InsideHouseFragment"
+            android:label="InsideHouseFragment"
+            tools:layout="@layout/fragment_inside_house">
         <action
                 android:id="@+id/action_InsideHouseFragment_to_GrowFragment"
                 app:destination="@id/GrowFragment"/>
@@ -58,6 +46,9 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_ShopFragment"
                 app:destination="@id/ShopFragment"/>
+        <action
+                android:id="@+id/action_logout_user"
+                app:destination="@id/SignInScreenFragment"/>
 
     </fragment>
 
@@ -68,15 +59,24 @@
             android:label="@string/grow_fragment_label"
             tools:layout="@layout/grow_fragment">
         <action
-                android:id="@+id/action_FlowerClickFragment_to_appStartFragment"
-                app:destination="@id/appStartFragment"/>
+                android:id="@+id/action_growScreen_goHomeButton"
+                app:destination="@id/InsideHouseFragment"/>
+
+        <action android:id="@+id/action_GrowFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
+        <action android:id="@+id/action_GrowFragment_to_ShopFragment"
+                app:destination="@id/ShopFragment"/>
+        <action android:id="@+id/action_GrowFragment_to_InventoryFragment"
+                app:destination="@id/InventoryFragment"/>
+        <action android:id="@+id/action_GrowFragment_to_MapFragment"
+                app:destination="@id/MapFragment"/>
     </fragment>
 
     <!-- InventoryFragment -->
     <fragment android:id="@+id/InventoryFragment"
-              android:name="com.example.wrinklethinkle.view.InventoryFragment"
-              android:label="InventoryFragment"
-              tools:layout="@layout/fragment_inventory">
+            android:name="com.example.wrinklethinkle.view.InventoryFragment"
+            android:label="InventoryFragment"
+            tools:layout="@layout/fragment_inventory">
         <action android:id="@+id/action_InventoryFragment_to_InsideHouseFragment"
                 app:destination="@id/InsideHouseFragment"/>
         <action android:id="@+id/action_InventoryFragment_to_GrowFragment" app:destination="@id/GrowFragment"/>
@@ -86,12 +86,14 @@
 
     <!-- Flower Detail Fragment -->
     <fragment android:id="@+id/FlowerDetailFragment"
-              android:name="com.example.wrinklethinkle.view.FlowerDetailFragment"
-              android:label="FlowerDetailFragment"
-              tools:layout="@layout/fragment_flower_detail">
-        <action
-                android:id="@+id/action_test"
-                app:destination="@+id/GrowFragment"/>
+            android:name="com.example.wrinklethinkle.view.FlowerDetailFragment"
+            android:label="Flower Detail"
+            tools:layout="@layout/fragment_flower_detail">
+        <argument
+                android:name="flower"
+                app:argType="string"
+                />
+
     </fragment>
 
     <!-- Shop Fragment -->

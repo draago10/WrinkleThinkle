@@ -1,6 +1,7 @@
 package com.example.wrinklethinkle.view
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -8,6 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.ActivityMainBinding
+import com.example.wrinklethinkle.model.PlayerCharacter
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 import com.google.firebase.FirebaseApp
 
 
@@ -15,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

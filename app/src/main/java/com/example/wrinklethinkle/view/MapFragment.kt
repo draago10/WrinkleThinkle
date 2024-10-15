@@ -5,56 +5,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
+import com.example.wrinklethinkle.model.FlowerType
+import com.example.wrinklethinkle.viewmodel.GrowBackgroundViewModel
+import com.example.wrinklethinkle.databinding.FragmentMapBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MapFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MapFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val growBackgroundViewModel: GrowBackgroundViewModel by activityViewModels()
+    private var _binding: FragmentMapBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        // Inflate the layout using ViewBinding
+        _binding = FragmentMapBinding.inflate(inflater, container, false)
+
+        // No need to inflate the layout again, we can directly use binding
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MapFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MapFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Set up buttons for toggling backgrounds and available flowers
+        binding.GardenGrow.setOnClickListener {
+            // Set garden background and available flowers
+            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden)
+            growBackgroundViewModel.setAvailableFlowers(
+                listOf(FlowerType.ROSE, FlowerType.TULIP) // Available garden flowers
+            )
+        }
+
+        binding.GreenhouseGrow.setOnClickListener {
+            // Set greenhouse background and available flowers
+            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_greenhouse)
+            growBackgroundViewModel.setAvailableFlowers(
+                listOf(FlowerType.LILY, FlowerType.DAHLIA) // Available greenhouse flowers
+            )
+        }
+
+        // Set up navigation buttons
+        binding.HouseGrowButton.setOnClickListener {
+            findNavController().navigate(R.id.action_MapFragment_to_GrowFragment)
+        }
+        binding.HouseInventoryButton.setOnClickListener {
+            findNavController().navigate(R.id.action_MapFragment_to_InventoryFragment)
+        }
+        binding.HouseShopButton.setOnClickListener {
+            findNavController().navigate(R.id.action_MapFragment_to_ShopFragment)
+        }
+        binding.HouseMapButton.setOnClickListener {
+            // Display message or keep it as-is since we're already on the map
+            Toast.makeText(requireContext(), "Already on Map Screen", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // Clear the binding reference to avoid memory leaks
     }
 }

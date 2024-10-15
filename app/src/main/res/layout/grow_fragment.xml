@@ -50,19 +50,16 @@
             android:id="@+id/pesticideButton"
             android:background="@drawable/icon_pesticide"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
 
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar" android:layout_marginTop="44dp"/>
+            tools:layout_editor_absoluteX="342dp" app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
+            app:layout_constraintBottom_toTopOf="@+id/fertilizerButton"/>
     <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/fertilizerButton"
             android:background="@drawable/icon_fertilizer"
-            app:layout_constraintTop_toBottomOf="@+id/pesticideButton"
-            android:layout_marginTop="48dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/imageGroup"
-            app:layout_constraintHorizontal_bias="0.627"/>
+            tools:layout_editor_absoluteX="342dp" app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
+            app:layout_constraintBottom_toTopOf="@+id/textView"/>
     <ImageView
             android:src="@drawable/inside_house_icon"
             android:layout_width="75dp"

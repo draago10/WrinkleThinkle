@@ -26,8 +26,6 @@ class MapFragment : Fragment() {
     ): View? {
         // Inflate the layout using ViewBinding
         _binding = FragmentMapBinding.inflate(inflater, container, false)
-
-        // No need to inflate the layout again, we can directly use binding
         return binding.root
     }
 

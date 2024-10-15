@@ -59,6 +59,7 @@ class GrowFragment : Fragment() {
             // Modify the seed selection logic to account for available flowers
         }
 
+
         binding.goHomeButton.setOnClickListener {
             findNavController().navigate(R.id.action_GrowFragment_to_InsideHouseFragment)
         }

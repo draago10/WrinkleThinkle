@@ -44,6 +44,25 @@ class GrowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set default background and flowers if not set
+        if (growBackgroundViewModel.backgroundImage.value == null) {
+            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden)
+            growBackgroundViewModel.setAvailableFlowers(listOf(FlowerType.ROSE, FlowerType.TULIP))
+            growBackgroundViewModel.setActiveButton(R.id.GardenGrow)
+        }
+
+        // Observing background from GrowBackgroundViewModel
+        growBackgroundViewModel.backgroundImage.observe(viewLifecycleOwner) { resourceId ->
+            resourceId?.let {
+                binding.root.setBackgroundResource(it)
+            }
+        }
+
+        // Observing available flowers
+        growBackgroundViewModel.availableFlowers.observe(viewLifecycleOwner) { flowers ->
+            // Update logic for available flowers if necessary
+        }
+
         // Initialize the experience progress bar
         experienceProgressBar = binding.experienceProgressBar
 
@@ -149,15 +168,25 @@ class GrowFragment : Fragment() {
 
     private fun showSeedSelectionDialog(player: PlayerCharacter) {
         val seedMenuItems = mutableListOf<String>()
-        if (player.seeds.isEmpty()) {
-            Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat, "Oops, empty fields detected!", "Please do not leave the fields empty.", { })
-        } else {
+
+        // Only add seeds that are in the available flowers
+        growBackgroundViewModel.availableFlowers.value?.let { availableFlowers ->
             for ((flowerName, amount) in player.seeds) {
-                if (amount > 0) {
+                if (amount > 0 && availableFlowers.map { it.name }.contains(flowerName)) {
                     seedMenuItems.add(flowerName)
                 }
             }
+        }
 
+        if (seedMenuItems.isEmpty()) {
+            // Show error if no available seeds
+            Utility().showErrorPopup(
+                childFragmentManager, requireContext(), R.drawable.error_screen_cat,
+                "Oops, no available seeds!",
+                "You do not have any seeds that can be planted here."
+            )
+        } else {
+            // Create dialog with available seeds
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Select a Seed to Grow")
                 .setItems(seedMenuItems.toTypedArray()) { _, which ->

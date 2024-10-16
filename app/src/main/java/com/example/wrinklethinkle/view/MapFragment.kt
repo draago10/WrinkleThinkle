@@ -38,15 +38,17 @@ class MapFragment : Fragment() {
         growBackgroundViewModel.activeButtonId.observe(viewLifecycleOwner) { activeButtonId ->
             resetButtonStyles() // Reset both buttons to their inactive state
             if (activeButtonId != null) {
-                // Set the correct button to active based on the ViewModel
                 when (activeButtonId) {
                     binding.GardenGrow.id -> {
-                        binding.GardenGrow.setBackgroundResource(R.drawable.button_grow)
+                        binding.GardenGrow.setBackgroundResource(R.drawable.button_grow) // Set as active
                     }
                     binding.GreenhouseGrow.id -> {
-                        binding.GreenhouseGrow.setBackgroundResource(R.drawable.button_grow)
+                        binding.GreenhouseGrow.setBackgroundResource(R.drawable.button_grow) // Set as active
                     }
                 }
+            } else {
+                // If no button is active, set GardenGrow as the default active button
+                binding.GardenGrow.setBackgroundResource(R.drawable.button_grow)
             }
         }
 
@@ -54,7 +56,7 @@ class MapFragment : Fragment() {
         playerViewModel.playerData.observe(viewLifecycleOwner) { playerCharacter ->
 
             if (playerCharacter.level >= 1) {
-                // Enable GreenhouseGrow button if player is level 4 or higher
+                // Enable GreenhouseGrow button if player is level 4 or higher (SET TO 1 UNTIL WE CAN SAVE/LOAD PLAYER LEVEL CORRECTLY)
                 binding.GreenhouseGrow.isEnabled = true
                 binding.GreenhouseGrow.alpha = 1.0f // Make the button fully visible
             } else {

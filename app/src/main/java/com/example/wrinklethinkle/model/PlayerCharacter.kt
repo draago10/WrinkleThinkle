@@ -63,13 +63,14 @@ class PlayerCharacter(
         }
     }
 
-    fun removeFlower(flowerName: String, amount: Int) {
+    fun removeFlower(flowerName: String, amount: Int, value: Int = 0) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val currentAmount = flowers.getOrDefault(flowerName, 0)
 
         if (currentAmount >= amount) {
             // Update locally first
             flowers[flowerName] = currentAmount - amount
+            addGold(value)
 
             val flowerRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("flowers").child(flowerName)
 
@@ -137,11 +138,11 @@ class PlayerCharacter(
     }
 
     // Functions to add/remove gold ---------------------------------------------------------------------------
-    fun addGold(goldName: String, amount: Int) {
+    fun addGold(amount: Int) {
         gold += amount
     }
 
-    fun removeGold(goldName: String, amount: Int) {
+    fun removeGold(amount: Int) {
         val currentAmount = gold
         if (currentAmount >= amount) {
             gold -= amount

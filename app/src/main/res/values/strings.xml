@@ -60,6 +60,8 @@
     <string name="coin_image_icon_description">coin_img_cd</string>
     <string name="fertilizer_image_icon_description">fertilizer_imgBtn_cd</string>
     <string name="pesticide_image_icon_description">pesticide_imgBtn_cd</string>
+    <string name="item_background_icon_description">itemBackground_img_cd</string>
+    <string name="sell_button_icon_description">sellFlowers_imgBtn_cd</string>
     <!-- END Austin's code descriptions -->
 
     <!-- START SignIn and SignUp Fragment strings  -->

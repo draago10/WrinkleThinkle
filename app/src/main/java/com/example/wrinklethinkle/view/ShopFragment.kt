@@ -14,6 +14,7 @@ import com.example.wrinklethinkle.databinding.FragmentShopBinding
 import com.example.wrinklethinkle.model.FlowerType
 import com.example.wrinklethinkle.model.Shop
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
+import androidx.appcompat.app.AlertDialog
 
 class ShopFragment : Fragment() {
     private var shopFragmentBinding: FragmentShopBinding? = null
@@ -84,16 +85,16 @@ class ShopFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putString("flower", FlowerType.ROSE.name)
                 }
-                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
-//                if (player.gold >= FlowerType.ROSE.cost)
-//                {
-//                    shop.buySeed(player, FlowerType.ROSE)
-//                    binding.coinBalance.text = player.gold.toString()
-//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
-//                }
-//                else {
-//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
-//                }
+                //findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+                if (player.gold >= FlowerType.ROSE.cost)
+                {
+                    shop.buySeed(player, FlowerType.ROSE)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
             }
             binding.purchaseTulip.setOnClickListener {
                 if (player.gold >= FlowerType.TULIP.cost)
@@ -127,6 +128,35 @@ class ShopFragment : Fragment() {
                 else {
                     Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
                 }
+            }
+            binding.sellFlowers.setOnClickListener {
+
+                val dialog = AlertDialog.Builder(requireContext())
+                dialog.setTitle("Choose a flower to sell")
+
+                if (player.flowers.isEmpty())
+                {
+                    dialog.setMessage("No flowers currently in inventory.")
+                    dialog.setPositiveButton(android.R.string.ok, null)
+                    dialog.show()
+
+                    return@setOnClickListener
+                }
+
+                for ((key, value) in player.flowers)
+                {
+                    dialog.setNeutralButton(key) { dialog, which ->
+
+                        if (key == "ROSE") { player.removeFlower(key, value, 100) }
+                        if (key == "TULIP") { player.removeFlower(key, value, 250) }
+                        if (key == "LILY") { player.removeFlower(key, value, 500) }
+                        if (key == "DAHLIA") { player.removeFlower(key, value, 1000) }
+
+                        binding.coinBalance.text = player.gold.toString()
+                    }
+                }
+
+                dialog.show()
             }
         }
 

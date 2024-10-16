@@ -21,22 +21,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="1.0"/>
-    <ImageView
-            android:src="@drawable/icon_map"
-            android:layout_width="55dp"
-            android:layout_height="55dp" android:id="@+id/GardenGrow"
-            app:layout_constraintStart_toStartOf="@+id/MapBackground"
-            app:layout_constraintEnd_toEndOf="@+id/MapBackground"
-            app:layout_constraintHorizontal_bias="0.345" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageView
-            android:src="@drawable/icon_map"
-            android:layout_width="55dp"
-            android:layout_height="55dp" android:id="@+id/GreenhouseGrow"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.848" app:layout_constraintVertical_bias="0.643"/>
 
+    <ImageButton
+            android:id="@+id/GardenGrow"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/icon_grow"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.318"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/Navbar_house" app:layout_constraintVertical_bias="0.614"/>
+    <ImageButton
+            android:id="@+id/GreenhouseGrow"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/icon_grow"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintTop_toTopOf="@+id/MapBackground" app:layout_constraintVertical_bias="0.78"
+            app:layout_constraintBottom_toTopOf="@+id/Navbar_house"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_height="175dp"

@@ -24,7 +24,6 @@ class MapFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout using ViewBinding
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,24 +31,32 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set up buttons for toggling backgrounds and available flowers
+        // Restore the active button state when the fragment is recreated
+        growBackgroundViewModel.activeButtonId.observe(viewLifecycleOwner) { activeButtonId ->
+            resetButtonStyles() // Reset both buttons to their inactive state
+            if (activeButtonId != null) {
+                // Set the correct button to active based on the ViewModel
+                when (activeButtonId) {
+                    binding.GardenGrow.id -> {
+                        binding.GardenGrow.setBackgroundResource(R.drawable.button_grow)
+                    }
+                    binding.GreenhouseGrow.id -> {
+                        binding.GreenhouseGrow.setBackgroundResource(R.drawable.button_grow)
+                    }
+                }
+            }
+        }
+
+        // Toggle between GardenGrow and GreenhouseGrow
         binding.GardenGrow.setOnClickListener {
-            // Set garden background and available flowers
-            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden)
-            growBackgroundViewModel.setAvailableFlowers(
-                listOf(FlowerType.ROSE, FlowerType.TULIP) // Available garden flowers
-            )
+            toggleBackground(R.drawable.grow_bg_garden, listOf(FlowerType.ROSE, FlowerType.TULIP), binding.GardenGrow.id)
         }
 
         binding.GreenhouseGrow.setOnClickListener {
-            // Set greenhouse background and available flowers
-            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_greenhouse)
-            growBackgroundViewModel.setAvailableFlowers(
-                listOf(FlowerType.LILY, FlowerType.DAHLIA) // Available greenhouse flowers
-            )
+            toggleBackground(R.drawable.grow_bg_greenhouse, listOf(FlowerType.LILY, FlowerType.DAHLIA), binding.GreenhouseGrow.id)
         }
 
-        // Set up navigation buttons
+        // Navigation buttons
         binding.HouseGrowButton.setOnClickListener {
             findNavController().navigate(R.id.action_MapFragment_to_GrowFragment)
         }
@@ -60,13 +67,38 @@ class MapFragment : Fragment() {
             findNavController().navigate(R.id.action_MapFragment_to_ShopFragment)
         }
         binding.HouseMapButton.setOnClickListener {
-            // Display message or keep it as-is since we're already on the map
             Toast.makeText(requireContext(), "Already on Map Screen", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun toggleBackground(backgroundImage: Int, availableFlowers: List<FlowerType>, buttonId: Int) {
+        if (growBackgroundViewModel.activeButtonId.value == buttonId) {
+            // If the current active button is clicked again, deactivate it
+            growBackgroundViewModel.setActiveButton(null)
+            growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden) // Reset to default background
+            growBackgroundViewModel.setAvailableFlowers(emptyList()) // No flowers selected
+            resetButtonStyles() // Set both buttons to inactive state
+        } else {
+            // If a different button is clicked, set it as active
+            growBackgroundViewModel.setActiveButton(buttonId)
+            growBackgroundViewModel.setBackgroundImage(backgroundImage)
+            growBackgroundViewModel.setAvailableFlowers(availableFlowers)
+            resetButtonStyles() // Reset both buttons before setting the active one
+
+            when (buttonId) {
+                binding.GardenGrow.id -> binding.GardenGrow.setBackgroundResource(R.drawable.button_grow)
+                binding.GreenhouseGrow.id -> binding.GreenhouseGrow.setBackgroundResource(R.drawable.button_grow)
+            }
+        }
+    }
+
+    private fun resetButtonStyles() {
+        binding.GardenGrow.setBackgroundResource(R.drawable.icon_grow)
+        binding.GreenhouseGrow.setBackgroundResource(R.drawable.icon_grow)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Clear the binding reference to avoid memory leaks
+        _binding = null
     }
 }

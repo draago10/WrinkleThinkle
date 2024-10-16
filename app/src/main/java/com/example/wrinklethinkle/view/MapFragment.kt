@@ -8,15 +8,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.model.FlowerType
 import com.example.wrinklethinkle.viewmodel.GrowBackgroundViewModel
 import com.example.wrinklethinkle.databinding.FragmentMapBinding
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 
 class MapFragment : Fragment() {
 
     private val growBackgroundViewModel: GrowBackgroundViewModel by activityViewModels()
+    private val playerViewModel: PlayerViewModel by activityViewModels()
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
 
@@ -47,13 +50,31 @@ class MapFragment : Fragment() {
             }
         }
 
+        // Observe player level and enable/disable the GreenhouseGrow button accordingly
+        playerViewModel.playerData.observe(viewLifecycleOwner) { playerCharacter ->
+
+            if (playerCharacter.level >= 1) {
+                // Enable GreenhouseGrow button if player is level 4 or higher
+                binding.GreenhouseGrow.isEnabled = true
+                binding.GreenhouseGrow.alpha = 1.0f // Make the button fully visible
+            } else {
+                // Disable GreenhouseGrow button if player is below level 4
+                binding.GreenhouseGrow.isEnabled = false
+                binding.GreenhouseGrow.alpha = 0.5f // Make the button semi-transparent
+            }
+        }
+
         // Toggle between GardenGrow and GreenhouseGrow
         binding.GardenGrow.setOnClickListener {
             toggleBackground(R.drawable.grow_bg_garden, listOf(FlowerType.ROSE, FlowerType.TULIP), binding.GardenGrow.id)
         }
 
         binding.GreenhouseGrow.setOnClickListener {
-            toggleBackground(R.drawable.grow_bg_greenhouse, listOf(FlowerType.LILY, FlowerType.DAHLIA), binding.GreenhouseGrow.id)
+            if (binding.GreenhouseGrow.isEnabled) {
+                toggleBackground(R.drawable.grow_bg_greenhouse, listOf(FlowerType.LILY, FlowerType.DAHLIA), binding.GreenhouseGrow.id)
+            } else {
+                Toast.makeText(requireContext(), "Reach level 4 to unlock the Greenhouse!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Navigation buttons

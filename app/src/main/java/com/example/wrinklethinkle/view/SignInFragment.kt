@@ -45,23 +45,30 @@ class SignInFragment : Fragment() {
         val navController = findNavController()
         val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_in_right).build()
 
+        // Check if user is already signed in (Auto-login)
+        if (auth.currentUser?.uid != null) {
+            auth.currentUser?.uid?.let { userId ->
+                viewModel.fetchUserData(userId)
+            }
+        }
+
+        // Observe player data for auto-login
+        viewModel.playerData.observe(viewLifecycleOwner) { player ->
+            player?.let {
+                playerViewModel.setPlayerData(it)
+                val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
+                navController.navigate(R.id.action_signInFragment_to_insideHouseFragment, null, navOptions)
+            }
+        }
+
+        // Manual sign-in flow
         viewModel.signInResult.observe(viewLifecycleOwner) { success ->
             if (success) {
-                // Fetch user data only after successful login
                 auth.currentUser?.uid?.let { userId ->
                     viewModel.fetchUserData(userId)
                 }
             } else {
                 Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.error_screen_cat, "Oops, something went wrong...", errorMessage, { poop() })
-            }
-        }
-
-        viewModel.playerData.observe(viewLifecycleOwner) { player ->
-            // Make sure player data is fetched and set in PlayerViewModel before navigating
-            player?.let {
-                playerViewModel.setPlayerData(it)
-                val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_up).build()
-                navController.navigate(R.id.action_signInFragment_to_insideHouseFragment, null, navOptions)
             }
         }
 

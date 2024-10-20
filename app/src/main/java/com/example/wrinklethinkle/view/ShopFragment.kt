@@ -14,6 +14,7 @@ import com.example.wrinklethinkle.databinding.FragmentShopBinding
 import com.example.wrinklethinkle.model.FlowerType
 import com.example.wrinklethinkle.model.Shop
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
+import androidx.appcompat.app.AlertDialog
 
 class ShopFragment : Fragment() {
     private var shopFragmentBinding: FragmentShopBinding? = null
@@ -84,16 +85,16 @@ class ShopFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putString("flower", FlowerType.ROSE.name)
                 }
-                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
-//                if (player.gold >= FlowerType.ROSE.cost)
-//                {
-//                    shop.buySeed(player, FlowerType.ROSE)
-//                    binding.coinBalance.text = player.gold.toString()
-//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
-//                }
-//                else {
-//                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
-//                }
+                //findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+                if (player.gold >= FlowerType.ROSE.cost)
+                {
+                    shop.buySeed(player, FlowerType.ROSE)
+                    binding.coinBalance.text = player.gold.toString()
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Rose seed purchased!", "Rose seed has been successfully added to your inventory.")
+                }
+                else {
+                    Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
+                }
             }
             binding.purchaseTulip.setOnClickListener {
                 if (player.gold >= FlowerType.TULIP.cost)
@@ -128,6 +129,48 @@ class ShopFragment : Fragment() {
                     Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You don't have enough gold.")
                 }
             }
+            binding.sellFlowers.setOnClickListener {
+
+                val dialog = AlertDialog.Builder(requireContext())
+                dialog.setTitle("Choose a flower to sell")
+
+                if (player.flowers.isEmpty())
+                {
+                    dialog.setMessage("No flowers currently in inventory.")
+                    dialog.setPositiveButton(android.R.string.ok, null)
+                    dialog.show()
+
+                    return@setOnClickListener
+                }
+                val flowers = player.flowers.keys.toTypedArray()
+                dialog.setItems(flowers) { _ , which ->
+                    val selectedFlower = flowers[which]
+                    for ((key, _ ) in player.flowers)  {
+                        if (selectedFlower == "ROSE")
+                        {
+                            player.removeFlower(selectedFlower,1 , 100)
+                            break
+                        }
+                        if (selectedFlower == "TULIP")
+                        {
+                            player.removeFlower(key, 1, 250)
+                            break
+                        }
+                        if (selectedFlower == "LILY")
+                        {
+                            player.removeFlower(key, 1, 500)
+                            break
+                        }
+                        if (selectedFlower == "DAHLIA")
+                        {
+                            player.removeFlower(key, 1, 1000)
+                            break
+                        }
+                    }
+                    binding.coinBalance.text = player.gold.toString()
+                }
+                dialog.show()
+            }
         }
 
 
@@ -136,5 +179,10 @@ class ShopFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         shopFragmentBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        playerViewModel.fetchLatestPlayerData()
     }
 }

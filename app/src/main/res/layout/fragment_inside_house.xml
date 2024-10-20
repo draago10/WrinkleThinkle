@@ -80,7 +80,7 @@
             android:src="@drawable/logout_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/logout_icon"
+            android:id="@+id/settings_icon"
             android:backgroundTint="#00FFFFFF"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.databinding.FragmentInsideHouseBinding
@@ -21,9 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 class InsideHouseFragment : Fragment() {
     private var insideHouseFragmentBinding: FragmentInsideHouseBinding? = null
     private val binding get() = insideHouseFragmentBinding!!
-    private val auth: FirebaseAuth by lazy {
-        FirebaseAuth.getInstance()
-    }
+
     private val playerViewModel: PlayerViewModel by activityViewModels()
 
     // Selected image resource ID, default to some image
@@ -49,15 +48,13 @@ class InsideHouseFragment : Fragment() {
             findNavController().navigate(R.id.action_InsideHouseFragment_to_ShopFragment)
         }
         binding.HouseMapButton.setOnClickListener {
-            // Navigation to MapFragment (if implemented)
+            findNavController().navigate(R.id.action_InsideHouseFragment_to_MapFragment)
         }
 
-        // Logout function
-        binding.logoutIcon.setOnClickListener {
-            auth.signOut()
-            findNavController().navigate(R.id.action_logout_user)
+        binding.settingsIcon.setOnClickListener {
+            val navOptions = NavOptions.Builder().setEnterAnim(R.anim.slide_in_right).build()
+            findNavController().navigate(R.id.action_go_to_settings, null, navOptions)
         }
-
         // Add touch listener to the root layout to detect clicks
         binding.InsideHouseFragment.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
@@ -155,5 +152,10 @@ class InsideHouseFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         insideHouseFragmentBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        playerViewModel.fetchLatestPlayerData()
     }
 }

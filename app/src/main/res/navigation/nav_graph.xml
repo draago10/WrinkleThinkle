@@ -49,6 +49,9 @@
         <action
                 android:id="@+id/action_logout_user"
                 app:destination="@id/SignInScreenFragment"/>
+        <action
+                android:id="@+id/action_InsideHouseFragment_to_MapFragment"
+                app:destination="@id/MapFragment" />
 
     </fragment>
 
@@ -120,9 +123,17 @@
     </fragment>
 
     <fragment android:id="@+id/MapFragment"
-            android:name="com.example.wrinklethinkle.view.MapFragment"
-            android:label="MapFragment"
-            tools:layout="@layout/fragment_map">
+              android:name="com.example.wrinklethinkle.view.MapFragment"
+              android:label="MapFragment"
+              tools:layout="@layout/fragment_map">
+        <action android:id="@+id/action_MapFragment_to_GrowFragment"
+                app:destination="@id/GrowFragment"/>
+        <action android:id="@+id/action_MapFragment_to_InventoryFragment"
+                app:destination="@id/InventoryFragment"/>
+        <action android:id="@+id/action_MapFragment_to_ShopFragment"
+                app:destination="@id/ShopFragment"/>
+        <action android:id="@+id/action_MapFragment_to_InsideHouseFragment"
+                app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
 

@@ -55,13 +55,13 @@ class InventoryFragment : Fragment() {
                 findNavController().navigate(R.id.action_InventoryFragment_to_ShopFragment)
             }
             binding.InventoryGrowButton.setOnClickListener {
-                findNavController().navigate(R.id.action_ShopFragment_to_GrowFragment)
+                findNavController().navigate(R.id.action_InventoryFragment_to_GrowFragment)
             }
             binding.InventoryInventoryButton.setOnClickListener {
                 Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
             }
             binding.InventoryMapButton.setOnClickListener {
-                findNavController().navigate(R.id.action_InventoryFragment_to_GrowFragment)
+                findNavController().navigate(R.id.action_InventoryFragment_to_MapFragment)
             }
             binding.homeButton.setOnClickListener {
                 findNavController().navigate(R.id.action_InventoryFragment_to_InsideHouseFragment)

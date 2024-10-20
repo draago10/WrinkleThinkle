@@ -60,7 +60,7 @@ class GrowFragment : Fragment() {
 
         // Observing available flowers
         growBackgroundViewModel.availableFlowers.observe(viewLifecycleOwner) { flowers ->
-            // Update logic for available flowers if necessary
+
         }
 
         // Initialize the experience progress bar
@@ -74,8 +74,7 @@ class GrowFragment : Fragment() {
         }
 
         growBackgroundViewModel.availableFlowers.observe(viewLifecycleOwner) { flowers ->
-            // Update available flowers logic, currently not implemented in the seed selection
-            // Modify the seed selection logic to account for available flowers
+
         }
 
 

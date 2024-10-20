@@ -52,7 +52,9 @@
         <action
                 android:id="@+id/action_InsideHouseFragment_to_MapFragment"
                 app:destination="@id/MapFragment" />
-
+        <action
+                android:id="@+id/action_go_to_settings"
+                app:destination="@+id/SettingsFragment"/>
     </fragment>
 
     <!-- GrowFragment -->
@@ -123,9 +125,9 @@
     </fragment>
 
     <fragment android:id="@+id/MapFragment"
-              android:name="com.example.wrinklethinkle.view.MapFragment"
-              android:label="MapFragment"
-              tools:layout="@layout/fragment_map">
+            android:name="com.example.wrinklethinkle.view.MapFragment"
+            android:label="MapFragment"
+            tools:layout="@layout/fragment_map">
         <action android:id="@+id/action_MapFragment_to_GrowFragment"
                 app:destination="@id/GrowFragment"/>
         <action android:id="@+id/action_MapFragment_to_InventoryFragment"
@@ -136,6 +138,15 @@
                 app:destination="@id/InsideHouseFragment"/>
     </fragment>
 
+    <fragment android:id="@+id/SettingsFragment"
+        android:name="com.example.wrinklethinkle.view.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action android:id="@+id/action_back_to_house"
+            app:destination="@+id/InsideHouseFragment"/>
+        <action android:id="@+id/action_logout_user"
+            app:destination="@+id/SignInScreenFragment"/>
+     </fragment>
 
 
 </navigation>

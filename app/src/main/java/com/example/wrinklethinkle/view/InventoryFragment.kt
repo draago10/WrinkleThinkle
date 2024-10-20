@@ -69,5 +69,9 @@ class InventoryFragment : Fragment() {
         }
 
     }
+    override fun onResume() {
+        super.onResume()
+        playerViewModel.fetchLatestPlayerData()
+    }
 
 }

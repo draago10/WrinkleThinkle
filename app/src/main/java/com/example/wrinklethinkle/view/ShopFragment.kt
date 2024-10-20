@@ -142,20 +142,33 @@ class ShopFragment : Fragment() {
 
                     return@setOnClickListener
                 }
-
-                for ((key, value) in player.flowers)
-                {
-                    dialog.setNeutralButton(key) { dialog, which ->
-
-                        if (key == "ROSE") { player.removeFlower(key, value, 100) }
-                        if (key == "TULIP") { player.removeFlower(key, value, 250) }
-                        if (key == "LILY") { player.removeFlower(key, value, 500) }
-                        if (key == "DAHLIA") { player.removeFlower(key, value, 1000) }
-
-                        binding.coinBalance.text = player.gold.toString()
+                val flowers = player.flowers.keys.toTypedArray()
+                dialog.setItems(flowers) { _ , which ->
+                    val selectedFlower = flowers[which]
+                    for ((key, _ ) in player.flowers)  {
+                        if (selectedFlower == "ROSE")
+                        {
+                            player.removeFlower(selectedFlower,1 , 100)
+                            break
+                        }
+                        if (selectedFlower == "TULIP")
+                        {
+                            player.removeFlower(key, 1, 250)
+                            break
+                        }
+                        if (selectedFlower == "LILY")
+                        {
+                            player.removeFlower(key, 1, 500)
+                            break
+                        }
+                        if (selectedFlower == "DAHLIA")
+                        {
+                            player.removeFlower(key, 1, 1000)
+                            break
+                        }
                     }
+                    binding.coinBalance.text = player.gold.toString()
                 }
-
                 dialog.show()
             }
         }
@@ -166,5 +179,10 @@ class ShopFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         shopFragmentBinding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        playerViewModel.fetchLatestPlayerData()
     }
 }

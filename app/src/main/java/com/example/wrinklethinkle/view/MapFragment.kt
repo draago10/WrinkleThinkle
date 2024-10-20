@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wrinklethinkle.R
+import com.example.wrinklethinkle.Utility.Utility
 import com.example.wrinklethinkle.model.FlowerType
 import com.example.wrinklethinkle.viewmodel.GrowBackgroundViewModel
 import com.example.wrinklethinkle.databinding.FragmentMapBinding
@@ -90,7 +91,7 @@ class MapFragment : Fragment() {
             findNavController().navigate(R.id.action_MapFragment_to_ShopFragment)
         }
         binding.HouseMapButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Already on Map Screen", Toast.LENGTH_SHORT).show()
+            Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
         }
     }
 

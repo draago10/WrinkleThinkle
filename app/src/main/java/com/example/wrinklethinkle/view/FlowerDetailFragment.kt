@@ -10,12 +10,13 @@ import com.example.wrinklethinkle.R
 import com.example.wrinklethinkle.Utility.Utility
 import com.example.wrinklethinkle.databinding.FragmentFlowerDetailBinding
 import com.example.wrinklethinkle.model.getFlowerDetails
+import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 import kotlin.random.Random
 
 class FlowerDetailFragment : Fragment() {
     private var flowerDetailFragmentBinding: FragmentFlowerDetailBinding? = null
     private val binding get() = flowerDetailFragmentBinding!!
-
+    private val playerViewModel = PlayerViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

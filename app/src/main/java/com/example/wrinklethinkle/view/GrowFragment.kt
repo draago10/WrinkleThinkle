@@ -207,7 +207,6 @@ class GrowFragment : Fragment() {
     private fun resetGrowScreen() {
         binding.flowerImage.visibility = View.GONE
         growthStage = 0
-        clickCount = 0
     }
 
     override fun onDestroyView() {
@@ -216,5 +215,10 @@ class GrowFragment : Fragment() {
         if (this::mediaPlayer.isInitialized) {
             mediaPlayer.release()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        playerViewModel.fetchLatestPlayerData()
     }
 }

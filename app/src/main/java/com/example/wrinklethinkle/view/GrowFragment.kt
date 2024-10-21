@@ -1,5 +1,6 @@
 package com.example.wrinklethinkle.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.example.wrinklethinkle.model.*
 import com.example.wrinklethinkle.viewmodel.GrowBackgroundViewModel
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 class GrowFragment : Fragment() {
@@ -32,6 +34,7 @@ class GrowFragment : Fragment() {
     private var growthStage = 0
     private var bugCount = 0
     private lateinit var experienceProgressBar: ProgressBar
+    private lateinit var clickPowerText: TextView
 
     private val binding get() = growFragmentBinding!!
 
@@ -44,6 +47,7 @@ class GrowFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,6 +57,8 @@ class GrowFragment : Fragment() {
             growBackgroundViewModel.setAvailableFlowers(listOf(FlowerType.ROSE, FlowerType.TULIP))
             growBackgroundViewModel.setActiveButton(R.id.GardenGrow)
         }
+
+        clickPowerText = binding.root.findViewById(R.id.clickPowerText)
 
         // Observing background from GrowBackgroundViewModel
         growBackgroundViewModel.backgroundImage.observe(viewLifecycleOwner) { resourceId ->
@@ -105,6 +111,9 @@ class GrowFragment : Fragment() {
 
             updateExperienceProgressBar(player)
             updatePlayerLevelText(player)
+            updateClickPowerText(player.clickPower)
+
+            //clickPowerText.text = "Click Power: ${player.clickPower}"
 
             binding.SeedSelection.setOnClickListener {
                 showSeedSelectionDialog(player)
@@ -118,6 +127,7 @@ class GrowFragment : Fragment() {
                     val actualClickPower = (1 * player.clickPower) / (1 + (bugCount * 0.5))
 
                     clickCount += actualClickPower
+                    updateClickPowerText(actualClickPower)
 
                     if (clickCount >= 50) {
                         clickCount = 0.0
@@ -125,7 +135,7 @@ class GrowFragment : Fragment() {
                     }
 
                     val chance = (1..100).random()
-                    if (chance <= 5){
+                    if (chance <= 2){
                         spawnBug()
                     }
 
@@ -194,6 +204,7 @@ class GrowFragment : Fragment() {
         for (bugView in bugViews) {
             binding.imageGroup.removeView(bugView)
         }
+
     }
 
     private fun applyPesticide() {
@@ -219,6 +230,10 @@ class GrowFragment : Fragment() {
         val experienceToNextLevel = 100 * player.level
         val progress = (currentExperience.toDouble() / experienceToNextLevel.toDouble()) * 100
         experienceProgressBar.progress = progress.toInt()
+    }
+
+    private fun updateClickPowerText(clickPower: Double) {
+        clickPowerText.text = "Click Power: $clickPower"
     }
 
     private fun updatePlayerLevelText(player: PlayerCharacter) {

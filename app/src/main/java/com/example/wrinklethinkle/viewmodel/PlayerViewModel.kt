@@ -43,7 +43,7 @@ class PlayerViewModel : ViewModel() {
         val name = userData["name"].toString()
         val level = (userData["level"] as? Long)?.toInt() ?: 1
         val gold = (userData["gold"] as? Long)?.toInt() ?: 0
-        val clickPower = (userData["clickPower"] as? Double) ?: 1.0
+        val clickPower = (userData["clickPower"] as? Long)?.toDouble() ?: 1.0
         val experience = (userData["experience"] as? Long)?.toInt() ?: 0
         val pesticide = (userData["pesticide"] as? Long)?.toInt() ?: 1
         val fertilizer = (userData["fertilizer"] as? Long)?.toInt() ?: 1

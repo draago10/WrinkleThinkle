@@ -107,13 +107,13 @@ class GrowFragment : Fragment() {
 
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
 
+        // PLAYER VIEW MODEL -------------------------------------------------------------------------------------------------------
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
 
             updateExperienceProgressBar(player)
             updatePlayerLevelText(player)
-            updateClickPowerText(player.clickPower)
+            updateClickPowerText(player)
 
-            //clickPowerText.text = "Click Power: ${player.clickPower}"
 
             binding.SeedSelection.setOnClickListener {
                 showSeedSelectionDialog(player)
@@ -124,10 +124,11 @@ class GrowFragment : Fragment() {
                 binding.imageGroup.startAnimation(shrinkGrowAnimation)
                 playSound()
                 if (growthStage < 4) {
-                    val actualClickPower = (1 * player.clickPower) / (1 + (bugCount * 0.5))
+                    val actualClickPower = ((1 * player.clickPower) / (1 + (bugCount * 0.5)))
+
 
                     clickCount += actualClickPower
-                    updateClickPowerText(actualClickPower)
+                    updateClickPowerText(player)
 
                     if (clickCount >= 50) {
                         clickCount = 0.0
@@ -135,7 +136,7 @@ class GrowFragment : Fragment() {
                     }
 
                     val chance = (1..100).random()
-                    if (chance <= 2){
+                    if (chance <= 5){
                         spawnBug()
                     }
 
@@ -145,7 +146,7 @@ class GrowFragment : Fragment() {
                     val experienceGained = 50 * selectedFlowerType.flowerRank
                     player.gainExperience(experienceGained)
                     updateExperienceProgressBar(player)
-                    updatePlayerLevelText(player)
+
 
                     player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
                     resetGrowScreen()
@@ -204,7 +205,6 @@ class GrowFragment : Fragment() {
         for (bugView in bugViews) {
             binding.imageGroup.removeView(bugView)
         }
-
     }
 
     private fun applyPesticide() {
@@ -213,7 +213,7 @@ class GrowFragment : Fragment() {
                 if (bugCount > 0) {
                     bugCount = 0
                     clearBugImages()
-                    player.pesticide-- // Decrease the pesticide count
+                    player.removePesticide(1)
                     playerViewModel.setPlayerData(player) // Update the player data in ViewModel or Firebase
                     Toast.makeText(context, "Bugs cleared! Remaining pesticide: ${player.pesticide}", Toast.LENGTH_SHORT).show()
                 } else {
@@ -232,12 +232,13 @@ class GrowFragment : Fragment() {
         experienceProgressBar.progress = progress.toInt()
     }
 
-    private fun updateClickPowerText(clickPower: Double) {
-        clickPowerText.text = "Click Power: $clickPower"
+    private fun updateClickPowerText(player: PlayerCharacter) {
+        val actualClickPower = String.format("%.2f", ((1 * player.clickPower) / (1 + (bugCount * 0.5))))
+        binding.clickPowerText.text = "Click Power: $actualClickPower"
     }
 
     private fun updatePlayerLevelText(player: PlayerCharacter) {
-        binding.playerLevelText.text = "${player.level}"
+        binding.playerLevelText.text = "Level: ${player.level}"
     }
 
     private fun growFlower() {

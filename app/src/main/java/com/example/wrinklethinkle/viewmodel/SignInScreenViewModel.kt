@@ -1,6 +1,5 @@
 package com.example.wrinklethinkle.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.example.wrinklethinkle.model.PlayerCharacter
-import kotlinx.coroutines.flow.flow
 
 
 class SignInScreenViewModel : ViewModel() {

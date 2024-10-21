@@ -56,7 +56,7 @@ class MapFragment : Fragment() {
         // Observe player level and enable/disable the GreenhouseGrow button accordingly
         playerViewModel.playerData.observe(viewLifecycleOwner) { playerCharacter ->
 
-            if (playerCharacter.level >= 1) {
+            if (playerCharacter.level >= 5) {
                 // Enable GreenhouseGrow button if player is level 4 or higher (SET TO 1 UNTIL WE CAN SAVE/LOAD PLAYER LEVEL CORRECTLY)
                 binding.GreenhouseGrow.isEnabled = true
                 binding.GreenhouseGrow.alpha = 1.0f // Make the button fully visible

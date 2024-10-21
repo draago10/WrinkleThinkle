@@ -16,8 +16,8 @@
     <!--            android:layout_marginTop="16dp"/>-->
     <FrameLayout
             android:id="@+id/imageGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="347dp"
+            android:layout_height="511dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/pesticideButton"
             app:layout_constraintBottom_toTopOf="@+id/buttonHStack"
@@ -26,18 +26,17 @@
 
         <ImageView
                 android:id="@+id/flowerImage"
-                android:layout_width="wrap_content"
-                android:layout_height="400dp"
+                android:layout_width="211dp"
+                android:layout_height="395dp"
                 android:contentDescription="@string/flower_image_description"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="centerCrop" android:padding="50dp"/>
-
         <ImageView
                 android:id="@+id/flowerPotImage"
-                android:layout_width="275dp"
-                android:layout_height="275dp"
+                android:layout_width="223dp"
+                android:layout_height="255dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="255dp"
                 android:layout_marginRight="15dp"
@@ -53,7 +52,7 @@
 
             app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
             app:layout_constraintBottom_toTopOf="@+id/fertilizerButton" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" app:layout_constraintVertical_bias="0.557"/>
+            android:layout_marginEnd="24dp" app:layout_constraintVertical_bias="0.687"/>
     <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -61,7 +60,7 @@
             android:background="@drawable/icon_fertilizer"
             app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
             app:layout_constraintBottom_toTopOf="@+id/textView" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" app:layout_constraintVertical_bias="0.498"/>
+            android:layout_marginEnd="24dp" app:layout_constraintVertical_bias="0.745"/>
     <ImageView
             android:src="@drawable/inside_house_icon"
             android:layout_width="75dp"
@@ -135,31 +134,30 @@
             style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/imageGroup" app:layout_constraintHorizontal_bias="0.789"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText" app:layout_constraintVertical_bias="0.0"/>
-    <EditText
+            app:layout_constraintBottom_toTopOf="@+id/imageGroup" app:layout_constraintHorizontal_bias="0.745"
+            android:layout_marginBottom="68dp"/>
+    <TextView
+            android:id="@+id/clickPowerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="Level"
-            android:ems="10"
-            android:id="@+id/editTextText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/experience_progress_bar" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/imageGroup" app:layout_constraintHorizontal_bias="0.826"
-            app:layout_constraintVertical_bias="0.166"/>
-    <TextView
-            android:text="1"
-            android:textSize="18sp"
+            android:text="Click Power: 1"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:layout_width="66dp"
-            android:layout_height="35dp"
+            app:layout_constraintBottom_toTopOf="@+id/experience_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/experience_progress_bar"/>
+    <TextView
             android:id="@+id/playerLevelText"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-            app:layout_constraintStart_toStartOf="@+id/editTextText"
-            app:layout_constraintEnd_toEndOf="@+id/editTextText"
-            app:layout_constraintHorizontal_bias="0.562"
-    />
+            android:layout_width="99dp"
+            android:layout_height="0dp"
+            android:text="Level: 1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+
+
+            app:layout_constraintBottom_toTopOf="@+id/experience_progress_bar"
+            app:layout_constraintStart_toStartOf="@+id/experience_progress_bar"/>
     <ImageView
             android:src="@drawable/button_grow"
             android:layout_width="wrap_content"

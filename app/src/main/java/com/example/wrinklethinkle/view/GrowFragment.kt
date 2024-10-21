@@ -28,7 +28,7 @@ class GrowFragment : Fragment() {
     private lateinit var mediaPlayer: MediaPlayer
     private val playerViewModel: PlayerViewModel by activityViewModels()
     private val growBackgroundViewModel: GrowBackgroundViewModel by activityViewModels() // ViewModel for background and available flowers
-    private var clickCount = 0
+    private var clickCount: Double = 0.0
     private var growthStage = 0
     private var bugCount = 0
     private lateinit var experienceProgressBar: ProgressBar
@@ -115,12 +115,12 @@ class GrowFragment : Fragment() {
                 binding.imageGroup.startAnimation(shrinkGrowAnimation)
                 playSound()
                 if (growthStage < 4) {
-                    val actualClickPower = (1 * player.clickPower).toInt() / (1 + bugCount)
+                    val actualClickPower = (1 * player.clickPower) / (1 + (bugCount * 0.5))
 
                     clickCount += actualClickPower
 
-                    if (clickCount >= 50) { // Set to 10 for testing purposes
-                        clickCount = 0
+                    if (clickCount >= 50) {
+                        clickCount = 0.0
                         growFlower()
                     }
 
@@ -278,7 +278,7 @@ class GrowFragment : Fragment() {
                     binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
                     binding.flowerImage.visibility = View.VISIBLE
                     growthStage = 1
-                    clickCount = 0
+                    clickCount = 0.0
                     player.removeSeed(selectedFlowerType.name, 1)
                 }
                 .create()

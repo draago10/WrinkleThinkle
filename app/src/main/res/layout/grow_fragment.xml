@@ -16,8 +16,8 @@
     <!--            android:layout_marginTop="16dp"/>-->
     <FrameLayout
             android:id="@+id/imageGroup"
-            android:layout_width="286dp"
-            android:layout_height="410dp"
+            android:layout_width="301dp"
+            android:layout_height="497dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/pesticideButton"
             app:layout_constraintBottom_toTopOf="@+id/buttonHStack"
@@ -26,8 +26,8 @@
 
         <ImageView
                 android:id="@+id/flowerImage"
-                android:layout_width="wrap_content"
-                android:layout_height="400dp"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
                 android:contentDescription="@string/flower_image_description"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="25dp"

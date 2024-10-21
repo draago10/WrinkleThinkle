@@ -139,7 +139,7 @@ class GrowFragment : Fragment() {
     }
 
     private fun updatePlayerLevelText(player: PlayerCharacter) {
-        binding.playerLevelText.text = "${player.level}"
+        binding.playerLevelText.text = "${player.clickPower}"
     }
 
     private fun growFlower() {

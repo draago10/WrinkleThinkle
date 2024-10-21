@@ -1,7 +1,7 @@
 package com.example.wrinklethinkle.model
 
-import android.widget.Toast
-import com.example.wrinklethinkle.network.FirebaseManager
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -16,6 +16,8 @@ class PlayerCharacter(
     var flowers: MutableMap<String, Int> = mutableMapOf(),  // Flower inventory (name -> amount)
     var seeds: MutableMap<String, Int> = mutableMapOf()     // Seed inventory (name -> amount)
 ) {
+    private val _updateSuccessFul = MutableLiveData<Boolean?>()
+    val updateSuccessFul: LiveData<Boolean?> = _updateSuccessFul
     // Function to add experience points and level up if possible ----------------------------------------------
     fun gainExperience(exp: Int) {
         experience += exp
@@ -39,6 +41,7 @@ class PlayerCharacter(
         playerRef.updateChildren(updatedData).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 // Optionally handle success (e.g., notify the player, update UI)
+                _updateSuccessFul.postValue(true)
             } else {
                 // Handle failure (e.g., rollback local changes, log error)
             }
@@ -193,33 +196,115 @@ class PlayerCharacter(
     }
 
     fun removeGold(amount: Int) {
-        val currentAmount = gold
-        if (currentAmount >= amount) {
+        if (gold >= amount) {
             gold -= amount
+            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+            val goldRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("gold")
+
+            goldRef.get().addOnSuccessListener { snapshot ->
+                val currentGoldValue = snapshot.getValue(Int::class.java) ?: 0
+                val newGoldValue = currentGoldValue - amount
+
+                val fbUpdates = hashMapOf<String, Any>(
+                    "gold" to newGoldValue
+                )
+
+                FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        // Handle Firebase update failure
+                    }
+                }
+            }
         }
     }
 
     // Functions to add/remove pesticide ----------------------------------------------------------------------
     fun addPesticide(amount: Int) {
         pesticide += amount
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val pesticideRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("pesticide")
+
+        pesticideRef.get().addOnSuccessListener { snapshot ->
+            val currentPesticideValue = snapshot.getValue(Int::class.java) ?: 0
+            val newPesticideValue = currentPesticideValue + amount
+
+            val fbUpdates = hashMapOf<String, Any>(
+                "pesticide" to newPesticideValue
+            )
+
+            FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    // Handle Firebase update failure
+                }
+            }
+        }
     }
 
     fun removePesticide(amount: Int) {
-        val currentAmount = pesticide
-        if (currentAmount >= amount) {
+        if (pesticide >= amount) {
             pesticide -= amount
+            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+            val pesticideRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("pesticide")
+
+            pesticideRef.get().addOnSuccessListener { snapshot ->
+                val currentPesticideValue = snapshot.getValue(Int::class.java) ?: 0
+                val newPesticideValue = currentPesticideValue - amount
+
+                val fbUpdates = hashMapOf<String, Any>(
+                    "pesticide" to newPesticideValue
+                )
+
+                FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        // Handle Firebase update failure
+                    }
+                }
+            }
         }
     }
 
     // Functions to add/remove fertilizer ---------------------------------------------------------------------
     fun addFertilizer(amount: Int) {
         fertilizer += amount
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val fertilizerRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("fertilizer")
+
+        fertilizerRef.get().addOnSuccessListener { snapshot ->
+            val currentFertilizerValue = snapshot.getValue(Int::class.java) ?: 0
+            val newFertilizerValue = currentFertilizerValue + amount
+
+            val fbUpdates = hashMapOf<String, Any>(
+                "fertilizer" to newFertilizerValue
+            )
+
+            FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    // Handle Firebase update failure
+                }
+            }
+        }
     }
 
     fun removeFertilizer(amount: Int) {
-        val currentAmount = fertilizer
-        if (currentAmount >= amount) {
+        if (fertilizer >= amount) {
             fertilizer -= amount
+            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+            val fertilizerRef = FirebaseDatabase.getInstance().reference.child("users").child(userId).child("fertilizer")
+
+            fertilizerRef.get().addOnSuccessListener { snapshot ->
+                val currentFertilizerValue = snapshot.getValue(Int::class.java) ?: 0
+                val newFertilizerValue = currentFertilizerValue - amount
+
+                val fbUpdates = hashMapOf<String, Any>(
+                    "fertilizer" to newFertilizerValue
+                )
+
+                FirebaseDatabase.getInstance().reference.child("users").child(userId).updateChildren(fbUpdates).addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        // Handle Firebase update failure
+                    }
+                }
+            }
         }
     }
 }

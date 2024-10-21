@@ -16,8 +16,8 @@
     <!--            android:layout_marginTop="16dp"/>-->
     <FrameLayout
             android:id="@+id/imageGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="286dp"
+            android:layout_height="410dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/pesticideButton"
             app:layout_constraintBottom_toTopOf="@+id/buttonHStack"
@@ -33,11 +33,10 @@
                 android:layout_marginBottom="25dp"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="centerCrop" android:padding="50dp"/>
-
         <ImageView
                 android:id="@+id/flowerPotImage"
-                android:layout_width="275dp"
-                android:layout_height="275dp"
+                android:layout_width="223dp"
+                android:layout_height="255dp"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="255dp"
                 android:layout_marginRight="15dp"
@@ -53,7 +52,7 @@
 
             app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
             app:layout_constraintBottom_toTopOf="@+id/fertilizerButton" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" app:layout_constraintVertical_bias="0.557"/>
+            android:layout_marginEnd="24dp" app:layout_constraintVertical_bias="0.687"/>
     <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -61,7 +60,7 @@
             android:background="@drawable/icon_fertilizer"
             app:layout_constraintTop_toBottomOf="@+id/experience_progress_bar"
             app:layout_constraintBottom_toTopOf="@+id/textView" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" app:layout_constraintVertical_bias="0.498"/>
+            android:layout_marginEnd="24dp" app:layout_constraintVertical_bias="0.745"/>
     <ImageView
             android:src="@drawable/inside_house_icon"
             android:layout_width="75dp"

@@ -18,6 +18,8 @@ import com.example.wrinklethinkle.databinding.GrowFragmentBinding
 import com.example.wrinklethinkle.model.*
 import com.example.wrinklethinkle.viewmodel.GrowBackgroundViewModel
 import com.example.wrinklethinkle.viewmodel.PlayerViewModel
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 
 class GrowFragment : Fragment() {
 
@@ -28,6 +30,7 @@ class GrowFragment : Fragment() {
     private val growBackgroundViewModel: GrowBackgroundViewModel by activityViewModels() // ViewModel for background and available flowers
     private var clickCount = 0
     private var growthStage = 0
+    private var bugCount = 0
     private lateinit var experienceProgressBar: ProgressBar
 
     private val binding get() = growFragmentBinding!!
@@ -44,7 +47,7 @@ class GrowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set default background and flowers if not set
+        // Set default GrowScreen background and flowers if not set
         if (growBackgroundViewModel.backgroundImage.value == null) {
             growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden)
             growBackgroundViewModel.setAvailableFlowers(listOf(FlowerType.ROSE, FlowerType.TULIP))
@@ -60,7 +63,6 @@ class GrowFragment : Fragment() {
 
         // Observing available flowers
         growBackgroundViewModel.availableFlowers.observe(viewLifecycleOwner) { flowers ->
-
         }
 
         // Initialize the experience progress bar
@@ -74,7 +76,6 @@ class GrowFragment : Fragment() {
         }
 
         growBackgroundViewModel.availableFlowers.observe(viewLifecycleOwner) { flowers ->
-
         }
 
 
@@ -94,6 +95,10 @@ class GrowFragment : Fragment() {
             Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
         }
 
+        binding.pesticideButton.setOnClickListener {
+            applyPesticide()
+        }
+
         val shrinkGrowAnimation = AnimationUtils.loadAnimation(context, R.anim.shrink_and_grow)
 
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
@@ -110,12 +115,20 @@ class GrowFragment : Fragment() {
                 binding.imageGroup.startAnimation(shrinkGrowAnimation)
                 playSound()
                 if (growthStage < 4) {
-                    clickCount += (1 * player.clickPower).toInt()
+                    val actualClickPower = (1 * player.clickPower).toInt() / (1 + bugCount)
 
-                    if (clickCount >= 10) { // Set to 10 for testing purposes
+                    clickCount += actualClickPower
+
+                    if (clickCount >= 50) { // Set to 10 for testing purposes
                         clickCount = 0
                         growFlower()
                     }
+
+                    val chance = (1..100).random()
+                    if (chance <= 5){
+                        spawnBug()
+                    }
+
                 } else {
                     Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
 
@@ -127,6 +140,76 @@ class GrowFragment : Fragment() {
                     player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
                     resetGrowScreen()
                 }
+            }
+        }
+    }
+
+    private fun spawnBug(){
+        // Increase bug count
+        bugCount++
+
+        // Display bug on the flower
+        displayBugOnFlower()
+
+        Toast.makeText(context, "A bug has been spotted!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun displayBugOnFlower() {
+        // Define the bug image size
+        val bugSize = 200
+
+        // Create a new ImageView for the bug
+        val bugImage = ImageView(context).apply {
+            layoutParams = ViewGroup.LayoutParams(bugSize, bugSize)
+            setImageResource(R.drawable.bug_image)
+            tag = "bug"
+        }
+
+        // Add the bug image to the flower layout
+        binding.imageGroup.addView(bugImage)
+
+        // Calculate random positions, ensuring the bug stays within the bounds
+        val maxX = binding.flowerImage.width - bugSize
+        val maxY = binding.flowerImage.height - bugSize
+
+        // Generate random x and y within the available bounds
+        val randomX = (0..maxX).random()
+        val randomY = (0..maxY).random()
+
+        // Position the bug image randomly within the bounds of the flower image
+        bugImage.x = binding.flowerImage.x + randomX
+        bugImage.y = binding.flowerImage.y + randomY
+    }
+
+    private fun clearBugImages() {
+        val bugViews = mutableListOf<View>()
+        // Collect all bug views to remove them
+        for (i in 0 until binding.imageGroup.childCount) {
+            val view = binding.imageGroup.getChildAt(i)
+            if (view is ImageView && view.tag == "bug") {
+                bugViews.add(view)  // Add to list for removal
+            }
+        }
+        // Remove all collected bug views
+        for (bugView in bugViews) {
+            binding.imageGroup.removeView(bugView)
+        }
+    }
+
+    private fun applyPesticide() {
+        playerViewModel.playerData.value?.let { player ->
+            if (player.pesticide > 0) {
+                if (bugCount > 0) {
+                    bugCount = 0
+                    clearBugImages()
+                    player.pesticide-- // Decrease the pesticide count
+                    playerViewModel.setPlayerData(player) // Update the player data in ViewModel or Firebase
+                    Toast.makeText(context, "Bugs cleared! Remaining pesticide: ${player.pesticide}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "No bugs to clear!", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(context, "No pesticide available!", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -207,6 +290,8 @@ class GrowFragment : Fragment() {
     private fun resetGrowScreen() {
         binding.flowerImage.visibility = View.GONE
         growthStage = 0
+        bugCount = 0
+        clearBugImages()
     }
 
     override fun onDestroyView() {

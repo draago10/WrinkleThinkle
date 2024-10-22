@@ -43,8 +43,11 @@ class GrowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Inflate the layout for this fragment
         growFragmentBinding = GrowFragmentBinding.inflate(inflater, container, false)
+        // Initialize the MediaPlayer with a sound resource
         mediaPlayer = MediaPlayer.create(context, R.raw.splash_sound)
+        // Return the root view of the binding
         return binding.root
     }
 
@@ -54,10 +57,14 @@ class GrowFragment : Fragment() {
 
         // Set default GrowScreen background and flowers if not set
         if (growBackgroundViewModel.backgroundImage.value == null) {
+            // Background image
             growBackgroundViewModel.setBackgroundImage(R.drawable.grow_bg_garden)
+            // Available flowers
             growBackgroundViewModel.setAvailableFlowers(listOf(FlowerType.ROSE, FlowerType.TULIP))
+            // Active button
             growBackgroundViewModel.setActiveButton(R.id.GardenGrow)
         }
+
 
         clickPowerText = binding.root.findViewById(R.id.clickPowerText)
 

@@ -93,6 +93,7 @@ class GrowFragment : Fragment() {
         }
 
 
+        // Button click listeners
         binding.goHomeButton.setOnClickListener {
             findNavController().navigate(R.id.action_GrowFragment_to_InsideHouseFragment)
         }
@@ -108,11 +109,9 @@ class GrowFragment : Fragment() {
         binding.growIcon.setOnClickListener {
             Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
         }
-
         binding.fertilizerButton.setOnClickListener {
             toggleFertilizer()
         }
-
         binding.pesticideButton.setOnClickListener {
             applyPesticide()
         }
@@ -122,6 +121,7 @@ class GrowFragment : Fragment() {
         // PLAYER VIEW MODEL -------------------------------------------------------------------------------------------------------
         playerViewModel.playerData.observe(viewLifecycleOwner) { player ->
 
+            // Updates
             updateExperienceProgressBar(player)
             updatePlayerLevelText(player)
             updateClickPowerText(player)
@@ -133,16 +133,25 @@ class GrowFragment : Fragment() {
 
             // Handle click events on the flower image to grow the flower
             binding.flowerImage.setOnClickListener {
+
+                // Animation and sound
                 binding.imageGroup.startAnimation(shrinkGrowAnimation)
                 playSound()
+
+                // Click power logic
                 if (growthStage < 4) {
+
+                    // Click power with bug influence logic
                     var actualClickPower = ((1 * player.clickPower) / (1 + (bugCount * 0.5)))
 
+                    // Click power with fertilizer influence logic
                     if (fertilizerIsOn && player.fertilizer >= 0) {
+                        // If fertilizer is finished
                         if (player.fertilizer == 0){
                             Toast.makeText(context, "You're all out of fertilizers!", Toast.LENGTH_SHORT).show()
                             fertilizerIsOn = false
                         }
+                        // Otherwise, click power doubled
                         else {
                             actualClickPower *= 2
                             player.removeFertilizer(1)
@@ -150,23 +159,29 @@ class GrowFragment : Fragment() {
                         }
                     }
 
-
+                    // Add click power to the total clicks bucket
                     clickCount += actualClickPower
                     updateClickPowerText(player)
 
+                    // If the bucket is full (50 total clicks)
                     if (clickCount >= 50) {
+                        // Empty the bucket and grow the flower
                         clickCount = 0.0
                         growFlower()
                     }
 
+                    // 5% chance of spawning a bug
                     val chance = (1..100).random()
                     if (chance <= 5){
                         spawnBug()
                     }
 
+                // If the growth stage is not less than 4 then the flower is fully grown
                 } else {
+                    // User feedback
                     Toast.makeText(context, "Flower fully grown!", Toast.LENGTH_SHORT).show()
 
+                    // Increase the player's xp
                     val experienceGained = 50 * selectedFlowerType.flowerRank
                     player.gainExperience(experienceGained)
                     updateExperienceProgressBar(player)

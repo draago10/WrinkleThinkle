@@ -33,6 +33,7 @@ class GrowFragment : Fragment() {
     private var clickCount: Double = 0.0
     private var growthStage = 0
     private var bugCount = 0
+    private var fertilizerIsOn = false;
     private lateinit var experienceProgressBar: ProgressBar
     private lateinit var clickPowerText: TextView
 
@@ -101,6 +102,10 @@ class GrowFragment : Fragment() {
             Utility().showErrorPopup(childFragmentManager, requireContext(), R.drawable.project_gnome,"Oh my gnome!", "You're already here :)")
         }
 
+        binding.fertilizerButton.setOnClickListener {
+            toggleFertilizer()
+        }
+
         binding.pesticideButton.setOnClickListener {
             applyPesticide()
         }
@@ -124,8 +129,15 @@ class GrowFragment : Fragment() {
                 binding.imageGroup.startAnimation(shrinkGrowAnimation)
                 playSound()
                 if (growthStage < 4) {
-                    val actualClickPower = ((1 * player.clickPower) / (1 + (bugCount * 0.5)))
+                    var actualClickPower = ((1 * player.clickPower) / (1 + (bugCount * 0.5)))
 
+                    if (fertilizerIsOn && player.fertilizer > 0) {
+                        actualClickPower *= 2
+                        player.removeFertilizer(1)
+                    }
+                    if (player.fertilizer <=0) {
+                        toggleFertilizer()
+                    }
 
                     clickCount += actualClickPower
                     updateClickPowerText(player)
@@ -204,6 +216,23 @@ class GrowFragment : Fragment() {
         // Remove all collected bug views
         for (bugView in bugViews) {
             binding.imageGroup.removeView(bugView)
+        }
+    }
+
+    private fun toggleFertilizer() {
+
+        if (fertilizerIsOn) {
+            fertilizerIsOn = false
+        }
+        else {
+            fertilizerIsOn = true
+            playerViewModel.playerData.value?.let { player ->
+                if (player.fertilizer <= 0) {
+                    // toast
+                    Toast.makeText(context, "No fertilizer left!", Toast.LENGTH_SHORT).show()
+                    toggleFertilizer()
+                }
+            }
         }
     }
 

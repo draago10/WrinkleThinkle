@@ -136,7 +136,8 @@ class GrowFragment : Fragment() {
                         player.removeFertilizer(1)
                     }
                     if (player.fertilizer <=0){
-                        toggleFertilizer()
+                        Toast.makeText(context, "You're out of fertilizer!", Toast.LENGTH_SHORT).show()
+                        fertilizerIsOn = false
                     }
 
                     clickCount += actualClickPower

@@ -131,14 +131,18 @@ class GrowFragment : Fragment() {
                 if (growthStage < 4) {
                     var actualClickPower = ((1 * player.clickPower) / (1 + (bugCount * 0.5)))
 
-                    if (fertilizerIsOn && player.fertilizer > 0) {
-                        actualClickPower *= 2
-                        player.removeFertilizer(1)
+                    if (fertilizerIsOn && player.fertilizer >= 0) {
+                        if (player.fertilizer == 0){
+                            Toast.makeText(context, "You're all out of fertilizers!", Toast.LENGTH_SHORT).show()
+                            fertilizerIsOn = false
+                        }
+                        else {
+                            actualClickPower *= 2
+                            player.removeFertilizer(1)
+
+                        }
                     }
-                    if (player.fertilizer <=0){
-                        Toast.makeText(context, "You're out of fertilizer!", Toast.LENGTH_SHORT).show()
-                        fertilizerIsOn = false
-                    }
+
 
                     clickCount += actualClickPower
                     updateClickPowerText(player)

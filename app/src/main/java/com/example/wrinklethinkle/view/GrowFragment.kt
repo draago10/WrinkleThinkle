@@ -135,7 +135,7 @@ class GrowFragment : Fragment() {
                         actualClickPower *= 2
                         player.removeFertilizer(1)
                     }
-                    if (player.fertilizer <=0) {
+                    if (player.fertilizer <=0){
                         toggleFertilizer()
                     }
 
@@ -223,6 +223,9 @@ class GrowFragment : Fragment() {
 
         if (fertilizerIsOn) {
             fertilizerIsOn = false
+            playerViewModel.playerData.value?.let { player ->
+                Toast.makeText(context, "Fertilizer is off (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
+            }
         }
         else {
             fertilizerIsOn = true
@@ -230,8 +233,13 @@ class GrowFragment : Fragment() {
                 if (player.fertilizer <= 0) {
                     // toast
                     Toast.makeText(context, "No fertilizer left!", Toast.LENGTH_SHORT).show()
-                    toggleFertilizer()
+                    fertilizerIsOn = false
+
                 }
+                else{
+                    Toast.makeText(context, "Fertilizer is on (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
     }

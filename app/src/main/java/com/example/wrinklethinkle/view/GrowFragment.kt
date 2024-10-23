@@ -186,7 +186,7 @@ class GrowFragment : Fragment() {
                     player.gainExperience(experienceGained)
                     updateExperienceProgressBar(player)
 
-
+                    // Add complete flower to player inventory
                     player.addFlower(selectedFlowerType.name, 1) // Add flower to player's flowers map
                     resetGrowScreen()
                 }
@@ -201,8 +201,10 @@ class GrowFragment : Fragment() {
         // Display bug on the flower
         displayBugOnFlower()
 
+        // User feeback
         Toast.makeText(context, "A bug has been spotted!", Toast.LENGTH_SHORT).show()
     }
+
 
     private fun displayBugOnFlower() {
         // Define the bug image size
@@ -247,23 +249,30 @@ class GrowFragment : Fragment() {
     }
 
     private fun toggleFertilizer() {
-
         if (fertilizerIsOn) {
+            // toggle fertilizer off if it was previously on
             fertilizerIsOn = false
+            // User feedback with amount of fertlizer left
             playerViewModel.playerData.value?.let { player ->
                 Toast.makeText(context, "Fertilizer is off (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
             }
         }
         else {
+            // toggle fertlizier on if it was previously off
             fertilizerIsOn = true
+
             playerViewModel.playerData.value?.let { player ->
+                // Case: if no fertilizer left...
                 if (player.fertilizer <= 0) {
-                    // toast
+                    // Notify the user
                     Toast.makeText(context, "No fertilizer left!", Toast.LENGTH_SHORT).show()
+                    // And toggle fertilizer back off
                     fertilizerIsOn = false
 
                 }
+                // Otherwise
                 else{
+                    // Notify user of amount left
                     Toast.makeText(context, "Fertilizer is on (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
                 }
 
@@ -271,47 +280,60 @@ class GrowFragment : Fragment() {
         }
     }
 
+
     private fun applyPesticide() {
+        // Get the current player's data
         playerViewModel.playerData.value?.let { player ->
+            // Check if the player has any pesticide left
             if (player.pesticide > 0) {
+                // Check if there are any bugs to clear
                 if (bugCount > 0) {
+                    // Clear the bugs and reset the bug count
                     bugCount = 0
-                    clearBugImages()
-                    player.removePesticide(1)
-                    playerViewModel.setPlayerData(player) // Update the player data in ViewModel or Firebase
+                    clearBugImages() // Clear any bug images displayed
+                    player.removePesticide(1) // Decrease pesticide count by 1
+                    playerViewModel.setPlayerData(player) // Update the player data in ViewModel
+                    // Show a toast message with remaining pesticide
                     Toast.makeText(context, "Bugs cleared! Remaining pesticide: ${player.pesticide}", Toast.LENGTH_SHORT).show()
                 } else {
+                    // Show a message if there are no bugs to clear
                     Toast.makeText(context, "No bugs to clear!", Toast.LENGTH_SHORT).show()
                 }
             } else {
+                // Show a message if the player has no pesticide available
                 Toast.makeText(context, "No pesticide available!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun updateExperienceProgressBar(player: PlayerCharacter) {
+        // Get the player's current experience and calculate progress to the next level
         val currentExperience = player.experience
         val experienceToNextLevel = 100 * player.level
         val progress = (currentExperience.toDouble() / experienceToNextLevel.toDouble()) * 100
-        experienceProgressBar.progress = progress.toInt()
+        experienceProgressBar.progress = progress.toInt() // Update the progress bar
     }
 
     private fun updateClickPowerText(player: PlayerCharacter) {
+        // Calculate actual click power based on player's click power and current bug count
         val actualClickPower = String.format("%.2f", ((1 * player.clickPower) / (1 + (bugCount * 0.5))))
-        binding.clickPowerText.text = "Click Power: $actualClickPower"
+        binding.clickPowerText.text = "Click Power: $actualClickPower" // Update the click power text
     }
 
     private fun updatePlayerLevelText(player: PlayerCharacter) {
+        // Update the displayed player level
         binding.playerLevelText.text = "Level: ${player.level}"
     }
 
     private fun growFlower() {
+        // Prevent growing the flower if it has reached max growth stage
         if (growthStage >= 5) {
             return
         }
 
-        growthStage++
+        growthStage++ // Increment growth stage
 
+        // Update the flower image based on the current growth stage
         when (growthStage) {
             1 -> binding.flowerImage.setImageResource(selectedFlowerType.seedImage)
             2 -> binding.flowerImage.setImageResource(selectedFlowerType.sproutImage)
@@ -321,62 +343,67 @@ class GrowFragment : Fragment() {
     }
 
     private fun playSound() {
+        // Stop and prepare the media player if it is currently playing
         if (mediaPlayer.isPlaying) {
             mediaPlayer.stop()
             mediaPlayer.prepare()
         }
-        mediaPlayer.start()
+        mediaPlayer.start() // Start playing sound
     }
 
     private fun showSeedSelectionDialog(player: PlayerCharacter) {
-        val seedMenuItems = mutableListOf<String>()
+        val seedMenuItems = mutableListOf<String>() // List to hold available seeds
 
         // Only add seeds that are in the available flowers
         growBackgroundViewModel.availableFlowers.value?.let { availableFlowers ->
             for ((flowerName, amount) in player.seeds) {
+                // Check if the player has seeds available and they are among the available flowers
                 if (amount > 0 && availableFlowers.map { it.name }.contains(flowerName)) {
-                    seedMenuItems.add(flowerName)
+                    seedMenuItems.add(flowerName) // Add available seed to the menu
                 }
             }
         }
 
+        // If no available seeds, show an error popup
         if (seedMenuItems.isEmpty()) {
-            // Show error if no available seeds
             Utility().showErrorPopup(
                 childFragmentManager, requireContext(), R.drawable.error_screen_cat,
                 "Oops, no available seeds!",
                 "You do not have any seeds that can be planted here."
             )
         } else {
-            // Create dialog with available seeds
+            // Create dialog for seed selection
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Select a Seed to Grow")
                 .setItems(seedMenuItems.toTypedArray()) { _, which ->
+                    // Handle the selected seed
                     val selectedSeed = seedMenuItems[which]
-                    selectedFlowerType = FlowerType.valueOf(selectedSeed.uppercase())
-                    binding.flowerImage.setImageResource(selectedFlowerType.sproutImage)
-                    binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue)
-                    binding.flowerImage.visibility = View.VISIBLE
-                    growthStage = 1
-                    clickCount = 0.0
-                    player.removeSeed(selectedFlowerType.name, 1)
+                    selectedFlowerType = FlowerType.valueOf(selectedSeed.uppercase()) // Set selected flower type
+                    binding.flowerImage.setImageResource(selectedFlowerType.sproutImage) // Show sprout image
+                    binding.flowerPotImage.setImageResource(R.drawable.icon_pot_blue) // Show flower pot image
+                    binding.flowerImage.visibility = View.VISIBLE // Make flower image visible
+                    growthStage = 1 // Reset growth stage
+                    clickCount = 0.0 // Reset click count
+                    player.removeSeed(selectedFlowerType.name, 1) // Remove one seed from the player
                 }
                 .create()
 
-            dialog.show()
+            dialog.show() // Show the seed selection dialog
         }
     }
 
     private fun resetGrowScreen() {
-        binding.flowerImage.visibility = View.GONE
-        growthStage = 0
-        bugCount = 0
-        clearBugImages()
+        // Reset the growth screen to initial state
+        binding.flowerImage.visibility = View.GONE // Hide flower image
+        growthStage = 0 // Reset growth stage
+        bugCount = 0 // Reset bug count
+        clearBugImages() // Clear any bug images displayed
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        growFragmentBinding = null
+        growFragmentBinding = null // Clean up fragment binding
+        // Release media player resources if it has been initialized
         if (this::mediaPlayer.isInitialized) {
             mediaPlayer.release()
         }
@@ -384,6 +411,5 @@ class GrowFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        playerViewModel.fetchLatestPlayerData()
+        playerViewModel.fetchLatestPlayerData() // Fetch the latest player data when the fragment resumes
     }
-}

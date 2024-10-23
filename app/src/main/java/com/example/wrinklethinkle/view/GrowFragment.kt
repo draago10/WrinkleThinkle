@@ -150,6 +150,8 @@ class GrowFragment : Fragment() {
                         if (player.fertilizer == 0){
                             Toast.makeText(context, "You're all out of fertilizers!", Toast.LENGTH_SHORT).show()
                             fertilizerIsOn = false
+
+                            // PERLE TO DO: toy with an attribute of the button
                         }
                         // Otherwise, click power doubled
                         else {
@@ -256,6 +258,8 @@ class GrowFragment : Fragment() {
             playerViewModel.playerData.value?.let { player ->
                 Toast.makeText(context, "Fertilizer is off (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
             }
+
+            // PERLE TO DO: toy with an attribute of the button
         }
         else {
             playerViewModel.playerData.value?.let { player ->
@@ -271,6 +275,8 @@ class GrowFragment : Fragment() {
                     fertilizerIsOn = true
                     // Notify user of amount left
                     Toast.makeText(context, "Fertilizer is on (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
+
+                    // PERLE TO DO: toy with an attribute of the button
                 }
             }
         }

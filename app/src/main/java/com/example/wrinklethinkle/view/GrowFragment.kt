@@ -272,7 +272,6 @@ class GrowFragment : Fragment() {
                     // Notify user of amount left
                     Toast.makeText(context, "Fertilizer is on (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
                 }
-
             }
         }
     }

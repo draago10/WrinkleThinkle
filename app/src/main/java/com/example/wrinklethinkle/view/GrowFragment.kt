@@ -413,3 +413,4 @@ class GrowFragment : Fragment() {
         super.onResume()
         playerViewModel.fetchLatestPlayerData() // Fetch the latest player data when the fragment resumes
     }
+}

@@ -258,20 +258,17 @@ class GrowFragment : Fragment() {
             }
         }
         else {
-            // toggle fertlizier on if it was previously off
-            fertilizerIsOn = true
-
             playerViewModel.playerData.value?.let { player ->
                 // Case: if no fertilizer left...
                 if (player.fertilizer <= 0) {
                     // Notify the user
                     Toast.makeText(context, "No fertilizer left!", Toast.LENGTH_SHORT).show()
-                    // And toggle fertilizer back off
-                    fertilizerIsOn = false
-
+                    // Keep fertilizer toggled off
                 }
                 // Otherwise
                 else{
+                    // toggle fertilizer on
+                    fertilizerIsOn = true
                     // Notify user of amount left
                     Toast.makeText(context, "Fertilizer is on (" + player.fertilizer + " left)!", Toast.LENGTH_SHORT).show()
                 }

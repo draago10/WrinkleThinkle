@@ -91,38 +91,30 @@
                 android:background="@drawable/icon_map" android:scaleType="centerCrop"
                 android:contentDescription="@string/map_icon_description"/>
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="347dp"
-            android:layout_height="306dp"
-            app:layout_constraintBottom_toTopOf="@+id/Navbar_inventory"
-            app:layout_constraintEnd_toEndOf="@+id/treesBackground"
-            app:layout_constraintStart_toStartOf="@+id/treesBackground" app:layout_constraintHorizontal_bias="0.493"
-            android:id="@+id/recyclerView"/>
     <ImageView
             android:src="@drawable/item_background_brown"
             android:layout_width="107dp"
             android:layout_height="138dp" android:id="@+id/fertilizer_background"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
             app:layout_constraintTop_toTopOf="@+id/treesBackground"
-            app:layout_constraintBottom_toTopOf="@+id/tulip_background" app:layout_constraintVertical_bias="0.834"
+            app:layout_constraintBottom_toTopOf="@+id/tulip_seeds_background" app:layout_constraintVertical_bias="0.834"
             android:contentDescription="@string/item_background_icon_description"
     />
     <ImageView
             android:src="@drawable/item_background_brown"
             android:layout_width="107dp"
             android:layout_height="135dp" android:id="@+id/pesticide_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/dahlia_background"
             android:contentDescription="@string/item_background_icon_description"
-            android:layout_marginBottom="20dp" android:layout_marginTop="59dp"
-            app:layout_constraintTop_toBottomOf="@+id/inv_coin_icon"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/dahlia_seeds_background"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="28dp"
+            app:layout_constraintVertical_bias="0.835"/>
     <ImageView
             android:src="@drawable/item_background"
             android:layout_width="107dp"
-            android:layout_height="135dp" android:id="@+id/rose_background"
+            android:layout_height="135dp" android:id="@+id/rose_seeds_background"
             app:layout_constraintTop_toTopOf="@+id/treesBackground"
-            app:layout_constraintBottom_toTopOf="@+id/lily_background"
+            app:layout_constraintBottom_toTopOf="@+id/lily_seeds_background"
             app:layout_constraintStart_toEndOf="@+id/fertilizer_background"
             app:layout_constraintEnd_toStartOf="@+id/pesticide_background"
             app:layout_constraintVertical_bias="0.824"
@@ -131,28 +123,61 @@
     <ImageView
             android:src="@drawable/item_background"
             android:layout_width="107dp"
-            android:layout_height="135dp" android:id="@+id/tulip_background"
+            android:layout_height="135dp" android:id="@+id/tulip_seeds_background"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
             android:contentDescription="@string/item_background_icon_description"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="32dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/rose_background" android:layout_marginBottom="24dp"/>
     <ImageView
             android:src="@drawable/item_background"
             android:layout_width="107dp"
-            android:layout_height="135dp" android:id="@+id/lily_background"
-            app:layout_constraintStart_toEndOf="@+id/tulip_background"
-            app:layout_constraintEnd_toStartOf="@+id/dahlia_background"
+            android:layout_height="135dp" android:id="@+id/lily_seeds_background"
+            app:layout_constraintStart_toEndOf="@+id/tulip_seeds_background"
+            app:layout_constraintEnd_toStartOf="@+id/dahlia_seeds_background"
             android:contentDescription="@string/item_background_icon_description"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="32dp"
-            app:layout_constraintHorizontal_bias="0.6"/>
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintBottom_toTopOf="@+id/tulip_background" android:layout_marginBottom="24dp"/>
     <ImageView
             android:src="@drawable/item_background"
             android:layout_width="107dp"
-            android:layout_height="135dp" android:id="@+id/dahlia_background"
+            android:layout_height="135dp" android:id="@+id/dahlia_seeds_background"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="28dp"
             android:contentDescription="@string/item_background_icon_description"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="32dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/lily_background" android:layout_marginBottom="24dp"/>
+    <ImageView
+            android:src="@drawable/item_background_brown"
+            android:layout_width="107dp"
+            android:layout_height="138dp" android:id="@+id/rose_background"
+            android:contentDescription="@string/item_background_icon_description"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" app:layout_constraintBottom_toTopOf="@+id/dahlia_background"
+            android:layout_marginBottom="24dp"/>
+    <ImageView
+            android:src="@drawable/item_background_brown"
+            android:layout_width="107dp"
+            android:layout_height="138dp" android:id="@+id/tulip_background"
+            android:contentDescription="@string/item_background_icon_description"
+            app:layout_constraintBottom_toTopOf="@+id/dahlia_background"
+            android:layout_marginBottom="24dp" app:layout_constraintEnd_toStartOf="@+id/lily_background"
+            app:layout_constraintStart_toEndOf="@+id/rose_background"
+            app:layout_constraintHorizontal_bias="0.6"/>
+    <ImageView
+            android:src="@drawable/item_background_brown"
+            android:layout_width="107dp"
+            android:layout_height="138dp" android:id="@+id/lily_background"
+            android:contentDescription="@string/item_background_icon_description"
+            app:layout_constraintEnd_toEndOf="@+id/treesBackground"
+            android:layout_marginEnd="28dp" app:layout_constraintBottom_toTopOf="@+id/dahlia_background"
+            android:layout_marginBottom="24dp"/>
+    <ImageView
+            android:src="@drawable/item_background_brown"
+            android:layout_width="107dp"
+            android:layout_height="138dp" android:id="@+id/dahlia_background"
+            android:contentDescription="@string/item_background_icon_description"
+            app:layout_constraintBottom_toTopOf="@+id/Navbar_inventory" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="12dp" app:layout_constraintHorizontal_bias="0.513"/>
     <ImageView
             android:src="@drawable/icon_fertilizer"
             android:layout_width="72dp"
@@ -179,50 +204,88 @@
             android:src="@drawable/seeds_rose"
             android:layout_width="69dp"
             android:layout_height="83dp" android:id="@+id/rose_seeds"
-            app:layout_constraintTop_toTopOf="@+id/rose_background"
-            app:layout_constraintBottom_toBottomOf="@+id/rose_background"
-            app:layout_constraintEnd_toEndOf="@+id/rose_background"
-            app:layout_constraintStart_toStartOf="@+id/rose_background"
+            app:layout_constraintTop_toTopOf="@+id/rose_seeds_background"
+            app:layout_constraintBottom_toBottomOf="@+id/rose_seeds_background"
+            app:layout_constraintEnd_toEndOf="@+id/rose_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/rose_seeds_background"
             app:layout_constraintVertical_bias="0.576"
             android:contentDescription="@string/seeds_icon_description"/>
     <ImageView
             android:src="@drawable/seeds_tulip"
             android:layout_width="68dp"
             android:layout_height="83dp" android:id="@+id/tulip_seeds"
-            app:layout_constraintTop_toTopOf="@+id/tulip_background"
-            app:layout_constraintBottom_toBottomOf="@+id/tulip_background"
-            app:layout_constraintStart_toStartOf="@+id/tulip_background"
-            app:layout_constraintEnd_toEndOf="@+id/tulip_background" app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintTop_toTopOf="@+id/tulip_seeds_background"
+            app:layout_constraintBottom_toBottomOf="@+id/tulip_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/tulip_seeds_background"
+            app:layout_constraintEnd_toEndOf="@+id/tulip_seeds_background" app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintVertical_bias="0.538"
             android:contentDescription="@string/seeds_icon_description"/>
     <ImageView
             android:src="@drawable/seeds_lily"
             android:layout_width="67dp"
             android:layout_height="82dp" android:id="@+id/lily_seeds"
-            app:layout_constraintTop_toTopOf="@+id/lily_background"
-            app:layout_constraintStart_toStartOf="@+id/lily_background"
-            app:layout_constraintBottom_toBottomOf="@+id/lily_background"
+            app:layout_constraintTop_toTopOf="@+id/lily_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/lily_seeds_background"
+            app:layout_constraintBottom_toBottomOf="@+id/lily_seeds_background"
             app:layout_constraintVertical_bias="0.528"
-            app:layout_constraintEnd_toEndOf="@+id/lily_background"
+            app:layout_constraintEnd_toEndOf="@+id/lily_seeds_background"
             android:contentDescription="@string/seeds_icon_description"/>
     <ImageView
             android:src="@drawable/seeds_dahlia"
             android:layout_width="68dp"
             android:layout_height="82dp" android:id="@+id/dahlia_seeds"
-            app:layout_constraintTop_toTopOf="@+id/dahlia_background"
-            app:layout_constraintBottom_toBottomOf="@+id/dahlia_background"
-            app:layout_constraintStart_toStartOf="@+id/dahlia_background"
-            app:layout_constraintEnd_toEndOf="@+id/dahlia_background"
+            app:layout_constraintTop_toTopOf="@+id/dahlia_seeds_background"
+            app:layout_constraintBottom_toBottomOf="@+id/dahlia_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/dahlia_seeds_background"
+            app:layout_constraintEnd_toEndOf="@+id/dahlia_seeds_background"
             app:layout_constraintHorizontal_bias="0.435"
             app:layout_constraintVertical_bias="0.528"
             android:contentDescription="@string/seeds_icon_description"/>
+    <ImageView
+            android:src="@drawable/rose_flower_complete"
+            android:layout_width="82dp"
+            android:layout_height="118dp" android:id="@+id/rose_image"
+            android:scaleType="centerCrop" app:layout_constraintStart_toStartOf="@+id/rose_background"
+            app:layout_constraintEnd_toEndOf="@+id/rose_background"
+            app:layout_constraintTop_toTopOf="@+id/rose_background"
+            app:layout_constraintBottom_toBottomOf="@+id/rose_background"
+            app:layout_constraintVertical_bias="1.0"/>
+    <ImageView
+            android:src="@drawable/tulip_flower_complete"
+            android:layout_width="90dp"
+            android:layout_height="122dp" android:id="@+id/tulip_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="@+id/tulip_background"
+            app:layout_constraintBottom_toBottomOf="@+id/tulip_background"
+            app:layout_constraintStart_toStartOf="@+id/tulip_background"
+            app:layout_constraintEnd_toEndOf="@+id/tulip_background"
+            app:layout_constraintVertical_bias="0.75"/>
+    <ImageView
+            android:src="@drawable/lily_flower_complete"
+            android:layout_width="86dp"
+            android:layout_height="122dp" android:id="@+id/lily_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="@+id/lily_background"
+            app:layout_constraintBottom_toBottomOf="@+id/lily_background"
+            app:layout_constraintEnd_toEndOf="@+id/lily_background"
+            app:layout_constraintStart_toStartOf="@+id/lily_background"
+            app:layout_constraintVertical_bias="1.0"/>
+    <ImageView
+            android:src="@drawable/black_dahlia_flower_complete"
+            android:layout_width="61dp"
+            android:layout_height="90dp" android:id="@+id/dahlia_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/dahlia_background"
+            app:layout_constraintStart_toStartOf="@+id/dahlia_background"
+            app:layout_constraintTop_toTopOf="@+id/dahlia_background"
+            app:layout_constraintBottom_toBottomOf="@+id/dahlia_background" app:layout_constraintVertical_bias="0.6"/>
     <TextView
             android:layout_width="31dp"
             android:layout_height="36dp" android:id="@+id/fertilizer_balance"
             android:background="@android:drawable/screen_background_dark"
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
-            android:gravity="center" app:layout_constraintBottom_toTopOf="@+id/tulip_background"
-            app:layout_constraintEnd_toStartOf="@+id/rose_background" android:layout_marginEnd="16dp"
+            android:gravity="center" app:layout_constraintBottom_toTopOf="@+id/tulip_seeds_background"
+            app:layout_constraintEnd_toStartOf="@+id/rose_seeds_background" android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintTop_toTopOf="@+id/fertilizer_background"
             app:layout_constraintVertical_bias="0.931" app:layout_constraintStart_toStartOf="@+id/fertilizer_background"
@@ -232,11 +295,11 @@
             android:layout_height="36dp" android:id="@+id/rose_seeds_balance"
             android:background="@android:drawable/screen_background_dark"
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
-            android:gravity="center" app:layout_constraintBottom_toTopOf="@+id/lily_background"
+            android:gravity="center" app:layout_constraintBottom_toTopOf="@+id/lily_seeds_background"
             app:layout_constraintEnd_toStartOf="@+id/pesticide_background" android:layout_marginEnd="13dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintTop_toTopOf="@+id/rose_background"
-            app:layout_constraintVertical_bias="0.931" app:layout_constraintStart_toStartOf="@+id/rose_background"
+            app:layout_constraintTop_toTopOf="@+id/rose_seeds_background"
+            app:layout_constraintVertical_bias="0.931" app:layout_constraintStart_toStartOf="@+id/rose_seeds_background"
             app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
             android:layout_width="31dp"
@@ -244,7 +307,7 @@
             android:background="@android:drawable/screen_background_dark"
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
             android:gravity="center" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/dahlia_background" android:layout_marginEnd="28dp"
+            app:layout_constraintBottom_toTopOf="@+id/dahlia_seeds_background" android:layout_marginEnd="28dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintTop_toTopOf="@+id/pesticide_background"
             app:layout_constraintVertical_bias="1.0" app:layout_constraintStart_toStartOf="@+id/pesticide_background"
@@ -255,21 +318,23 @@
             android:background="@android:drawable/screen_background_dark"
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
             android:gravity="center"
-            app:layout_constraintEnd_toStartOf="@+id/lily_background" android:layout_marginEnd="18dp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="24dp"
-            app:layout_constraintTop_toTopOf="@+id/tulip_background" app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/tulip_background" app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintEnd_toStartOf="@+id/lily_seeds_background" android:layout_marginEnd="18dp"
+            app:layout_constraintTop_toTopOf="@+id/tulip_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/tulip_seeds_background"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/rose_background"
+            app:layout_constraintVertical_bias="0.88"/>
     <TextView
             android:layout_width="31dp"
             android:layout_height="36dp" android:id="@+id/lily_seeds_balance"
             android:background="@android:drawable/screen_background_dark"
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
-            android:gravity="center" app:layout_constraintEnd_toStartOf="@+id/dahlia_background"
+            android:gravity="center" app:layout_constraintEnd_toStartOf="@+id/dahlia_seeds_background"
             android:layout_marginEnd="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="25dp"
-            app:layout_constraintTop_toTopOf="@+id/lily_background"
-            app:layout_constraintVertical_bias="1.0" app:layout_constraintStart_toStartOf="@+id/lily_background"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintTop_toTopOf="@+id/lily_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/lily_seeds_background"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/tulip_background" app:layout_constraintVertical_bias="0.88"/>
     <TextView
             android:layout_width="31dp"
             android:layout_height="36dp" android:id="@+id/dahlia_seeds_balance"
@@ -277,7 +342,53 @@
             android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="@+id/treesBackground" android:layout_marginEnd="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView" android:layout_marginBottom="25dp"
-            app:layout_constraintTop_toTopOf="@+id/dahlia_background" app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/dahlia_background" app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintTop_toTopOf="@+id/dahlia_seeds_background"
+            app:layout_constraintStart_toStartOf="@+id/dahlia_seeds_background"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/lily_background"
+            app:layout_constraintVertical_bias="0.88"/>
+    <TextView
+            android:layout_width="31dp"
+            android:layout_height="36dp" android:id="@+id/rose_balance"
+            android:background="@android:drawable/screen_background_dark"
+            android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@+id/rose_background"
+            app:layout_constraintStart_toStartOf="@+id/rose_background"
+            app:layout_constraintEnd_toStartOf="@+id/tulip_background" android:layout_marginTop="108dp"
+            app:layout_constraintHorizontal_bias="0.819" app:layout_constraintBottom_toTopOf="@+id/dahlia_background"
+            app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:layout_width="31dp"
+            android:layout_height="36dp" android:id="@+id/tulip_balance"
+            android:background="@android:drawable/screen_background_dark"
+            android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@+id/tulip_background"
+            app:layout_constraintStart_toStartOf="@+id/tulip_background"
+            app:layout_constraintEnd_toStartOf="@+id/lily_background"
+            app:layout_constraintBottom_toTopOf="@+id/dahlia_background" app:layout_constraintHorizontal_bias="0.863"
+            app:layout_constraintVertical_bias="0.865"/>
+    <TextView
+            android:layout_width="31dp"
+            android:layout_height="36dp"
+            android:background="@android:drawable/screen_background_dark"
+            android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@+id/lily_image"
+            app:layout_constraintEnd_toEndOf="@+id/treesBackground"
+            app:layout_constraintTop_toTopOf="@+id/lily_background"
+            app:layout_constraintBottom_toTopOf="@+id/dahlia_background" app:layout_constraintHorizontal_bias="0.698"
+            app:layout_constraintVertical_bias="0.865" android:id="@+id/lily_balance"/>
+    <TextView
+            android:layout_width="31dp"
+            android:layout_height="36dp"
+            android:background="@android:drawable/screen_background_dark"
+            android:fontFamily="@font/pixelify_sans" android:textColor="#FFFFFF" android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/dahlia_balance"
+            app:layout_constraintTop_toTopOf="@+id/dahlia_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/dahlia_background" app:layout_constraintHorizontal_bias="0.343"
+            app:layout_constraintBottom_toTopOf="@+id/Navbar_inventory" app:layout_constraintVertical_bias="0.95"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

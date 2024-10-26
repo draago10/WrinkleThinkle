@@ -42,6 +42,10 @@ class InventoryFragment : Fragment() {
             val tulipSeeds = player.seeds.getOrDefault("TULIP", 0)
             val lilySeeds = player.seeds.getOrDefault("LILY", 0)
             val dahliaSeeds = player.seeds.getOrDefault("DAHLIA", 0)
+            val roses = player.flowers.getOrDefault("ROSE", 0)
+            val tulips = player.flowers.getOrDefault("TULIP", 0)
+            val lilies = player.flowers.getOrDefault("LILY", 0)
+            val dahlias = player.flowers.getOrDefault("DAHLIA", 0)
 
             binding.invCoinBalance.text = player.gold.toString() ?: "0"
             binding.pesticideBalance.text = player.pesticide.toString() ?: "0"
@@ -50,6 +54,10 @@ class InventoryFragment : Fragment() {
             binding.tulipSeedsBalance.text = tulipSeeds.toString()
             binding.lilySeedsBalance.text = lilySeeds.toString()
             binding.dahliaSeedsBalance.text = dahliaSeeds.toString()
+            binding.roseBalance.text = roses.toString()
+            binding.tulipBalance.text = tulips.toString()
+            binding.lilyBalance.text = lilies.toString()
+            binding.dahliaBalance.text = dahlias.toString()
 
             binding.InventoryShopButton.setOnClickListener {
                 findNavController().navigate(R.id.action_InventoryFragment_to_ShopFragment)

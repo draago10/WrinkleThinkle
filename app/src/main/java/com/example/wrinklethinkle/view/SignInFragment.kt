@@ -63,6 +63,8 @@ class SignInFragment : Fragment() {
 
         // Manual sign-in flow
         viewModel.signInResult.observe(viewLifecycleOwner) { success ->
+            // Hide ProgressBar
+            binding.progressBar.visibility = View.GONE
             if (success) {
                 auth.currentUser?.uid?.let { userId ->
                     viewModel.fetchUserData(userId)
@@ -86,6 +88,8 @@ class SignInFragment : Fragment() {
             } else {
                 emailText = binding.signInScreenEmail.text.toString().trim()
                 passwordText = binding.signInScreenPassword.text.toString().trim()
+                // Show ProgressBar
+                binding.progressBar.visibility = View.VISIBLE
                 viewModel.signInUser(emailText, passwordText)
             }
         }

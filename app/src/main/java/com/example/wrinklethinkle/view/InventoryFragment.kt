@@ -74,9 +74,45 @@ class InventoryFragment : Fragment() {
             binding.homeButton.setOnClickListener {
                 findNavController().navigate(R.id.action_InventoryFragment_to_InsideHouseFragment)
             }
+
+            binding.roseImage.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putString("flower", FlowerType.ROSE.name)
+                }
+                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+            }
+
+            binding.lilyImage.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putString("flower", FlowerType.LILY.name)
+                }
+                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+            }
+            binding.dahliaImage.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putString("flower", FlowerType.DAHLIA.name)
+                }
+                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+            }
+
+            binding.tulipImage.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putString("flower", FlowerType.TULIP.name)
+                }
+                findNavController().navigate(R.id.FlowerDetailFragment, bundle)
+            }
+
+
         }
 
     }
+
+    fun flowerDetail(flowerType: String) {
+
+
+    }
+
+
     override fun onResume() {
         super.onResume()
         playerViewModel.fetchLatestPlayerData()

@@ -54,6 +54,7 @@ class SignUpFragment : Fragment() {
 
         // Observe the sign-up result
         viewModel.signUpResult.observe(viewLifecycleOwner) { success ->
+            binding.progressBar.visibility = View.GONE
             if (success) {
                 auth.currentUser?.uid?.let { userId ->
                     viewModel.fetchPlayerData(userId)
@@ -83,6 +84,7 @@ class SignUpFragment : Fragment() {
                 email = binding.signUpScreenEmail.text.toString().trim()
                 password = binding.signUpScreenPassword.text.toString().trim()
                 playerName = binding.signUpScreenPlayerName.text.toString().trim()
+                binding.progressBar.visibility = View.VISIBLE
                 viewModel.createUser(email, password, playerName)
             }
         }
